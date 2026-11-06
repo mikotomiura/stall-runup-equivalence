@@ -1,4 +1,4 @@
-% Supplementary material, placed after the references as the journal's instructions ask. Sections S1 to S9 are
+% Supplementary material, placed after the references as the journal's instructions ask. Sections S1 to S10 are
 % referred to from the main text by their labels.
 \renewcommand{\thesection}{S\arabic{section}}
 \setcounter{section}{0}
@@ -107,7 +107,12 @@ from the data analysed here. The friction axis is smoothed exponentially with co
 
 \paragraph{Mapping of edit events.} The rules of Section~\ref{sec:data} were fixed in an earlier analysis of the CS1
 data, before this study. Keystrokes are ordered by client timestamp and, within ties, by event identifier. The release is
-placed 100~ms after the press and cut 1~ms before the next press.
+placed 100~ms after the press and cut 1~ms before the next press, so the estimator's flight time is the inter-keystroke
+interval minus 100~ms when the interval exceeds 100~ms, 1~ms for shorter intervals and 0 for simultaneous presses, a
+definition that differs from that of recorded releases in writing data. Every insertion with a recorded key was a single
+character. In the holdout as a whole, the share of estimate rows with a Stuck-state probability below 0.02 ranged from
+26\% to 62\% per writer between the 10th and 90th percentiles, and the standard deviation of the 30-second change over
+all estimate rows was 0.270 for the Stuck-state probability and 0.187 for the friction axis [E-H].
 
 \begin{table}[h]
   \caption{How the edit rows of the holdout writers were mapped to the estimator's input (exploration on the holdout,
@@ -136,15 +141,21 @@ segments break where 1~Hz estimate rows are more than 2~s apart, after the repla
 gaps of 60~s or more and across gaps of 30 minutes or more. In the seen 2019 writers, $\theta$ at the end of an
 assignment had a median of 27.7~s (quartiles 20.8--36.8~s; 316 writers in the earlier analysis of these data) [D].
 Edges of observation [E-H]: of 9,133 distinct $u$ of onsets in the holdout, 22 had no later character input in the
-assignment and 51 had the next one in a later work block. The distance from $u$ to the onset had a mean of 247~s against
-a median of 48.5~s, because a few onsets come long after the last character input. The 338 seen writers with an assignment had 1,078
+assignment and 51 had the next one in a later work block. A pause with no later character input is taken to end at the last key press of the assignment,
+so such a stall is kept only if that press comes at least 30~s after $u$; a pause whose next character input lies in a
+later work block ends at that input. When several onsets share the same $u$, only the first is considered, and it is
+dropped, not replaced, if it fails a condition. $\theta$ is its value at $s$, from the intervals up to $s$. Inside the pause, in the holdout's main stratum, 47\% of stalls contained a run of the program, a paste or a switch,
+against 6\% of controls; 52\% of stalls and 69\% of controls contained no key press of any kind, and the 90th percentile
+of key presses inside the pause was 13 for stalls and 5 for controls. The onset came a median of 48.5~s after $u$ (10th and 90th percentiles 35.2 and 77.6~s; mean 247~s, because a few
+onsets come long after the last character input), and the next character input a median of 97.2~s after $u$ (mean
+428~s; 78.6\% of stalls lasted 60~s or more). The 338 seen writers with an assignment had 1,078
 assignments, and the 319 kept writers 1,042.
 
 \section{Coefficients of the estimator}
 \label{app:coefficients}
 
 All values below were set by hand (version 0.5.0); none were estimated from the data analysed here. They are taken
-from the source of the estimator, which is not released (Section~\ref{sec:discussion}).
+from the source of the estimator, which is released with the archive (Section~\ref{sec:discussion}).
 
 \paragraph{Window quantities.} Every second, over the key events of the preceding 30~s: $f_1$, the median flight time
 from a release to the next press, with flights of 2,000~ms or more dropped; $f_3$, the share of presses that are
@@ -245,8 +256,9 @@ change were 0.000, 0.016 and 0.63 for the Stuck-state probability and 0.019, 0.1
 \cite{lakens2018equivalence}, three combinations were statistically different from 0.5 in the downward direction and
 equivalent, and the Stuck-state probability with $\varepsilon = 0$ was equivalent and not different. The registration
 did not ask about the direction. Candidate causes, none of them tested, are the exclusion that only controls receive
-(controls close to a later onset are removed), the different shares at the floor (61\% and 65\%), and stalls with events
-inside the pause (removing them gave 0.505 and 0.500); each moves the estimate within the band. In the essays the
+(controls close to a later onset are removed), the different shares at the floor (61\% and 65\%), stalls with events
+inside the pause (removing them gave 0.505 and 0.500), and the fewer corrections before stalls (a median share of
+backspaces of 0.091 against 0.100), which lowers the friction axis; each moves the estimate within the band. In the essays the
 direction was the reverse. All four intervals also lie inside $0.5 \pm 0.025$ (largest distance of an end from 0.5:
 0.0242); this narrower band was found after the data were seen and is not a decision.
 
@@ -267,7 +279,8 @@ is the matched comparison.
 \section{Unmatched comparison and re-matching}
 \label{app:unmatched}
 
-Windows end at $w$ every 5~s from 60~s after the start of a block to 60~s before its end; the window is $[w - 30\,
+The comparison had 173,511 windows and 45,405 positives; 89\% of stalls had at least one positive window. Because the
+unmatched AUC was not above 0.5, the attenuation after re-matching by phase is not interpreted. Windows end at $w$ every 5~s from 60~s after the start of a block to 60~s before its end; the window is $[w - 30\,
 \mathrm{s}, w]$. A window is a positive if a stall's $u$ falls in $(w, w + 60\,\mathrm{s}]$, of any stratum. Windows
 whose $w$ lies inside a pause of 30~s or more, from its $u$ to the resumption, are excluded (323,987 windows); windows
 before long pauses that were not counted as stalls stay among the negatives (40,471). The AUC pools positive and
@@ -301,7 +314,7 @@ after uniform jitter) until its own AUC reached 0.58; both learners then gave a 
 \paragraph{Results.} Main: logistic regression 0.567 (0.5497--0.578), gradient boosting 0.540 (0.525--0.558). Unmatched
 windows (up to 50 positives per writer and five negatives each, weights balanced within writers): 0.529 (0.512--0.546)
 and 0.526 (0.511--0.541). Burst threshold at $1 \times \theta$: 0.568 (0.5519--0.581) and 0.551 (0.530--0.563).
-Excluding stalls and controls with windows of fewer than three presses or no intervals (3,008 stalls kept): 0.548
+Excluding stalls and controls with windows of fewer than three presses or no intervals (3,000 stalls kept): 0.548
 (0.522--0.555) and 0.511 (0.489--0.532). The lower bound above 0.55 at $1 \times \theta$ is not reported as the
 discovery of a difference. Gradient boosting with a nested grid search (50 resamples): 0.567
 (0.544--0.576). The gate was not applied to the sensitivity analyses.
@@ -311,7 +324,7 @@ discovery of a difference. Gradient boosting with a nested grid search (50 resam
 
 On the 319 seen writers, a provisional signal was built from the real signal by shifting the stall values until the
 pooled AUC reached the target (difference 0.000001 or less), and the decision rule was applied to 500 draws of 138
-writers, sharing the resampling seed across the two tolerances and the two signals as in the actual run. With a signal
+writers, sharing the resampling seed across the two tolerances and the two signals as in the actual run. The draws were about as concentrated as the holdout (a median of 43 effective writers, against 50.5 in the holdout). With a signal
 at the boundary and the other at 0.50, the proportion judged equivalent under both tolerances was:
 
 \begin{center}\small
@@ -367,9 +380,10 @@ of the signal over the control candidates was the threshold, and a trigger fired
 reached 2~s. Provisional signals were shifted so that the AUC reached a target. Firings were about 11.5 to 12.6 per hour
 at AUC 0.50 (counting only pauses in the no-event stratum over all observed time, so lower than a real trigger), and the
 share of firings that fell on pauses that became stalls was 8.2--8.9\% at 0.50, 8.9--10.0\% at 0.55, 9.3--12.4\% at
-0.60, 10.8--15.2\% at 0.65 and 12.9--18.4\% at 0.70. In the essays, the rise at 0.55 was 0.3--1.1 points. The time an
-onset is raised after the last character input is fixed by the definition ($s + \theta$), so the stall clock itself
-carries no information about typing.
+0.60, 10.8--15.2\% at 0.65 and 12.9--18.4\% at 0.70. In the essays, the rise at 0.55 was 0.3--1.1 points. The onset is raised at $s + \theta$, and $s$ depends on the
+net production in the 30~s before it: with less preceding production, condition A becomes true earlier. The time from
+the last character input to the onset therefore carries information about the preceding typing, which matters for the
+learners' quantities of preceding typing (Section~\ref{sec:res-bounds}).
 
 \section{Scope of the search for prior work}
 \label{app:novelty}

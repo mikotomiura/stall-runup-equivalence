@@ -84,6 +84,11 @@ experiments/20261106-findings-paper1-exploration/scripts/explore_position.py	df1
 experiments/20261106-findings-paper1-exploration/scripts/explore_positive_control.py	630804e074b14bb032608e92031fd00d62e5ee74	2026-11-06T06:24:29Z	024634207ea7474dfaeff8994264d53369e62ce1	2026-11-06T07:35:27Z
 experiments/20261106-findings-paper1-exploration/scripts/explore_predraft.py	b390fd320dcd2edb7f2bc81b89c7d6e3a5d4690c	2026-11-06T05:15:37Z	b390fd320dcd2edb7f2bc81b89c7d6e3a5d4690c	2026-11-06T05:15:37Z
 experiments/20261106-findings-paper1-exploration/scripts/seed_spread.py	0eebeedc26721d4439b965f3fae1b1dc9b11f8cb	2026-11-06T02:32:59Z	0eebeedc26721d4439b965f3fae1b1dc9b11f8cb	2026-11-06T02:32:59Z
+experiments/20261107-findings-paper1-round3-checks/SEED	d617b4269141ab93316c5e93ad660cddbb62f2b7	2026-11-06T16:23:35Z	d617b4269141ab93316c5e93ad660cddbb62f2b7	2026-11-06T16:23:35Z
+experiments/20261107-findings-paper1-round3-checks/conditions.md	d617b4269141ab93316c5e93ad660cddbb62f2b7	2026-11-06T16:23:35Z	d617b4269141ab93316c5e93ad660cddbb62f2b7	2026-11-06T16:23:35Z
+experiments/20261107-findings-paper1-round3-checks/notes.md	2710ea5e7fc7534b8fd7ac720421f2a4b3652e9e	2026-11-06T16:26:34Z	2710ea5e7fc7534b8fd7ac720421f2a4b3652e9e	2026-11-06T16:26:34Z
+experiments/20261107-findings-paper1-round3-checks/results/explore_round3.json	2710ea5e7fc7534b8fd7ac720421f2a4b3652e9e	2026-11-06T16:26:34Z	2710ea5e7fc7534b8fd7ac720421f2a4b3652e9e	2026-11-06T16:26:34Z
+experiments/20261107-findings-paper1-round3-checks/scripts/explore_round3.py	2710ea5e7fc7534b8fd7ac720421f2a4b3652e9e	2026-11-06T16:26:34Z	2710ea5e7fc7534b8fd7ac720421f2a4b3652e9e	2026-11-06T16:26:34Z
 experiments/20261031-coauthor-pre-request-signal/SEED	99f7b33be0e779d9700a7568d662d38ff721b498	2026-10-31T13:41:17Z	99f7b33be0e779d9700a7568d662d38ff721b498	2026-10-31T13:41:17Z
 experiments/20261031-coauthor-pre-request-signal/conditions.md	99f7b33be0e779d9700a7568d662d38ff721b498	2026-10-31T13:41:17Z	99f7b33be0e779d9700a7568d662d38ff721b498	2026-10-31T13:41:17Z
 experiments/20261031-coauthor-pre-request-signal/conditions_round2.md	10125308c446def7a44230ac371baa09b4d4de15	2026-10-31T15:42:50Z	10125308c446def7a44230ac371baa09b4d4de15	2026-10-31T15:42:50Z

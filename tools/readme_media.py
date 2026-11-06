@@ -4,7 +4,7 @@
 Usage:
   python3 -I tools/readme_media.py            writes docs/media/holdout-auc.svg
   python3 -I tools/readme_media.py --check    checks that every value of the figure, rounded as printed, equals the
-                                              row of the same name in Table S (paper/appendix/supplement.tex), and
+                                              row of the same name in Table 6, label tab:sens (paper/appendix/supplement.tex), and
                                               that the SVG on disk is the one this script draws
 Reads only experiments/20261105-findings-paper1-prefreeze/results_holdout/confirm_holdout.json (aggregate values).
 No number of the paper comes from this script. Exit code: 0 = written or checked / 1 = a mismatch.

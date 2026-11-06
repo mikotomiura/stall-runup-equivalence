@@ -11,10 +11,10 @@ of writing research reads the timing of pauses, corrections and bursts as traces
 expectation follows: if a learner is about to stop producing text, the way they type in the preceding seconds should
 already be different, and a signal computed from keystrokes should rise before the stop.
 
-In this paper the stop is defined narrowly, as a \emph{stall in character production}: after net production of
-characters in the preceding 30~s, net production stops for longer than a threshold personalised to each writer's
-inter-keystroke intervals, and the pause that starts at the last character input lasts at least 30~s
-(Section~\ref{sec:data}). Asking for help, wheel spinning and the need for a proactive hint are higher-level questions; a stall is one
+In this paper the stop is defined narrowly, as a \emph{stall in character production}: net production of characters
+over the preceding 30~s falls below one character and stays there for longer than a threshold personalised to each
+writer's inter-keystroke intervals, and the pause that starts at the last character input, $u$, lasts at least 30~s; the
+onset therefore comes a median of 48.5~s after $u$ (Section~\ref{sec:data}). Asking for help, wheel spinning and the need for a proactive hint are higher-level questions; a stall is one
 candidate that can be observed at the scale of seconds without any information beyond keystrokes. We do not claim that
 a stall is being stuck, and we did not check the correspondence between stalls and those higher-level constructs.
 
@@ -33,17 +33,19 @@ the middle of fluent typing count as negatives. A stall, however, begins with a
 pause, and so does every short pause that does not become a stall; comparing the run-up to a stall with the run-up to a
 short pause matched within the same writer and context is one natural choice of control that removes the difference
 between pausing and typing. In essay writing, which we had analysed before this study, the same matched comparison gave
-values inside the band that we later used for the test (Section~\ref{sec:res-main}); this weakens the expectation,
+values close to 0.5 (Section~\ref{sec:res-main}); this weakens the expectation,
 and it is one reason the test was set up as an equivalence test. A theoretical reason points the same way: under the
 view that planning proceeds in parallel with typing, planning that cannot be completed in parallel appears in the pause
 itself rather than in the typing before it \cite{roeser2025typing,olive2002concurrent}.
 
-The signals we test come from a keystroke state estimator: a three-state hidden Markov model that, every second,
+The signals we test come from a keystroke state estimator: a filter over three hidden states, built like a hidden Markov
+model but with emission weights that are not normalised per state (Appendix~\ref{app:coefficients}), that every second
 combines five quantities computed over a 30~s window of keystrokes (the median flight time, the correction ratio, the
-burst length, the number of pauses and the ratio of pauses after deletions) into probabilities of its hidden states. Its
-coefficients, the transition and emission matrices and the weights of the combinations, were set by hand from the
+burst length, the number of pauses and the ratio of pauses after deletions) into state probabilities. Its
+coefficients, the transition and emission weights and the weights of the combinations, were set by hand from the
 literature and from informal tuning, and the reference values for direct (non-IME) input were set by hand from
-population medians of typing \cite{dhakal2018typing}; none were estimated from the data analysed here. It was run with
+population medians of typing \cite{dhakal2018typing}, adjusted for code-like input; none were estimated from the data
+analysed here. It was run with
 the configuration intended for writing tasks. Earlier work in this journal and its neighbours modelled keystrokes as
 writing states fitted to data, for example a semi-Markov model of four writing states
 \cite{guo2020scenario,guo2018basic}. The estimator differs in combining fixed window quantities into a probability every
@@ -56,19 +58,20 @@ the rules had been frozen (Appendix~\ref{app:prereg}). Programming is the confir
 dataset for which a holdout had been preregistered; the essay-writing data had already been seen. Because an output of a
 computation before the freeze had revealed that, under an older definition, the AUC on seen writers lay inside the band
 (slightly above 0.50), the result is a confirmation and not a test of a prediction that could fail; in the holdout the
-estimates fell slightly below 0.50 instead. The main result is the following. In the CS1 holdout (139 students), the AUC of the matched comparison, computed on
-the 30-second change of each signal, fell within the band $[0.45, 0.55]$ set in advance (the false-equivalence rate is at
-most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the configurations examined in the calibration on seen writers, and
-is not an upper bound over the whole null). All four point estimates lay slightly below 0.5. The essay-writing side
-gave similar descriptive results.
+estimates fell slightly below 0.50 instead. In the CS1 holdout (139 students), the AUC of the matched comparison,
+computed on the 30-second change of each signal, fell within the band $[0.45, 0.55]$ set in advance (the
+false-equivalence rate is at most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the configurations examined in the
+calibration on seen writers, and is not an upper bound over the whole null).
 
-The contribution is a preregistered equivalence check of one estimator on one input: the discrimination AUC of the
-30-second change at $u$ of its two signals stayed within the band set in advance, and its intervals excluded differences
-larger than about 0.025 from 0.5. Explorations outside the registration bound this result. Changes of the observed size
-in the 30~s before seen stalls barely moved the signals, and simple keystroke quantities ranked stalls higher through
-the amount of preceding typing rather than through a change (Section~\ref{sec:res-bounds}). The procedure used here
-(matching within writer, boundary type and stratum, a band set in advance on a holdout, and a calibration of the rate of
-false equivalence) is released with its code as the parts of this one example; we claim no effect for it.
+The contribution is a comparative result for one estimator, obtained with a comparison that others can reuse. Run-up
+signals are usually judged against windows that include fluent typing; we judged one against the run-up to short pauses
+by the same writer, with a band set in advance and confirmed on a holdout. Against this partner, the 30-second change of
+the estimator's two signals did not discriminate beyond the band, whereas, on the same pairs and in explorations outside
+the registration, learners on simple quantities of preceding typing gave AUCs 0.04--0.08 higher. The estimator responded
+to large injected changes but barely to changes of the observed size, and many of its scaled inputs sat at their floor
+(Section~\ref{sec:res-bounds}). For researchers who build stall or help-need detectors from keystrokes, the result shows
+which comparison partner exposes a weak run-up signal and what an estimator of this type does not register at this
+scale. The procedure is released with its code as the parts of this one example; we claim no effect for it.
 
 Section~\ref{sec:related} places the study in work on detecting struggle in CS1, on measuring keystroke pauses and on
 evaluating detectors. Section~\ref{sec:data} describes the data, the stall and the estimator, and

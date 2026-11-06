@@ -16,13 +16,9 @@ The data record edit events rather than key presses, so the input to the estimat
 the study (Appendix~\ref{app:definitions}). An insertion of one character with a recorded key became a key press of that
 character's kind, a deletion with a recorded key became a backspace, and an undo or redo with a key became a non-text
 key press. Edits without a recorded key, pastes, cuts and drags did not become key presses but were kept as events, and so were
-runs of the program and switches between tasks; only runs, pastes and switches define the event stratum. Because the data have no key release, the release was placed 100~ms
-after each press but no later than 1~ms before the next press, so the estimator's flight time is the inter-keystroke
-interval minus 100~ms when the interval exceeds 100~ms, 1~ms for shorter intervals and 0 for simultaneous presses, a
-definition that differs from that of recorded releases in writing data. Table~\ref{tab:mapping} (Appendix~\ref{app:definitions}) shows how the edits of the holdout
-writers were distributed. Every insertion with a recorded key was a single character. Insertions of several characters were rare
-(1.4\% of edit rows) but carried 53.7\% of the inserted characters, mostly through pastes; none of them reached the
-estimator as key presses.
+runs of the program and switches between tasks; only runs, pastes and switches define the event stratum. Because the data have no key release, a release was synthesised 100~ms after each press, which changes the meaning of
+the flight time (Appendix~\ref{app:definitions}). Insertions of several characters (1.4\% of edit rows, 53.7\% of the
+inserted characters, mostly pastes) did not reach the estimator as key presses (Table~\ref{tab:mapping}).
 
 
 \subsection{Pauses and stalls}
@@ -38,23 +34,20 @@ stall starts. We write $u$ for the last character input at or before $t_0$. An o
 pause that starts at $u$ lasts at least 30~s, $u$ is earlier than $s$, and condition A is false at $u$ (the writer had
 net production in the preceding 30~s). A stall is therefore not simply 30~s without character input: condition A must
 first become true and then stay true for $\theta$, so the onset lies well after $u$. In the holdout's main stratum
-[E-H], the onset came a median of 48.5~s after $u$ (10th and 90th percentiles 35.2 and 77.6~s), and the next character
-input a median of 97.2~s after $u$ (78.6\% of stalls lasted 60~s or more; a few very long stops raise the mean to 247~s and
-428~s; Appendix~\ref{app:definitions} gives the edges of observation). The 0.99 quantile was inherited from the earlier definition and was not chosen
+[E-H], the onset came a median of 48.5~s after $u$ and the next character input a median of 97.2~s after $u$
+(Appendix~\ref{app:definitions} gives the spread and the edges of observation). The 0.99 quantile was inherited from the earlier definition and was not chosen
 in this study; the 30~s length of a stall and the 2~s lower limit of the controls below are fixed.
 
-What happens inside a pause is not used to match stalls and controls. In the holdout's main stratum
-(Section~\ref{sec:design}), 47\% of stalls contained a run of the program, a paste or a switch inside the pause,
-against 6\% of controls; 52\% of stalls and 69\% of controls contained no key press of any kind, and the 90th percentile
-of key presses inside the pause was 13 for stalls and 5 for controls.
+What happens inside a pause is not used to match stalls and controls (Section~\ref{sec:limitations} and
+Appendix~\ref{app:definitions} describe it).
 
 \subsection{The estimator and its two signals}
 
 The estimator reads the key presses and releases and, every second, computes the five quantities named in
 Section~\ref{sec:intro} over the preceding 30~s. Each quantity is mapped to $[0, 1]$ against a reference value and combined into two latent axes, a friction
 axis ($0.30$ correction ratio $+ 0.25$ pauses after deletion $+ 0.25$ flight time $+ 0.20$ number of pauses) and an
-engagement axis, whose exponentially smoothed values are quantised into the observations of a three-state hidden Markov
-model updated by the forward algorithm. The designer named the states Flow, Incubation and Stuck; we use only the
+engagement axis, whose exponentially smoothed values are quantised into the observations of a three-state filter (an update shaped
+like that of a hidden Markov model, with emission weights that are not normalised per state). The designer named the states Flow, Incubation and Stuck; we use only the
 probability of the third and do not interpret the names. All coefficients were set by hand (Section~\ref{sec:intro}) and are listed in
 Appendix~\ref{app:coefficients}; the version used is fixed (Appendix~\ref{app:definitions}). A replay tool re-reads a recorded stream and writes one
 estimate row per second together with the stall onsets.
@@ -63,9 +56,8 @@ We use two signals, each taken as the change over 30~s: the \emph{change in the 
 probability at time $t$ minus the probability 30~s earlier, and the \emph{change in the smoothed friction axis}, defined
 in the same way. We write $\Delta p_{\mathrm{stuck}}$ and $\Delta x$ for them in tables. The levels at $t$ are reported
 as descriptions. The Stuck-state probability has a floor: in the holdout as a whole, 40.5\% of the 2,602,660 estimate
-rows were below 0.02, and the share per writer ranged from 26\% to 62\% between the 10th and 90th percentiles. Both
-signals nevertheless moved on this input. The standard deviation of the 30-second change over all estimate rows was
-0.270 for the Stuck-state probability and 0.187 for the friction axis, and within stalls both rose after $u$: the mean
+rows were below 0.02 (Appendix~\ref{app:definitions} gives the spread). Both signals nevertheless moved on this input;
+within stalls both rose after $u$: the mean
 Stuck-state probability went from 0.135 at $u$ to 0.193 at $u + 20$~s, and the mean friction axis from 0.291 to 0.412
 (exploration on the holdout; Appendix~\ref{app:sensitivity}).
 

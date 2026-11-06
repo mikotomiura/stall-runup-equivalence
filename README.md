@@ -16,8 +16,8 @@
 
 <p align="center"><b>English</b> | <a href="README.ja.md">日本語</a></p>
 
-This repository accompanies the manuscript *A keystroke state estimator's 30-second signal changes before code-writing
-stalls: within 0.025 AUC of matched pauses in a preregistered holdout* (Mikoto Miura). The preregistration, the
+This repository accompanies the manuscript *The 30-second signal changes of a hand-set keystroke
+state estimator before code-writing stalls stayed inside a preregistered equivalence band against short pauses* (Mikoto Miura). The preregistration, the
 deviation, the two start records and the results are public on the Open Science Framework:
 [mrkxt](https://osf.io/mrkxt) (preregistration), [fqgcp](https://osf.io/fqgcp) (deviation),
 [ajg2x](https://osf.io/ajg2x) (second start record), [uj6cy](https://osf.io/uj6cy) (results and provenance). This
@@ -41,8 +41,8 @@ inside the band [0.45, 0.55] set in advance.
        src="docs/media/holdout-auc.svg" width="900">
 </p>
 <p align="center"><sub>Holdout of the CS1 2019 data (139 students). Drawn by <code>tools/readme_media.py</code> from
-<code>results_holdout/confirm_holdout.json</code>; <code>--check</code> confirms every value equals the supplement's
-Table S of the manuscript. No number of the manuscript comes from this figure.</sub></p>
+<code>results_holdout/confirm_holdout.json</code>; <code>--check</code> confirms every value equals Table 6 of the manuscript's
+supplement (Section S4). No number of the manuscript comes from this figure.</sub></p>
 
 ## What is here
 
@@ -52,14 +52,17 @@ Table S of the manuscript. No number of the manuscript comes from this figure.</
 | `experiments/20261104-cs1-landscape/` | conversion of the CS1 data, the holdout draw, and the descriptive overview of stalls |
 | `experiments/20261105-findings-paper1-prefreeze/` | the computations before the freeze, the confirmation script `scripts/confirm_p1.py`, the manifest of verified files, the deviation, and the results on seen writers (`results/`) and on the holdout (`results_holdout/`) |
 | `experiments/20261106-findings-paper1-exploration/` | the explorations outside the registration (positive controls, the comparison with learners, CoAuthor and KLiCKe, CS1 2021) |
+| `experiments/20261107-findings-paper1-round3-checks/` | two further explorations: how often the estimator's scaled inputs sit at their floor, and the AUC of the preceding amount of typing restricted to stalls whose onset was not brought forward by the stall definition (s − u = 30 s) |
+| `docs/conditions-summary.md` | an English summary of every conditions document |
 | `experiments/20261031-*`, `20261101-*`, `20261102-*`, `20261103-*` | conversion and analysis scripts of earlier experiments that the paper's scripts import, with their run scripts and conditions |
 | `paper/` | the LaTeX sources of the manuscript (`paper/BUILD.md`) |
-| `tools/` | the checks of this release and the figure script |
+| `tools/` | the checks of this release, the figure script, and the rerun of the holdout confirmation |
 | `gse-commits.tsv` | for every file under `experiments/`, the commit and time (UTC) at which it first and last entered the development repository, so that a reader can compare when each set of conditions and each result was committed (the history itself is not public) |
 
 Every experiment directory has `conditions*.md` (written and committed before the computation), `notes.md` (what was
 run and found), `SEED`, and `results/`. These records are in Japanese, as they were written; the manuscript is the
-English account.
+English account, and [`docs/conditions-summary.md`](docs/conditions-summary.md) summarises every conditions document in
+English, with its first commit time (the Japanese originals are authoritative).
 
 ## What is not here, and why
 
@@ -92,7 +95,7 @@ runs the following and exits with 0 only if all pass:
    `src-tauri/prereg/p1-episode.json`, is the byte-identical `estimator/prereg/p1-episode.json`. The first manifest
    (19 entries, `9a1a7f14…28da9b`) is attached to the preregistration.
 2. `cargo test --locked` and `provenance/check_provenance.py --self` in `estimator/`.
-3. `tools/readme_media.py --check`: the figure above equals the manuscript's Table S.
+3. `tools/readme_media.py --check`: the figure above equals Table 6 of the manuscript's supplement.
 4. `tools/check_release.py` and its positive controls.
 
 ## Rerunning the analyses
@@ -117,14 +120,32 @@ bash experiments/20261105-findings-paper1-prefreeze/run-confirm-seen.sh
 ```
 
 `run-confirm-holdout.sh` is the two-stage procedure that was run once, after the freeze, against the OSF records; it
-checks that the work tree is the one committed at that time, so it is kept as the record of what was run rather than
-as a script to rerun. The confirmation itself is `scripts/confirm_p1.py`; how it was called is in that script and in
-`results_holdout/provenance_holdout.json`. The scripts write intermediates (which hold per-writer rows) under
-`$DATA_DIR`, outside the repository, and only aggregate results to the experiment's `results/`.
+checks that the work tree is the one committed at that time, so it is kept as the record of what was run. The scripts
+write intermediates (which hold per-writer rows) under `$DATA_DIR`, outside the repository, and only aggregate results
+to the experiment's `results/`.
+
+### Rerunning the confirmation on the holdout
+
+```
+PY=/path/to/python3.14 bash tools/rerun-holdout.sh \
+  $DATA_DIR/cs1/raw/2019/keystrokes.csv  holdout.json  estimator/target/release/gse-replay  /empty/dir/outside/repos
+```
+
+`holdout.json` is the list of holdout writers redrawn by `make_holdout_cs1.py` (above; the script checks its SHA-256).
+The script runs the same steps as `run-confirm-holdout.sh` (build the holdout intermediates, check the holdout writers,
+build the sensitivity variants, run `scripts/confirm_p1.py` with seed `20261106`) without its checks of the git history
+and of the OSF records, which only the authors' run could pass; `tools/rerun_confirm.py` calls the unchanged
+`confirm_p1.py` with only that gate lifted. It exits with 0 only if the rerun's `confirm_holdout.json` is byte-identical
+to `experiments/20261105-findings-paper1-prefreeze/results_holdout/confirm_holdout.json`. We ran it with the estimator
+built from `estimator/` (SHA-256 of `gse-replay` `1839c83e…3e80b`, macOS arm64, 4 jobs): the result was byte-identical
+(SHA-256 `3a73346f…72018`).
+
+### What the equivalence gate of the estimator covers
 
 The estimator here gives the same output, byte for byte, as the build the paper used (SHA-256 `26cae610…33bb3`) on
-every call the paper's pipelines made on seen writers; the comparison and its counts are in `estimator/README.md`.
-Rerunning that gate needs the reference build, which is not distributed.
+every call the paper's pipelines made on the seen CS1 2019, essay (KLiCKe) and co-writing (CoAuthor) data; the calls of
+the CS1 2021 data and of the positive controls were not compared. The comparison and its counts are in
+`estimator/README.md`. Rerunning that gate needs the reference build, which is not distributed.
 
 ## License
 

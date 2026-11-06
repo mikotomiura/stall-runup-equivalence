@@ -1,14 +1,16 @@
 cff-version: 1.2.0
 message: "If you use this archive, please cite it and the manuscript it accompanies."
 type: software
-title: "Code, conditions and aggregate results of 'A keystroke state estimator's 30-second signal changes before code-writing stalls'"
+title: "Code, conditions and aggregate results of 'The 30-second signal changes of a hand-set keystroke state estimator before code-writing stalls'"
 abstract: >-
-  A preregistered equivalence test of whether the 30-second change in two signals of a keystroke state estimator
-  (the probability of its Stuck state and a smoothed friction axis) distinguishes the run-up to a stall in character
-  production from the run-up to a matched short pause, on a holdout of the CS1 introductory programming keystroke
-  data. The archive holds the estimator and its replay tool cut out at the version used, the conversion, evaluation
-  and exploration scripts, the conditions committed before each computation, the aggregate results, and the
-  manuscript sources. The data and per-writer values are not included.
+  A preregistered equivalence test of whether the 30-second change in two signals of a keystroke state estimator with
+  hand-set coefficients (the probability of its Stuck state and a smoothed friction axis) distinguishes the run-up to
+  a stall in character production from the run-up to a short pause of 2-30 s by the same writer, on a holdout of the
+  CS1 introductory programming keystroke data.
+  The archive holds the estimator and its replay tool cut out at the version used, the conversion, evaluation and
+  exploration scripts, the conditions committed before each computation (in Japanese, with an English summary), the
+  aggregate results, a script that reruns the holdout confirmation and checks that its result is byte-identical to the
+  released one, and the manuscript sources. The data and per-writer values are not included.
 authors:
   - family-names: Miura
     given-names: Mikoto
@@ -23,11 +25,11 @@ identifiers:
     value: 10.5281/zenodo.24014043
     description: Version 0.1.0.
 repository-code: "https://github.com/mikotomiura/stall-runup-equivalence"
-version: 0.1.0
-date-released: 2026-11-06
+version: 0.2.0
+date-released: 2026-11-07
 keywords:
   - keystroke logging
   - stalls
   - equivalence testing
   - preregistration
-  - matched controls
+  - introductory programming

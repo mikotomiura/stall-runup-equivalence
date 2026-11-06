@@ -1,23 +1,21 @@
 \begin{abstract}
-Keystroke signals are attractive triggers for timely help if they change before a learner stops producing text. We
-tested whether the 30-second change, at the start of a pause, in two signals of a keystroke state estimator with
+As a candidate trigger for timely help, we tested whether the 30-second change, at the start of a pause, in two signals of a keystroke state estimator with
 hand-set coefficients (the probability of its Stuck state and a smoothed friction axis) distinguishes pauses that became
-stalls in character production from matched pauses of 2--30~s that did not. The test was preregistered on a random
-holdout of an introductory programming dataset, with an equivalence band of $[0.45, 0.55]$ for the AUC set in advance;
-a leak had shown that on seen writers the AUC lay inside it, so this is a confirmation, not a test of a prediction that
-could fail. In the holdout (139 students), the AUC fell within the band for both signals (0.489 and 0.487; the
-false-equivalence rate is at most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the configurations examined in the
-calibration on seen writers, and is not an upper bound over the whole null). The Stuck-state probability is mostly at
-the floor of the estimate, and claims about run-up change rely on the friction axis and on the pairs not at the floor.
-In explorations outside the registration, changes of the
-observed size barely moved the signals on seen writers, and on the holdout, learners on simple keystroke quantities
-ranked stalls higher, mainly through less preceding typing. Under a conversion made after the band was set, a
-difference at its edge would change the share of trigger firings that fall on stalls by about one point, so on this
-input the signals gave no basis for a trigger. Preregistration: \url{https://osf.io/mrkxt}; results:
-\url{https://osf.io/uj6cy}; code: [archive to be added before submission].\\
+stalls in character production from pauses of 2--30~s by the same writer that did not. The test was preregistered on a
+random holdout of an introductory programming dataset, with an equivalence band of $[0.45, 0.55]$ for the AUC set in
+advance; a leak had shown that on seen writers the AUC lay inside it, so this is a confirmation, not a test of a
+prediction that could fail. In the holdout (139 students), the AUC fell within the band for both signals (0.489 and
+0.487; the false-equivalence rate is at most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the
+configurations examined in the calibration on seen writers, and is not an upper bound over the whole null). The
+Stuck-state probability is mostly at the floor of the estimate, and claims about run-up change rely on the friction axis
+and on the pairs not at the floor. At each writer's 90th percentile of controls, 10.3\% and 9.3\% of stall run-ups exceeded
+the threshold, against 9.6\% of controls. Outside the registration, the estimator
+responded to large injected changes but barely to changes of the observed size, many of its scaled inputs sat
+at their floor, and simple quantities of preceding typing ranked the same pairs 0.04--0.08 higher than the two signals.
+On this input, the 30-second change gave no basis for a trigger. Preregistration: \url{https://osf.io/mrkxt}; results:
+\url{https://osf.io/uj6cy}; code: \url{https://doi.org/10.5281/zenodo.24014043}.\\
 
 {\parindent0pt
-\textbf{Keywords:} keystroke logging, stalls, equivalence testing, preregistration, matched controls, introductory
-programming
+\textbf{Keywords:} keystroke logging, stalls, equivalence testing, preregistration, introductory programming
 }
 \end{abstract}

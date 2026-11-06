@@ -16,8 +16,8 @@
 
 <p align="center"><a href="README.md">English</a> | <b>日本語</b></p>
 
-この repository は、原稿 *A keystroke state estimator's 30-second signal changes before code-writing stalls: within
-0.025 AUC of matched pauses in a preregistered holdout*（Mikoto Miura）に付随する。事前登録・逸脱・2 つの開始の記録・結果は
+この repository は、原稿 *The 30-second signal changes of a hand-set keystroke state estimator before
+code-writing stalls stayed inside a preregistered equivalence band against short pauses*（Mikoto Miura）に付随する。事前登録・逸脱・2 つの開始の記録・結果は
 Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（事前登録）・[fqgcp](https://osf.io/fqgcp)（逸脱）・
 [ajg2x](https://osf.io/ajg2x)（2 回目の開始の記録）・[uj6cy](https://osf.io/uj6cy)（結果と来歴）。この公開物は Zenodo に
 ある: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042)（全版。0.1.0 は
@@ -38,7 +38,7 @@ Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（�
        src="docs/media/holdout-auc.svg" width="900">
 </p>
 <p align="center"><sub>CS1 2019 年版の取り置き（139 人）。<code>tools/readme_media.py</code> が
-<code>results_holdout/confirm_holdout.json</code> から描く。<code>--check</code> で、すべての値が原稿の補足の表 S と
+<code>results_holdout/confirm_holdout.json</code> から描く。<code>--check</code> で、すべての値が原稿の補足の表 6（S4 節）と
 一致することを確かめる。原稿の数はこの図から取っていない。</sub></p>
 
 ## 中身
@@ -49,13 +49,16 @@ Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（�
 | `experiments/20261104-cs1-landscape/` | CS1 のデータの変換・取り置きの抽選・停滞の俯瞰 |
 | `experiments/20261105-findings-paper1-prefreeze/` | 凍結の前の計算・確認のスクリプト `scripts/confirm_p1.py`・検証済みのファイルの manifest・逸脱・見た書き手の結果（`results/`）と取り置きの結果（`results_holdout/`） |
 | `experiments/20261106-findings-paper1-exploration/` | 登録の外の探索（陽性対照・学習器との比べ・CoAuthor と KLiCKe・CS1 2021 年版） |
+| `experiments/20261107-findings-paper1-round3-checks/` | さらに 2 つの探索: 推定器の尺度づけした入力が床に張り付く割合と、停滞の定義で始まりが早まっていない停滞（s − u = 30 秒）に限った直前の打鍵の量の AUC |
+| `docs/conditions-summary.md` | 条件の文書すべての英語の要約 |
 | `experiments/20261031-*`・`20261101-*`・`20261102-*`・`20261103-*` | 論文のスクリプトが読み込む前の実験の変換と解析のスクリプト・実行の手順・条件 |
 | `paper/` | 原稿の LaTeX（組み方は `paper/BUILD.md`） |
-| `tools/` | この公開物の検査と図のスクリプト |
+| `tools/` | この公開物の検査・図のスクリプト・取り置きの確認を回し直す入口 |
 | `gse-commits.tsv` | `experiments/` の各ファイルが開発 repository に最初と最後に入ったコミットと時刻（UTC）。条件と結果がいつコミットされたかを比べられる（履歴そのものは公開していない） |
 
 各実験のディレクトリには、`conditions*.md`（計算の前に書いてコミットした条件）・`notes.md`（回したことと分かったこと）・
-`SEED`・`results/` がある。記録は書いたときのまま日本語で、英語の説明は原稿にある。
+`SEED`・`results/` がある。記録は書いたときのまま日本語で、英語の説明は原稿にある。条件の文書はどれも
+[`docs/conditions-summary.md`](docs/conditions-summary.md) に英語で要約し、最初のコミットの時刻を添えた（正本は日本語の原文）。
 
 ## 入れていないものと理由
 
@@ -86,7 +89,7 @@ bash tools/verify.sh
    バイトが同じ `estimator/prereg/p1-episode.json` で照合する。最初の manifest（19 行・`9a1a7f14…28da9b`）は事前登録に
    添えてある。
 2. `estimator/` で `cargo test --locked` と `provenance/check_provenance.py --self`。
-3. `tools/readme_media.py --check`: 上の図が原稿の表 S と同じ。
+3. `tools/readme_media.py --check`: 上の図が原稿の補足の表 6 と同じ。
 4. `tools/check_release.py` とその陽性対照。
 
 ## 解析を回し直す
@@ -111,13 +114,30 @@ bash experiments/20261105-findings-paper1-prefreeze/run-confirm-seen.sh
 ```
 
 `run-confirm-holdout.sh` は、凍結の後に OSF の記録と照らして 1 回だけ回した 2 段の手順である。作業ツリーが当時の
-コミットであることを確かめるので、回し直すスクリプトではなく、回したことの記録として置いている。確認そのものは
-`scripts/confirm_p1.py` で、呼び方はそのスクリプトと `results_holdout/provenance_holdout.json` にある。スクリプトは中間
-（書き手ごとの行を含む）を repository の外の `$DATA_DIR` に書き、集計の結果だけを各実験の `results/` に書く。
+コミットであることを確かめるので、回したことの記録として置いている。スクリプトは中間（書き手ごとの行を含む）を
+repository の外の `$DATA_DIR` に書き、集計の結果だけを各実験の `results/` に書く。
 
-ここの推定器は、論文の計算のパイプラインが見た書き手で行ったすべての呼び出しで、論文が使った build（SHA-256
-`26cae610…33bb3`）とバイト単位で同じ出力を返した。比べ方と件数は `estimator/README.md` にある。この門を回し直すには
-基準の build が要り、それは配布していない。
+### 取り置きの確認を回し直す
+
+```
+PY=/path/to/python3.14 bash tools/rerun-holdout.sh \
+  $DATA_DIR/cs1/raw/2019/keystrokes.csv  holdout.json  estimator/target/release/gse-replay  /empty/dir/outside/repos
+```
+
+`holdout.json` は上の `make_holdout_cs1.py` で引き直した取り置きの書き手の一覧（スクリプトが SHA-256 を確かめる）。
+スクリプトは `run-confirm-holdout.sh` と同じ段（取り置きの中間を作る・取り置きの書き手を確かめる・感度解析の変種を作る・
+seed `20261106` で `scripts/confirm_p1.py` を回す）を、著者の実行だけが通れる git の履歴と OSF の記録の検査を除いて回す。
+`tools/rerun_confirm.py` は、その門だけを外して変えていない `confirm_p1.py` を呼ぶ。回し直した `confirm_holdout.json` が
+`experiments/20261105-findings-paper1-prefreeze/results_holdout/confirm_holdout.json` とバイト単位で同じときだけ 0 で
+終わる。`estimator/` から組んだ推定器（`gse-replay` の SHA-256 `1839c83e…3e80b`・macOS arm64・並列 4）で回したところ、
+結果はバイト単位で同じだった（SHA-256 `3a73346f…72018`）。
+
+### 推定器の一致の門が覆う範囲
+
+ここの推定器は、論文の計算のパイプラインが見た CS1 2019 年版・作文（KLiCKe）・共作（CoAuthor）のデータで行った
+すべての呼び出しで、論文が使った build（SHA-256 `26cae610…33bb3`）とバイト単位で同じ出力を返した。CS1 2021 年版と
+陽性対照の呼び出しは比べていない。比べ方と件数は `estimator/README.md` にある。この門を回し直すには基準の build が要り、
+それは配布していない。
 
 ## ライセンス
 

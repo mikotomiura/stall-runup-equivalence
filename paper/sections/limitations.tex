@@ -7,20 +7,22 @@ $u$, and the discrimination AUC of each signal alone, averaged over pairs; it sa
 the band, combinations of signals or individual writers.
 
 The registered positive control applied only to the learners. The estimator's positive control was added afterwards on
-seen writers; changes of the observed size barely moved the signals, so the equivalence cannot be told apart from a weak
-response of the instrument to small changes on this input, given how the input was built, the synthesised release and
-coefficients that were not estimated on these data.
+seen writers; changes of the observed size barely moved the signals, and many scaled inputs sat at their floor or
+ceiling, so the equivalence cannot be told apart from a weak response of the instrument to small changes on this input,
+given how the input was built, the synthesised release and coefficients that were not estimated on these data.
 
 The band was set wide after we had seen the essay and co-writing data and was not derived from a conversion;
 it is not justified as a practical boundary and is wider than the field's precedent of 0.01 for differences between two
 models \cite{gardner2018evaluating}. That precedent compares a different quantity, but applied to our statistic, the
 distance of the point estimates from 0.5 (about 0.011 to 0.013) would not count as equivalent.
 
-The confirmation was made after a leak had shown that, under an older definition, the AUC on seen writers lay inside the band. The false-equivalence rate was at most 5.2\% in
+The confirmation was made after a leak had shown that, under an older definition, the AUC on seen writers lay inside
+the band. The false-equivalence rate was at most 5.2\% in
 the version with replacement, about that of an ordinary two one-sided tests procedure at one-sided 5\%, and at most 1.4\%
 in the version without, among the configurations examined; it is not an
 upper bound over the whole null, it does not account for selecting the maximum, and its mechanism was not tested. The
-decision rule was not changed.
+decision rule was not changed, and the preregistration requires this qualification in the main sentence wherever it
+appears, including the abstract.
 
 The Stuck-state probability is mostly at the floor (61\% of stalls, 65\% of controls), so claims about run-up change
 rely on the friction axis and on the pairs not at the floor.
@@ -38,7 +40,9 @@ corrections, bursts and pauses after deletions may differ from writing with reco
 (Table~\ref{tab:mapping}).
 
 Matching was on writer, boundary type (newline) and stratum; other factors, such as the phase of the assignment or the amount of
-preceding typing, were not matched, and only controls are excluded by proximity to a later onset.
+preceding typing, were not matched, and only controls are excluded by proximity to a later onset. Because condition A
+becomes true earlier after less net production, the definition of a stall itself ties stalls to less preceding typing.
 
-The per-pause estimate rows are not shared, under the terms agreed for the CS1 files; if the estimator and the replay
-tool cannot be released either, the holdout values cannot be reproduced from outside. Nothing is claimed about Japanese, input method editors, natural work or other populations.
+The per-pause estimate rows are not shared, under the terms agreed for the CS1 files; the holdout values can be
+reproduced from outside only by obtaining the files and rerunning the released code and estimator. The learners'
+intervals come from 200 resamples of writers. Nothing is claimed about Japanese, input method editors, natural work or other populations.
