@@ -57,8 +57,10 @@ Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（�
 ## 入れていないものと理由
 
 - **データと書き手ごとのもの。** CS1 のファイルは著者への申請で配布され、公開は集計値だけと約束した。データ・休止ごとの
-  推定の行・書き手ごとの値は入れず、ここにある結果は集計値である。`tools/check_release.py` が、生データ・データの id の
-  形・単位ごとの表・秘密が無いことを検査し、`tools/control_check_release.sh` が陽性対照で検査が赤になることを確かめる。
+  推定の行・書き手ごとの値は入れず、ここにある結果は集計値である。`tools/check_release.py` は形の検査で、生データの
+  ファイル・データの id の形・書き手ごとになりうる大きさ（30 件以上）の JSON の配列と辞書と Markdown・TeX の表・秘密と
+  手元のパスが、ファイルにもコミットの記録にも無いことを確かめる（意味は見ない）。`tools/control_check_release.sh` が
+  検出器ごとに 1 件ずつ混ぜて、どれも見つかることを確かめる。
 - **取り置きの書き手の一覧。** データの著者の同意が得られれば足す。SHA-256 は `a5a32fce…bdc47`
   （`experiments/20261105-findings-paper1-prefreeze/data.md`）で、`experiments/20261104-cs1-landscape/scripts/make_holdout_cs1.py`
   に seed `20261104` を与えるとデータから引き直せる。
@@ -81,9 +83,8 @@ bash tools/verify.sh
    バイトが同じ `estimator/prereg/p1-episode.json` で照合する。最初の manifest（19 行・`9a1a7f14…28da9b`）は事前登録に
    添えてある。
 2. `estimator/` で `cargo test --locked` と `provenance/check_provenance.py --self`。
-3. `tools/check_release.py` とその陽性対照。
-
-`python3 -I tools/readme_media.py --check` は図を原稿の表と照合する。
+3. `tools/readme_media.py --check`: 上の図が原稿の表 S と同じ。
+4. `tools/check_release.py` とその陽性対照。
 
 ## 解析を回し直す
 
@@ -117,5 +118,5 @@ bash experiments/20261105-findings-paper1-prefreeze/run-confirm-seen.sh
 
 ## ライセンス
 
-コード（`estimator/`・`experiments/` と `tools/` のスクリプト）: MIT または Apache-2.0 のいずれか（`LICENSE-MIT`・
-`LICENSE-APACHE`）。記録・結果・図・原稿の LaTeX: CC BY 4.0（`LICENSE-docs`）。
+コード（README を除く `estimator/`・`experiments/` のスクリプト・`tools/`）: MIT または Apache-2.0 のいずれか
+（`LICENSE-MIT`・`LICENSE-APACHE`）。記録・結果・図・README・原稿の LaTeX: CC BY 4.0（`LICENSE-docs` に一覧）。

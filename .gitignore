@@ -2,3 +2,10 @@ target/
 __pycache__/
 *.pyc
 .DS_Store
+# data must stay outside the repository
+*.csv
+*.ndjson
+*.jsonl
+*.zip
+*.tar.gz
+*.age

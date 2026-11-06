@@ -62,8 +62,10 @@ English account.
 
 - **The data and anything per writer.** The CS1 files are released by their authors on request, and we agreed to
   publish only aggregate values. So the data, the per-pause estimate rows and every per-writer value are left out;
-  the results here are aggregates. `tools/check_release.py` checks that no file holds raw data, identifiers of the
-  shapes the datasets use, per-unit tables or secrets, with positive controls in `tools/control_check_release.sh`.
+  the results here are aggregates. `tools/check_release.py` is a structural check: no raw data file, no identifier of
+  the shapes the datasets use, no JSON array, JSON object or Markdown or TeX table large enough to be per writer (30
+  or more entries), no secret or local path, in the files and in the commit metadata; it looks for shapes, not
+  meaning. `tools/control_check_release.sh` plants one case per detector and checks that each is caught.
 - **The list of holdout writers.** It will be added if the authors of the data agree. Its SHA-256 is
   `a5a32fce…bdc47` (in `experiments/20261105-findings-paper1-prefreeze/data.md`), and
   `experiments/20261104-cs1-landscape/scripts/make_holdout_cs1.py` with seed `20261104` redraws it from the data.
@@ -87,9 +89,8 @@ runs the following and exits with 0 only if all pass:
    `src-tauri/prereg/p1-episode.json`, is the byte-identical `estimator/prereg/p1-episode.json`. The first manifest
    (19 entries, `9a1a7f14…28da9b`) is attached to the preregistration.
 2. `cargo test --locked` and `provenance/check_provenance.py --self` in `estimator/`.
-3. `tools/check_release.py` and its positive controls.
-
-`python3 -I tools/readme_media.py --check` checks the figure against the manuscript's table.
+3. `tools/readme_media.py --check`: the figure above equals the manuscript's Table S.
+4. `tools/check_release.py` and its positive controls.
 
 ## Rerunning the analyses
 
@@ -124,5 +125,6 @@ Rerunning that gate needs the reference build, which is not distributed.
 
 ## License
 
-Code (`estimator/`, the scripts under `experiments/` and `tools/`): MIT or Apache-2.0, at your option
-(`LICENSE-MIT`, `LICENSE-APACHE`). Records, results, figures and the manuscript sources: CC BY 4.0 (`LICENSE-docs`).
+Code (`estimator/` except its README, the scripts under `experiments/`, and `tools/`): MIT or Apache-2.0, at your
+option (`LICENSE-MIT`, `LICENSE-APACHE`). Records, results, figures, the READMEs and the manuscript sources: CC BY 4.0
+(`LICENSE-docs`, which lists the files).
