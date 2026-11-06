@@ -1,0 +1,35 @@
+{
+  "upload_type": "software",
+  "title": "Code, conditions and aggregate results of 'A keystroke state estimator's 30-second signal changes before code-writing stalls'",
+  "version": "0.1.0",
+  "publication_date": "2026-11-06",
+  "creators": [
+    {
+      "name": "Miura, Mikoto",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0000-4196-0508"
+    }
+  ],
+  "description": "<p>A preregistered equivalence test of whether the 30-second change in two signals of a keystroke state estimator (the probability of its Stuck state and a smoothed friction axis) distinguishes the run-up to a stall in character production from the run-up to a matched short pause, on a holdout of the CS1 introductory programming keystroke data.</p><p>The archive holds the estimator and its replay tool cut out at the version used, the conversion, evaluation and exploration scripts, the conditions committed before each computation, the aggregate results, and the manuscript sources. The data and per-writer values are not included.</p>",
+  "license": "MIT",
+  "notes": "Code (estimator/ except its README, the scripts under experiments/, and tools/) is licensed under MIT or Apache-2.0 at your option; the records, results, figures, READMEs and manuscript sources are licensed under CC BY 4.0 (see LICENSE-docs).",
+  "keywords": [
+    "keystroke logging",
+    "stalls",
+    "equivalence testing",
+    "preregistration",
+    "matched controls"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://osf.io/mrkxt",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://osf.io/uj6cy",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
