@@ -1,0 +1,9 @@
+{"rebuilt": 4992, "differs_from_reference": 0}
+{
+ "calls": 9984,
+ "calls_by_mode_and_exit": {
+  "(no-flag) exit=0": 4992,
+  "--features exit=0": 4992
+ },
+ "mismatches": {}
+}

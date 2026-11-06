@@ -1,0 +1,76 @@
+\section{Introduction}
+\label{sec:intro}
+
+A recurring aim of educational data mining is to recognise, while a learner is working, the moment at which help would
+be useful: tutors that decide when to offer a hint \cite{maniktala2020helpneed}, models of help seeking
+\cite{aleven2006helpseeking}, detectors of gaming the system \cite{baker2005gaming} and early detectors of wheel
+spinning \cite{zhang2019wheel}. Keystroke logs are an attractive input for such decisions. They are recorded
+continuously in ordinary editors, they can be summarised without keeping the content of what was typed, and a long line
+of writing research reads the timing of pauses, corrections and bursts as traces of planning and difficulty
+\cite{baaijen2012keystroke,roeser2024disfluencies,conijn2022tagset,conijn2024revision,vasylets2025alignment}. A natural
+expectation follows: if a learner is about to stop producing text, the way they type in the preceding seconds should
+already be different, and a signal computed from keystrokes should rise before the stop.
+
+In this paper the stop is defined narrowly, as a \emph{stall in character production}: after net production of
+characters in the preceding 30~s, net production stops for longer than a threshold personalised to each writer's
+inter-keystroke intervals, and the pause that starts at the last character input lasts at least 30~s
+(Section~\ref{sec:data}). Asking for help, wheel spinning and the need for a proactive hint are higher-level questions; a stall is one
+candidate that can be observed at the scale of seconds without any information beyond keystrokes. We do not claim that
+a stall is being stuck, and we did not check the correspondence between stalls and those higher-level constructs.
+
+There are reasons to expect that run-ups to such stops can be anticipated. Reports that anticipated a learner's request
+for help or a stall did so with signals other than keystrokes, such as the telemetry of an integrated development
+environment, or by predicting the outcome of a whole exercise: an AUROC of 0.726 for AI queries in the next 60~s from
+IDE telemetry in held-out learners \cite{barron2026tutortrace}, a data-driven predictor of the need for help in an intelligent
+tutor that relies mostly on the structure of the problem domain \cite{maniktala2020helpneed}, an AUROC of 0.654 for
+ending an exercise with zero points, from keystroke-level editing features in its earliest stage
+\cite{kofune2026struggling}, and early detection of wheel spinning across tutors \cite{zhang2019wheel}. Whether a signal
+computed from keystrokes alone distinguishes the seconds before a stall from comparable moments has not been
+established. The comparison partner matters here. Of the reports above, those that anticipate an event split every
+window by whether the event follows in the next $N$ seconds \cite{barron2026tutortrace}, and the others predict the
+outcome of a whole exercise or problem; in neither are the negatives matched to the moment of the event, and windows in
+the middle of fluent typing count as negatives. A stall, however, begins with a
+pause, and so does every short pause that does not become a stall; comparing the run-up to a stall with the run-up to a
+short pause matched within the same writer and context is one natural choice of control that removes the difference
+between pausing and typing. In essay writing, which we had analysed before this study, the same matched comparison gave
+values inside the band that we later used for the test (Section~\ref{sec:res-main}); this weakens the expectation,
+and it is one reason the test was set up as an equivalence test. A theoretical reason points the same way: under the
+view that planning proceeds in parallel with typing, planning that cannot be completed in parallel appears in the pause
+itself rather than in the typing before it \cite{roeser2025typing,olive2002concurrent}.
+
+The signals we test come from a keystroke state estimator: a three-state hidden Markov model that, every second,
+combines five quantities computed over a 30~s window of keystrokes (the median flight time, the correction ratio, the
+burst length, the number of pauses and the ratio of pauses after deletions) into probabilities of its hidden states. Its
+coefficients, the transition and emission matrices and the weights of the combinations, were set by hand from the
+literature and from informal tuning, and the reference values for direct (non-IME) input were set by hand from
+population medians of typing \cite{dhakal2018typing}; none were estimated from the data analysed here. It was run with
+the configuration intended for writing tasks. Earlier work in this journal and its neighbours modelled keystrokes as
+writing states fitted to data, for example a semi-Markov model of four writing states
+\cite{guo2020scenario,guo2018basic}. The estimator differs in combining fixed window quantities into a probability every
+second with hand-set coefficients that are held fixed. Our claims concern this estimator on this input; for estimators
+of the same type, the result is one instance.
+
+We preregistered the test on a random holdout of an introductory programming (CS1) dataset \cite{edwards2023cs1}. The
+holdout was drawn before any analysis of these data, and the confirmation was computed in a single completed run after
+the rules had been frozen (Appendix~\ref{app:prereg}). Programming is the confirmatory setting because it is the only
+dataset for which a holdout had been preregistered; the essay-writing data had already been seen. Because an output of a
+computation before the freeze had revealed that, under an older definition, the AUC on seen writers lay inside the band
+(slightly above 0.50), the result is a confirmation and not a test of a prediction that could fail; in the holdout the
+estimates fell slightly below 0.50 instead. The main result is the following. In the CS1 holdout (139 students), the AUC of the matched comparison, computed on
+the 30-second change of each signal, fell within the band $[0.45, 0.55]$ set in advance (the false-equivalence rate is at
+most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the configurations examined in the calibration on seen writers, and
+is not an upper bound over the whole null). All four point estimates lay slightly below 0.5. The essay-writing side
+gave similar descriptive results.
+
+The contribution is a preregistered equivalence check of one estimator on one input: the discrimination AUC of the
+30-second change at $u$ of its two signals stayed within the band set in advance, and its intervals excluded differences
+larger than about 0.025 from 0.5. Explorations outside the registration bound this result. Changes of the observed size
+in the 30~s before seen stalls barely moved the signals, and simple keystroke quantities ranked stalls higher through
+the amount of preceding typing rather than through a change (Section~\ref{sec:res-bounds}). The procedure used here
+(matching within writer, boundary type and stratum, a band set in advance on a holdout, and a calibration of the rate of
+false equivalence) is released with its code as the parts of this one example; we claim no effect for it.
+
+Section~\ref{sec:related} places the study in work on detecting struggle in CS1, on measuring keystroke pauses and on
+evaluating detectors. Section~\ref{sec:data} describes the data, the stall and the estimator, and
+Section~\ref{sec:design} the evaluation design. Section~\ref{sec:results} reports the results,
+Section~\ref{sec:discussion} discusses what they change, and Section~\ref{sec:limitations} collects the limitations.

@@ -1,0 +1,96 @@
+{
+ "checks_load_holdout": {
+  "units": 438,
+  "onset_mismatch_units": 0,
+  "theta_mismatch": 0,
+  "stderr_nonempty_units": 0,
+  "override_mismatch_units": 0,
+  "writers_with_units": 145,
+  "writers_excluded_obs_lt_10min": 5,
+  "writers_eligible": 140
+ },
+ "gates_holdout": {
+  "counts_equal_confirm": true,
+  "h1_d_p_stuck_eps0.001_equals_confirm": true,
+  "h1_d_ewma_x_eps0.001_equals_confirm": true,
+  "h1_p_stuck_eps0.001_equals_confirm": true,
+  "h1_ewma_x_eps0.001_equals_confirm": true
+ },
+ "a_length": {
+  "stall_rows": 4554,
+  "onset_minus_u_ms": {
+   "0.1": 35226.0,
+   "0.25": 40564.5,
+   "0.5": 48466.5,
+   "0.75": 60828.75,
+   "0.9": 77615.0,
+   "mean": 246928.64822134387,
+   "n": 4554
+  },
+  "resume_minus_u_ms": {
+   "0.1": 48839.8,
+   "0.25": 64056.0,
+   "0.5": 97185.5,
+   "0.75": 179447.75,
+   "0.9": 353298.5999999998,
+   "mean": 427808.9134826526,
+   "n": 4554
+  },
+  "resume_ge_60s_share": 0.7863416776460255,
+  "resume_ge_120s_share": 0.39789196310935443,
+  "resume_ge_300s_share": 0.12604303908651734
+ },
+ "b_observation_edge": {
+  "onset_u_unique": 9133,
+  "next_text_press_in_later_block": 51,
+  "no_next_text_press": 22,
+  "no_next_text_press_gap_ge_30s": 21,
+  "onset_before_first_text": 2
+ },
+ "b_confirm_stall_warm": 238,
+ "c_calibration_effective_writers": {
+  "gates": {
+   "d_p_stuck": true,
+   "d_ewma_x": true
+  },
+  "pairs_same_both_signals": true,
+  "full_seen_effective_writers": 97.46536951813685,
+  "without_replacement": {
+   "effective_writers": {
+    "0.025": 35.22622127892026,
+    "0.1": 37.23852958251784,
+    "0.5": 43.479276325242424,
+    "0.9": 51.4228386890179,
+    "0.975": 55.31591736898718,
+    "mean": 43.87058199769766,
+    "n": 500
+   },
+   "top10pct_share": {
+    "0.1": 0.4135830960812174,
+    "0.5": 0.4556716429368896,
+    "0.9": 0.49971464017399275,
+    "mean": 0.45507847750339053,
+    "n": 500
+   }
+  },
+  "with_replacement": {
+   "effective_writers": {
+    "0.025": 32.267615891590815,
+    "0.1": 35.58004514309695,
+    "0.5": 43.436527190763584,
+    "0.9": 52.960548040675874,
+    "0.975": 58.175734642080954,
+    "mean": 43.9906216606511,
+    "n": 500
+   },
+   "top10pct_share": {
+    "0.1": 0.39897316357119444,
+    "0.5": 0.455443508002898,
+    "0.9": 0.5098772986532021,
+    "mean": 0.4555704638194304,
+    "n": 500
+   }
+  },
+  "n_hold": 138
+ }
+}

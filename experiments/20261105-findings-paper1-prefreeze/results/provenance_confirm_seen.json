@@ -1,0 +1,26 @@
+{
+ "git_head": "de3d72b0cbdd2f076b06e23ed66348790855c035",
+ "git_dirty_paths": [
+  " M experiments/20261105-findings-paper1-prefreeze/make-manifest.sh",
+  " M experiments/20261105-findings-paper1-prefreeze/results/confirm_seen.json",
+  " M experiments/20261105-findings-paper1-prefreeze/run-confirm-holdout.sh",
+  " M experiments/20261105-findings-paper1-prefreeze/scripts/confirm_p1.py"
+ ],
+ "manifest_now": [
+  "experiments/20261105-findings-paper1-prefreeze/run-confirm-holdout.sh: FAILED",
+  "experiments/20261105-findings-paper1-prefreeze/build-variants.sh: OK",
+  "experiments/20261105-findings-paper1-prefreeze/requirements-confirm.txt: OK",
+  "experiments/20261105-findings-paper1-prefreeze/scripts/confirm_p1.py: FAILED",
+  "experiments/20261105-findings-paper1-prefreeze/scripts/prefreeze.py: OK",
+  "experiments/20261105-findings-paper1-prefreeze/scripts/rebuild_onsets.py: OK",
+  "experiments/20261104-cs1-landscape/scripts/build_cs1.py: OK",
+  "experiments/20261104-cs1-landscape/scripts/analyze_cs1.py: OK",
+  "experiments/20261102-public-data-landscape/scripts/analyze_landscape.py: OK",
+  "experiments/20261101-klicke-early-stall-trigger/scripts/analyze_item2.py: OK",
+  "experiments/20261031-coauthor-pre-request-signal/scripts/convert.py: OK",
+  "experiments/20261031-coauthor-pre-request-signal/scripts/add_feat.py: OK",
+  "src-tauri/prereg/p1-episode.json: OK",
+  ".steering/20261105-public-data-findings-paper/paper-write/prereg-draft.md: FAILED",
+  "shasum: WARNING: 3 computed checksums did NOT match"
+ ]
+}

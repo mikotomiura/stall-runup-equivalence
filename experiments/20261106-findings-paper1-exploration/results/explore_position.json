@@ -1,0 +1,179 @@
+{
+ "checks": {
+  "units": 438,
+  "onset_mismatch_units": 0,
+  "theta_mismatch": 0,
+  "stderr_nonempty_units": 0,
+  "override_mismatch_units": 0,
+  "writers_with_units": 145,
+  "writers_excluded_obs_lt_10min": 5,
+  "writers_eligible": 140
+ },
+ "gate": {
+  "stall_counted": 6147,
+  "stall_rows_plus_no_control": 6147,
+  "control_counted": 71220,
+  "control_candidates": 71220,
+  "pass": true
+ },
+ "stall_shares": {
+  "none": {
+   "n": 4554,
+   "newline": 0.13768115942028986,
+   "boundary": 0.5390865173473869,
+   "within_token": 0.32323232323232326
+  },
+  "event": {
+   "n": 1593,
+   "newline": 0.128060263653484,
+   "boundary": 0.5216572504708098,
+   "within_token": 0.3502824858757062
+  },
+  "all": {
+   "n": 6147,
+   "newline": 0.13518789653489507,
+   "boundary": 0.5345697088010412,
+   "within_token": 0.3302423946640638
+  }
+ },
+ "control_shares": {
+  "none": {
+   "n": 59115,
+   "newline": 0.13505878372663452,
+   "boundary": 0.5087202909583016,
+   "within_token": 0.3562209253150639
+  },
+  "event": {
+   "n": 12105,
+   "newline": 0.14779016935150766,
+   "boundary": 0.480545229244114,
+   "within_token": 0.37166460140437835
+  },
+  "all": {
+   "n": 71220,
+   "newline": 0.1372226902555462,
+   "boundary": 0.5039314799213704,
+   "within_token": 0.3588458298230834
+  }
+ },
+ "main_reproduced": {
+  "values": {
+   "d_p_stuck_eps_0.001": [
+    0.48921339476028824,
+    0.48921339476028824
+   ],
+   "d_p_stuck_eps_0": [
+    0.48927824267782427,
+    0.48927824267782427
+   ],
+   "d_ewma_x_eps_0.001": [
+    0.48668009676437085,
+    0.48668009676437085
+   ],
+   "d_ewma_x_eps_0": [
+    0.4866786870270331,
+    0.4866786870270331
+   ]
+  },
+  "pass": true
+ },
+ "pos3_matched": {
+  "counts": {
+   "stall_anchors": 6385,
+   "stall_excluded_condA_true": 716,
+   "stall_warm": 238,
+   "control_candidates": 71220,
+   "control_excluded_condA_true": 6498,
+   "stall_rows_newline_event": 201,
+   "stall_rows_boundary_none": 2455,
+   "stall_rows_boundary_event": 829,
+   "stall_rows_within_token_none": 1472,
+   "stall_rows_newline_none": 627,
+   "stall_rows_within_token_event": 558,
+   "stall_no_control": 5
+  },
+  "H1": {
+   "d_p_stuck": {
+    "eps_0.001": {
+     "pairs": 394394,
+     "tie_share": 0.0649249227929431,
+     "ci_width": 0.021605693912688684,
+     "pooled_auc": 0.4897767207411877,
+     "ci95": [
+      0.4789916188632439,
+      0.5005973127759326
+     ],
+     "diff_from_05_lower_gt_05": false,
+     "per_writer_auc_quantiles": {
+      "0.1": 0.4110016264355726,
+      "0.25": 0.4507772627241654,
+      "0.5": 0.4931949349642519,
+      "0.75": 0.5418436064737187,
+      "0.9": 0.6148713558757788
+     },
+     "branch": 1
+    },
+    "eps_0": {
+     "pairs": 394394,
+     "tie_share": 0.0007074144129981694,
+     "ci_width": 0.02257707941615933,
+     "pooled_auc": 0.4896258563771254,
+     "ci95": [
+      0.47839424355464316,
+      0.5009713229708025
+     ],
+     "diff_from_05_lower_gt_05": false,
+     "per_writer_auc_quantiles": {
+      "0.1": 0.41354343533052385,
+      "0.25": 0.45307029678524424,
+      "0.5": 0.49153976311336717,
+      "0.75": 0.5442477580596689,
+      "0.9": 0.622239472476107
+     },
+     "branch": 1
+    }
+   },
+   "d_ewma_x": {
+    "eps_0.001": {
+     "pairs": 394394,
+     "tie_share": 0.003544678671582225,
+     "ci_width": 0.024195890514865925,
+     "pooled_auc": 0.4877077237483329,
+     "ci95": [
+      0.47567960518443764,
+      0.49987549569930356
+     ],
+     "diff_from_05_lower_gt_05": false,
+     "per_writer_auc_quantiles": {
+      "0.1": 0.3966861559274812,
+      "0.25": 0.44170604337662045,
+      "0.5": 0.4858306765851931,
+      "0.75": 0.5439665556579041,
+      "0.9": 0.5883026159334126
+     },
+     "branch": 1
+    },
+    "eps_0": {
+     "pairs": 394394,
+     "tie_share": 0.00012677677652296943,
+     "ci_width": 0.02418953163923987,
+     "pooled_auc": 0.4877127948193938,
+     "ci95": [
+      0.47571459855827297,
+      0.49990413019751284
+     ],
+     "diff_from_05_lower_gt_05": false,
+     "per_writer_auc_quantiles": {
+      "0.1": 0.3970617427819413,
+      "0.25": 0.44135664246185347,
+      "0.5": 0.4863620262132483,
+      "0.75": 0.5424623278773708,
+      "0.9": 0.5872466332992285
+     },
+     "branch": 1
+    }
+   },
+   "H1_supported": true
+  }
+ }
+}

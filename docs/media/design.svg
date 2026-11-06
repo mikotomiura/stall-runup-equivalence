@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-label="Illustration with synthetic keystrokes: a pause that became a stall and a matched short pause that did not; for each, the 30 seconds before the start of the pause u are highlighted and the change of a signal over that window is compared">
+<style>
+.bg{fill:#fcfcfb}.t{fill:#1b1b1a;font:13px system-ui,-apple-system,sans-serif}.m{fill:#5b5a55;font:12px system-ui,-apple-system,sans-serif}
+.k{stroke:#5b5a55}.ax{stroke:#c9c8c2}.s{fill:#eb6834}.c{fill:#2a78d6}.sl{stroke:#eb6834}.cl{stroke:#2a78d6}.w{fill:#8a8983;opacity:.18}
+@media (prefers-color-scheme: dark){.bg{fill:#1a1a19}.t{fill:#f0efec}.m{fill:#c3c2b7}.k{stroke:#c3c2b7}.ax{stroke:#44443f}.s{fill:#d95926}.c{fill:#3987e5}.sl{stroke:#d95926}.cl{stroke:#3987e5}.w{fill:#c3c2b7;opacity:.16}}
+</style>
+<rect class="bg" width="900" height="300"/>
+<text class="t" x="20" y="28">Illustration (synthetic keystrokes, not data): which run-ups the test compares</text>
+<!-- timeline: 1 px = 0.25 s, keystrokes as ticks -->
+<line class="ax" x1="20" y1="130" x2="880" y2="130" stroke-width="1"/>
+<g class="k" stroke-width="1.5">
+<line x1="30" y1="118" x2="30" y2="130"/><line x1="38" y1="118" x2="38" y2="130"/><line x1="44" y1="118" x2="44" y2="130"/><line x1="55" y1="118" x2="55" y2="130"/><line x1="61" y1="118" x2="61" y2="130"/><line x1="70" y1="118" x2="70" y2="130"/><line x1="84" y1="118" x2="84" y2="130"/><line x1="92" y1="118" x2="92" y2="130"/><line x1="99" y1="118" x2="99" y2="130"/><line x1="118" y1="118" x2="118" y2="130"/><line x1="126" y1="118" x2="126" y2="130"/><line x1="140" y1="118" x2="140" y2="130"/><line x1="147" y1="118" x2="147" y2="130"/><line x1="166" y1="118" x2="166" y2="130"/><line x1="174" y1="118" x2="174" y2="130"/><line x1="181" y1="118" x2="181" y2="130"/><line x1="199" y1="118" x2="199" y2="130"/><line x1="210" y1="118" x2="210" y2="130"/><line x1="222" y1="118" x2="222" y2="130"/><line x1="230" y1="118" x2="230" y2="130"/>
+<line x1="390" y1="118" x2="390" y2="130"/><line x1="398" y1="118" x2="398" y2="130"/><line x1="405" y1="118" x2="405" y2="130"/><line x1="417" y1="118" x2="417" y2="130"/><line x1="424" y1="118" x2="424" y2="130"/><line x1="436" y1="118" x2="436" y2="130"/><line x1="449" y1="118" x2="449" y2="130"/><line x1="457" y1="118" x2="457" y2="130"/><line x1="470" y1="118" x2="470" y2="130"/><line x1="478" y1="118" x2="478" y2="130"/><line x1="495" y1="118" x2="495" y2="130"/><line x1="502" y1="118" x2="502" y2="130"/><line x1="514" y1="118" x2="514" y2="130"/><line x1="521" y1="118" x2="521" y2="130"/><line x1="533" y1="118" x2="533" y2="130"/><line x1="541" y1="118" x2="541" y2="130"/><line x1="553" y1="118" x2="553" y2="130"/><line x1="560" y1="118" x2="560" y2="130"/><line x1="571" y1="118" x2="571" y2="130"/>
+<line x1="611" y1="118" x2="611" y2="130"/><line x1="619" y1="118" x2="619" y2="130"/><line x1="626" y1="118" x2="626" y2="130"/><line x1="640" y1="118" x2="640" y2="130"/><line x1="648" y1="118" x2="648" y2="130"/><line x1="660" y1="118" x2="660" y2="130"/><line x1="668" y1="118" x2="668" y2="130"/><line x1="681" y1="118" x2="681" y2="130"/><line x1="690" y1="118" x2="690" y2="130"/><line x1="702" y1="118" x2="702" y2="130"/><line x1="715" y1="118" x2="715" y2="130"/><line x1="722" y1="118" x2="722" y2="130"/><line x1="735" y1="118" x2="735" y2="130"/><line x1="748" y1="118" x2="748" y2="130"/><line x1="756" y1="118" x2="756" y2="130"/><line x1="769" y1="118" x2="769" y2="130"/><line x1="780" y1="118" x2="780" y2="130"/><line x1="793" y1="118" x2="793" y2="130"/><line x1="801" y1="118" x2="801" y2="130"/><line x1="815" y1="118" x2="815" y2="130"/>
+</g>
+<text class="m" x="20" y="150">keystrokes</text>
+<!-- stall: pause from u=230 to 390 (40 s) -->
+<rect class="s" x="230" y="124" width="160" height="6" opacity=".9"/>
+<text class="t" x="232" y="112">pause that became a stall</text>
+<text class="m" x="226" y="168">u</text>
+<!-- control: pause from u=571 to 611 (10 s) -->
+<rect class="c" x="571" y="124" width="40" height="6" opacity=".9"/>
+<text class="t" x="545" y="100">matched pause (2–30 s)</text>
+<text class="m" x="567" y="168">u</text>
+<!-- 30-s windows (120 px), revealed in turn -->
+<g opacity="0">
+<rect class="w" x="110" y="56" width="120" height="96"/>
+<line class="sl" x1="110" y1="190" x2="230" y2="190" stroke-width="2"/>
+<text class="t" x="110" y="212">signal change over the 30 s before u</text>
+<animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.15;0.5;0.9;1" dur="8s" repeatCount="indefinite"/>
+</g>
+<g opacity="0">
+<rect class="w" x="451" y="56" width="120" height="96"/>
+<line class="cl" x1="451" y1="190" x2="571" y2="190" stroke-width="2"/>
+<text class="t" x="451" y="212">the same change for the control</text>
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.35;0.5;0.9;1" dur="8s" repeatCount="indefinite"/>
+</g>
+<g opacity="0">
+<text class="t" x="20" y="252">The AUC pools every stall–control pair of the same writer, boundary type and stratum: the share in which the stall's change is larger.</text>
+<text class="m" x="20" y="274">Equivalence: the 95% interval inside [0.45, 0.55]. Positions and lengths here are schematic; the paper gives the definitions.</text>
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6;0.7;0.9;1" dur="8s" repeatCount="indefinite"/>
+</g>
+</svg>

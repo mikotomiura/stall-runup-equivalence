@@ -1,0 +1,10 @@
+{"rebuilt": 1078, "differs_from_reference": 0}
+{
+ "calls": 3723,
+ "calls_by_mode_and_exit": {
+  "(no-flag) exit=0": 2644,
+  "--features exit=0": 1078,
+  "--features exit=1": 1
+ },
+ "mismatches": {}
+}

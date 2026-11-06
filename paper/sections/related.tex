@@ -1,0 +1,68 @@
+\section{Related work}
+\label{sec:related}
+
+\subsection{Detecting struggle from the programming process}
+
+Process measures for introductory programming count how students edit and compile. The Error Quotient counts whether
+the same error recurs over successive compilations \cite{jadud2006methods}, and Watwin, the Repeated Error Density and
+the Normalized Programming State Model followed
+\cite{watson2013predicting,becker2016new,carter2015normalized}. They predict outcomes at the level of a term: Watwin
+explained 42\% of the variance in coursework marks in its original report, and the Normalized Programming State Model
+41\% of the variance in assignment grades. Carried over to another dataset or term, they weaken: implemented as
+described at another university, the Error Quotient and Watwin correlated with exam and course results with ``all low
+(r $<$ 0.3)'' values \cite{ahadi2015exploring}, their authors note that such metrics depend on context
+\cite{ahadi2018syntax,petersen2015exploration}, and in a recent comparison the best of three error measures still did
+not explain most of the variance in grades \cite{svabensky2024comparison}. Two working-group reviews observe that most
+studies in the area are conducted within a single institution and course and call for validation and replication
+\cite{ihantola2015educational,hellas2018predicting}. Detection at finer grain is harder
+\cite{rodrigo2009coarse}, although non-completion of an exercise has been predicted from keystrokes and actions during
+the exercise \cite{fwa2019predicting,kofune2026struggling}. A separate line of work detects affective states from
+keystrokes: classifiers of self-reported emotional states from typing rhythm in a field study \cite{epp2011emotional},
+boredom and engagement during writing from keystrokes combined with task appraisals and traits
+\cite{bixler2013boredom}, negative affect of novice programmers (boredom, confusion, frustration) from keyboard
+dynamics with or without mouse behaviour \cite{vea2017negative}, and frustration within a programming exercise session
+from contextual and keystroke features \cite{fwa2015frustration}. These studies predict a labelled state; as far as
+their abstracts state, none compares the seconds before a stop in production with matched pauses. The reports that anticipate an event
+\cite{barron2026tutortrace,maniktala2020helpneed,zhang2019wheel} split every window or exercise by the event or outcome
+that follows and do not match the controls. Our study differs in target and in design: the run-up of seconds to an event
+rather than a term outcome, judged on a holdout of the same population, against matched controls and a band set in
+advance. Within the range we searched (Appendix~\ref{app:novelty}), we found no study of this form.
+
+\subsection{Measuring pauses in keystroke logs}
+
+Writing research has long read bursts of typing and the pauses between them as traces of fluency and planning
+\cite{chenoweth2001fluency,leijten2013keystroke}. A pause is usually defined as the interval between adjacent keystrokes
+\cite{guo2018basic,baaijen2012keystroke}. Our
+pause is the interval between character inputs, so it can contain keystrokes that are not characters, such as
+deletions and undos. The meaning of a pause depends on where it falls: in written composition the majority of pause
+effects are modulated by pause location, and results vary with the definition of a pause
+\cite{medimorec2017pauses,immonen2006translation,fuchs2016prosodic}. Pause length also varies with writing speed and
+between writers, so a single threshold does not serve all writers
+\cite{chenu2014interword,litvinova2024investigating,guo2018basic,roeser2024disfluencies,hall2024constructing}; the JEDM
+precedent defined long pauses relative to each writer \cite{guo2020scenario}. In CS1, slower typing at chunk
+boundaries was explained by fluency inside words, and only the frequency of stops remained related to exam scores
+across five terms \cite{koutcheme2026keystroke,shrestha2022pausing,edwards2020programming}. Models that divide keystrokes
+into writing states fitted to data exist \cite{guo2020scenario,guo2018basic}, and a window-level hidden Markov model of
+second-language writing found planning-like states occurring more often before word and sentence boundaries
+\cite{garcesmanzanera2026modeling}; those are boundaries in the text, not stalls. These findings motivate three choices
+in our design: a stall threshold personalised to each writer, pauses that did not become stalls as controls, and
+matching on the position of the pause.
+
+\subsection{Evaluating detectors}
+
+The AUC evaluates predictions only relative to one another and does not assess calibration
+\cite{pelanek2015metrics}, so we report a threshold table beside it. For comparing models, learning analytics has been
+advised to use Bayesian hierarchical models with a region of practical equivalence, applied to the difference in AUC
+between two models with a width of 0.01 \cite{gardner2018evaluating,benavoli2017time}. We compare the AUC of a single
+estimator with 0.5 and judge equivalence by whether a frequentist interval lies inside a band, the form of the two
+one-sided tests procedure \cite{lakens2017equivalence,lakens2018equivalence}, here with one-sided 2.5\%. The choice of
+band is open to question in either form \cite{kruschke2018rejecting}, and both forms discriminate poorly in small
+samples \cite{linde2023decisions}. In diagnostic research, studies that evaluated a test in cases and a separate control
+group overestimated accuracy \cite{lijmer1999empirical}; the standard design collects specimens before the outcome and
+selects cases and controls afterwards \cite{pepe2008pivotal}; definitions in early-warning evaluations vary widely
+\cite{fang2020early}; and summaries that ignore the matching covariates can be biased \cite{janes2008matching}. Matching
+can also create selection bias and cost precision \cite{mansournia2018case}. Finally, ignoring grouped structure in
+validation underestimates error, which supports resampling and holding out at the level of the writer
+\cite{roberts2017cross,field2007bootstrapping,saeb2017need,kapoor2023leakage}, while with few or unequal clusters the
+coverage of cluster-level inference can depart from its nominal level, as known for regression
+\cite{cameron2008bootstrap,cameron2015practitioner,mackinnon2023cluster}.

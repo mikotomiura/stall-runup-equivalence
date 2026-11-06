@@ -1,0 +1,31 @@
+[package]
+name = "gse-estimator"
+# The version is the GSE application version this crate was cut from (commit 24767c7e). It is not a
+# version of this crate on its own: `gse-replay --features` writes `env!("CARGO_PKG_VERSION")` into
+# `provenance.tool_version`, so changing it changes the output bytes.
+version = "0.1.40"
+edition = "2021"
+rust-version = "1.88"
+description = "The GSE cognitive-state estimator (HMM_VERSION 0.5.0) and gse-replay (no-flag path and --features), cut out of GSE for reproducing a paper"
+license = "MIT OR Apache-2.0"
+publish = false
+
+# Makes this package its own workspace root, so that it is never pulled into an enclosing workspace.
+[workspace]
+
+[lib]
+# Kept as in GSE so that the copied sources (`use gse_next_lib::...`) need no change.
+name = "gse_next_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "gse-replay"
+path = "src/bin/replay.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+# `float_roundtrip`: f64 values are written so that they read back bit-identical (as in GSE).
+serde_json = { version = "1", features = ["float_roundtrip"] }
+sha2 = "0.10"
+tracing = "0.1.44"
+tracing-subscriber = "0.3.22"

@@ -1,0 +1,196 @@
+{
+ "upstream_repository": "GSE (Generative Struggle Engine)",
+ "upstream_commit": "24767c7eb255d0b27dc58d659be7b36e207efd46",
+ "entries": [
+  {
+   "kind": "file",
+   "path": "src/analysis/engine.rs",
+   "upstream_path": "src-tauri/src/analysis/engine.rs",
+   "sha256": "420e69c02ac56e870f07389aeaa92e217d794b6ef03657ea8e4f6b107c0dec91",
+   "upstream_sha256": "420e69c02ac56e870f07389aeaa92e217d794b6ef03657ea8e4f6b107c0dec91"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/features.rs",
+   "upstream_path": "src-tauri/src/analysis/features.rs",
+   "sha256": "6fa537ca9ab4116be2eea0e32f5b9ed9ac313e60b722385edfae99885d40f802",
+   "upstream_sha256": "6fa537ca9ab4116be2eea0e32f5b9ed9ac313e60b722385edfae99885d40f802"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/intervention.rs",
+   "upstream_path": "src-tauri/src/analysis/intervention.rs",
+   "sha256": "8dfb89aa509cb702c1814e982146b764b50eb703769d2af95ff4450308a136c9",
+   "upstream_sha256": "8dfb89aa509cb702c1814e982146b764b50eb703769d2af95ff4450308a136c9"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/key_gate.rs",
+   "upstream_path": "src-tauri/src/analysis/key_gate.rs",
+   "sha256": "80f1aa57c96aefeff47daa86bb8901ccbbda1cde7eb29b2fd4657a74f1b20557",
+   "upstream_sha256": "80f1aa57c96aefeff47daa86bb8901ccbbda1cde7eb29b2fd4657a74f1b20557"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/loop_step.rs",
+   "upstream_path": "src-tauri/src/analysis/loop_step.rs",
+   "sha256": "4546194670abc3fc1f56bb7e87db41b210d2c15ab68214067ca707425c40dab9",
+   "upstream_sha256": "4546194670abc3fc1f56bb7e87db41b210d2c15ab68214067ca707425c40dab9"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/heads/writing.rs",
+   "upstream_path": "src-tauri/src/analysis/heads/writing.rs",
+   "sha256": "a53e2a419ecf954f32e68a734a6ee1f1a5baa28c29faf9ee07e6b584d2f28209",
+   "upstream_sha256": "a53e2a419ecf954f32e68a734a6ee1f1a5baa28c29faf9ee07e6b584d2f28209"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/heads/coding.rs",
+   "upstream_path": "src-tauri/src/analysis/heads/coding.rs",
+   "sha256": "94f88f3848a4db45017fb33dbed5df2a198a5ae5723d507502d17ed7aa8edd61",
+   "upstream_sha256": "94f88f3848a4db45017fb33dbed5df2a198a5ae5723d507502d17ed7aa8edd61"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/mod.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/mod.rs",
+   "sha256": "c64df8d8ced4e4c6bbf609bf36705d52e357b09fb1a2606ed6aae5b6beda0355",
+   "upstream_sha256": "c64df8d8ced4e4c6bbf609bf36705d52e357b09fb1a2606ed6aae5b6beda0355"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/activity.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/activity.rs",
+   "sha256": "3a5c9e47ddbac1986deee2005cd4b73ed324c7e2c363b0cb94e64414cfa542d3",
+   "upstream_sha256": "3a5c9e47ddbac1986deee2005cd4b73ed324c7e2c363b0cb94e64414cfa542d3"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/boundary.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/boundary.rs",
+   "sha256": "75379109428a2d942e3b297eebd2dd9238d7b4a7e2dd40731b7bafd770711ceb",
+   "upstream_sha256": "75379109428a2d942e3b297eebd2dd9238d7b4a7e2dd40731b7bafd770711ceb"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/dispersion.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/dispersion.rs",
+   "sha256": "7024757748590dfdea2aebe333c04e70d5532076ad859e3e94fa63e14311b6c8",
+   "upstream_sha256": "7024757748590dfdea2aebe333c04e70d5532076ad859e3e94fa63e14311b6c8"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/idle_trim.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/idle_trim.rs",
+   "sha256": "409655c57f80be900952a147bb1f888c8f75cf8e84ed1c3f80e7e62b431d0f4b",
+   "upstream_sha256": "409655c57f80be900952a147bb1f888c8f75cf8e84ed1c3f80e7e62b431d0f4b"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/quality.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/quality.rs",
+   "sha256": "df7504a4996ec27ee4bb63453b7643860f7d2148c93c4e31d527ca593bd35736",
+   "upstream_sha256": "df7504a4996ec27ee4bb63453b7643860f7d2148c93c4e31d527ca593bd35736"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/restart.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/restart.rs",
+   "sha256": "6a10571c26c3f5b735f1bb12a920420302a710eb3cdc37d63ebdb48c30b10426",
+   "upstream_sha256": "6a10571c26c3f5b735f1bb12a920420302a710eb3cdc37d63ebdb48c30b10426"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/revision.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/revision.rs",
+   "sha256": "7ff740309a52e2c07c2c13e7cc2878f6938b756e3b4306ae2997e42be2c38b41",
+   "upstream_sha256": "7ff740309a52e2c07c2c13e7cc2878f6938b756e3b4306ae2997e42be2c38b41"
+  },
+  {
+   "kind": "file",
+   "path": "src/analysis/feat_offline/stall_onset.rs",
+   "upstream_path": "src-tauri/src/analysis/feat_offline/stall_onset.rs",
+   "sha256": "8154e80f073bdb75087c8457d1d154abf0dca69163ad845963730f4bdbd0674c",
+   "upstream_sha256": "8154e80f073bdb75087c8457d1d154abf0dca69163ad845963730f4bdbd0674c"
+  },
+  {
+   "kind": "file",
+   "path": "prereg/p1-episode.json",
+   "upstream_path": "src-tauri/prereg/p1-episode.json",
+   "sha256": "dd1bb614021af09e2eab2112e27a7dc9ff42ae219364dfb122acaa68d30f3267",
+   "upstream_sha256": "dd1bb614021af09e2eab2112e27a7dc9ff42ae219364dfb122acaa68d30f3267"
+  },
+  {
+   "kind": "lock",
+   "path": "Cargo.lock",
+   "upstream_path": "src-tauri/Cargo.lock",
+   "sha256": "26b8d837e4f6c317164925c459d145250d77963f8064122d0fa925826629053e",
+   "reason": "pruned by cargo from the upstream src-tauri/Cargo.lock",
+   "upstream_sha256": "bf75ca5b19fcc9b87ed1c7b083af183993daef6d9b6e0a45e46557c3694c75bf"
+  },
+  {
+   "kind": "trimmed",
+   "path": "src/analysis/anonymize.rs",
+   "upstream_path": "src-tauri/src/analysis/anonymize.rs",
+   "sha256": "e44a9a0c0c97417e72a962ab8490de0c5209bdefaf15cef5b7a402b7d961cdd8",
+   "upstream_sha256": "4efac55e04488de1941ffd9968ae57bbc34131968af9b2d49ef3ab69f53fdcad"
+  },
+  {
+   "kind": "trimmed",
+   "path": "src/analysis/metrics.rs",
+   "upstream_path": "src-tauri/src/analysis/metrics.rs",
+   "sha256": "91f73694e25b4aa087169ee49b59a56334ce31eb4dc904784c0d91ec5af5ef64",
+   "upstream_sha256": "d7e98964eaacfdaee54b82b7ff0926281943b072b45fe8b46540a2c7b8799c2c"
+  },
+  {
+   "kind": "trimmed",
+   "path": "src/analysis/heads/mod.rs",
+   "upstream_path": "src-tauri/src/analysis/heads/mod.rs",
+   "sha256": "9939ec84876ba3dd5702e15150f63ef278edca5d7eeaeb2d0dd9322f36e6124d",
+   "upstream_sha256": "e045e873c759ed3ec38935210a1da54d714bd7de0a360f97ba549ce21c5f2c57"
+  },
+  {
+   "kind": "excerpt",
+   "path": "src/logger.rs",
+   "upstream_path": "src-tauri/src/logger.rs",
+   "sha256": "1c13ba94a31eb97d0583f39934355338a766bc4c2e210430b3d917f80ccd2583",
+   "excerpt_id": "task_kind",
+   "upstream_start": 68,
+   "upstream_end": 128,
+   "upstream_sha256": "07247a95d462b45de7f3101fd21f18cd40a111157b1c2e02eca872037a9683e7"
+  },
+  {
+   "kind": "cut",
+   "path": "src/bin/replay.rs",
+   "upstream_path": "src-tauri/src/bin/replay.rs",
+   "sha256": "8e02d575f7418ccb32e40e3639e039586a62818bc8a61791ac605deea1a9a1a6",
+   "diff": "provenance/replay.rs.diff",
+   "upstream_sha256": "1106b94578862fd0c353d31b2db8c7356aa689164fc4440fe2ad9e3b4afe9001"
+  },
+  {
+   "kind": "new",
+   "path": "src/lib.rs",
+   "upstream_path": "src-tauri/src/lib.rs",
+   "sha256": "11de7761e188432617bab36fb293a0febe91d18c68be294c29a96fc36d46c43d",
+   "reason": "declares only `analysis` and `logger`",
+   "upstream_sha256": "735f20d72890cf646838dfdfc3946c9753b5ce449752dbc402aa21d0d98d0573"
+  },
+  {
+   "kind": "new",
+   "path": "src/analysis/mod.rs",
+   "upstream_path": "src-tauri/src/analysis/mod.rs",
+   "sha256": "57ff2991c1d2ea9c94f09fe431eb0be0b5fb4ed963e634e05bc5c44598984fd9",
+   "reason": "declares only the modules this crate keeps",
+   "upstream_sha256": "752fc588536a563e6ddc4b544ca2714830337dd7e15fb786cc0b349261a52c9c"
+  },
+  {
+   "kind": "new",
+   "path": "Cargo.toml",
+   "upstream_path": "src-tauri/Cargo.toml",
+   "sha256": "f678877c90ae7184a0cb1f1abed3eabd46fa344c2bc4a6f3219732ed8cc3c911",
+   "reason": "this crate's own manifest (version kept at 0.1.40, see the comment)",
+   "upstream_sha256": "887d7dd2bb52cdc8739e3a205c08dfcbd305b2b4d1d6138160a5a0a36898c88e"
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+\section{Discussion}
+\label{sec:discussion}
+
+In the CS1 holdout (139 students), the discrimination AUC of the 30-second change at $u$, in the matched comparison, fell
+within the band $[0.45, 0.55]$ set in advance (Section~\ref{sec:limitations} qualifies the error rate). Equivalence here
+means that each signal, used alone as a ranking score, separated stall run-ups from matched control run-ups no better
+than the band allows, on average over the pairs weighted within writers. It does not mean that typing does not change
+before a stall, that stalls and controls did not both change, that a combination of signals could not separate them, or
+that the signals are uninformative for every writer.
+
+For research and practice that builds triggers for help from keystrokes, the result concerns one quantity: the change of
+this estimator's two signals over the 30~s up to the last character input before a stall. It does not address what
+happens later in the pause, where both signals rose (Section~\ref{sec:data}), nor a firing rule that uses the length of
+the pause itself. What the band means for a trigger rests on a conversion made after the band was set, on seen writers,
+under a model that shifts the stall values by a constant (Appendix~\ref{app:threshold}): with each writer's 90th
+percentile as the threshold, the share of firings that fall on pauses that become stalls was 8.2--8.9\% at an AUC of
+0.50, 8.9--10.0\% at 0.55 and 12.9--18.4\% even at 0.70. In that sense, and under that model, the 30-second change gave no
+basis for a trigger on this input; a trigger whose threshold is fixed independently and whose hit rate and false alarms
+per hour are measured could behave differently. Those who plan to use an estimator of the same type as a trigger can
+check its run-up signal against a band set in advance \cite{lakens2017equivalence} on held-out writers
+\cite{gardner2018evaluating}; our data do not show the harm of omitting the check.
+
+\subsection{How far the instrument explains the equivalence}
+
+The equivalence could reflect the instrument rather than the typing: the input was rebuilt from edit events with a
+synthesised release, the coefficients were not estimated on these data, and the levels discriminated less in CS1 (0.524
+and 0.521) than in the essays (0.569 and 0.580). The positive control shows that the estimator is not inert on this
+input, but also that changes of the size observed between stalls and controls barely move its 30-second changes, and
+that its Stuck-state probability does not register corrections as friction. The intervals of the main analysis exclude
+differences larger than about 0.025 from 0.5, and at this resolution the instrument cannot show whether the run-up
+differs by the observed amount. The learners point to a difference of another kind: stalls were preceded by less typing,
+a level rather than a change, which the estimator's 30-second changes are not built to carry. The result is therefore a
+statement about this instrument on this input, not about the absence of differences in the typing before stalls.
+
+\subsection{What was established and what remains possible}
+
+What the data establish is limited to the statistic above being inside the band in the matched comparison, including
+after removing stalls that contain events inside the pause. Whether unmatched evaluation makes run-up rises look large
+cannot be judged here: the unmatched comparison showed no rise, and in the learner description the matched comparison
+was higher than the unmatched windows (Section~\ref{sec:res-learners}). Nor can the opposite reading, that matching
+removed a real run-up difference \cite{mansournia2018case}, be supported or excluded. The result is consistent with the
+parallel view of planning (Section~\ref{sec:intro}) but is not a test of it, because a serial view that allows planning
+to start late in the run-up would predict the same, and the view concerns language boundaries in prose rather than long
+stops in code. The direction slightly below 0.5 and its candidate causes are
+discussed in Appendix~\ref{app:sensitivity}.
+
+\subsection{Calibration and reporting}
+
+The decision rule, applied to boundary configurations drawn from seen writers, declared equivalence more often than its
+nominal level in one of its two versions (Section~\ref{sec:design}). This is consistent, by analogy, with what is known
+for regression about cluster-level inference with few or unequal clusters
+\cite{cameron2008bootstrap,cameron2015practitioner,mackinnon2023cluster}; we did not test the mechanism, and designs with
+few effective writers may benefit from a similar calibration. In other fields, unmatched controls have made accuracy look
+larger \cite{lijmer1999empirical,pepe2008pivotal}; stating what the comparison partner was matched on lets readers judge
+a run-up signal, although our data do not show an effect of the way of matching.
+
+\subsection{Materials}
+
+We release the preregistration, the deviation, the start records and the results registration (all public on the Open
+Science Framework); the code of the evaluation procedure, of the explorations and of the conversion of the public data; the seed, the computational environment and the
+manifest of the verified files with their SHA-256 values; the version and SHA-256 of the replay tool; every coefficient of
+the estimator (Appendix~\ref{app:coefficients}); and the steps to obtain the public data. The CS1 files are released by
+their authors on request, and we agreed to publish only aggregate values, so neither the data nor the per-pause estimate
+rows are redistributed; a reader who obtains the files can rebuild the rows with the released code once the estimator is
+available. The list of holdout writers will be added if the authors of the data agree; otherwise its SHA-256 and the
+procedure that drew it are given. Whether the estimator and the replay tool can be released is to be settled before submission.

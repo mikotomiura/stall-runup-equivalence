@@ -1,0 +1,8 @@
+{
+ "holdout": 146,
+ "read": 145,
+ "read_outside_holdout": 0,
+ "not_read": 1,
+ "not_read_with_unit_rows": 0,
+ "not_read_rows_without_units": 1
+}

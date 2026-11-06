@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="598" viewBox="0 0 900 598" role="img" aria-label="Holdout AUC of the two signals for the main and sensitivity analyses, all near 0.49, with the equivalence band from 0.45 to 0.55">
+<style>.bg{fill:#fcfcfb}.t{fill:#1b1b1a;font:13px system-ui,-apple-system,sans-serif}.m{fill:#5b5a55;font:12px system-ui,-apple-system,sans-serif}.g{stroke:#e4e3de}.band{fill:#ecebe6}.mid{stroke:#8a8983}.c1{fill:#2a78d6;stroke:#2a78d6}.c2{fill:#eb6834;stroke:#eb6834}@media (prefers-color-scheme: dark){.bg{fill:#1a1a19}.t{fill:#f0efec}.m{fill:#c3c2b7}.g{stroke:#33332f}.band{fill:#2a2a27}.mid{stroke:#77766f}.c1{fill:#3987e5;stroke:#3987e5}.c2{fill:#d95926;stroke:#d95926}}</style>
+<rect class="bg" width="900" height="598"/>
+<rect class="band" x="406.9" y="62" width="356.3" height="480"/>
+<line class="g" x1="300.0" y1="62" x2="300.0" y2="542" stroke-width="1"/>
+<text class="m" x="300.0" y="560" text-anchor="middle">0.42</text>
+<line class="g" x1="406.9" y1="62" x2="406.9" y2="542" stroke-width="1"/>
+<text class="m" x="406.9" y="560" text-anchor="middle">0.45</text>
+<line class="mid" x1="585.0" y1="62" x2="585.0" y2="542" stroke-width="1" stroke-dasharray="4 3"/>
+<text class="m" x="585.0" y="560" text-anchor="middle">0.50</text>
+<line class="g" x1="763.1" y1="62" x2="763.1" y2="542" stroke-width="1"/>
+<text class="m" x="763.1" y="560" text-anchor="middle">0.55</text>
+<line class="g" x1="870.0" y1="62" x2="870.0" y2="542" stroke-width="1"/>
+<text class="m" x="870.0" y="560" text-anchor="middle">0.58</text>
+<text class="m" x="585.0" y="582" text-anchor="middle">AUC (ε = 0.001) with 95% interval; shaded: equivalence band [0.45, 0.55]</text>
+<circle class="c1" cx="300" cy="24" r="5"/><text class="t" x="312" y="28">Change in the Stuck-state probability</text>
+<rect class="c2" x="296" y="40" width="9" height="9"/><text class="t" x="312" y="49">Change in the smoothed friction axis</text>
+<text class="t" x="288" y="87.0" text-anchor="end">Main</text>
+<line class="c1" x1="509.0" y1="78.0" x2="583.3" y2="78.0" stroke-width="2"/>
+<circle class="c1" cx="546.6" cy="78.0" r="4.5"/>
+<line class="c2" x1="498.7" y1="88.0" x2="576.0" y2="88.0" stroke-width="2"/>
+<rect class="c2" x="533.5" y="84.0" width="8" height="8"/>
+<text class="t" x="288" y="113.0" text-anchor="end">Control pauses up to 10 s</text>
+<line class="c1" x1="513.6" y1="104.0" x2="587.5" y2="104.0" stroke-width="2"/>
+<circle class="c1" cx="549.9" cy="104.0" r="4.5"/>
+<line class="c2" x1="505.0" y1="114.0" x2="582.6" y2="114.0" stroke-width="2"/>
+<rect class="c2" x="540.8" y="110.0" width="8" height="8"/>
+<text class="t" x="288" y="139.0" text-anchor="end">Control pauses up to 60 s</text>
+<line class="c1" x1="511.2" y1="130.0" x2="590.4" y2="130.0" stroke-width="2"/>
+<circle class="c1" cx="550.6" cy="130.0" r="4.5"/>
+<line class="c2" x1="506.0" y1="140.0" x2="593.0" y2="140.0" stroke-width="2"/>
+<rect class="c2" x="546.0" y="136.0" width="8" height="8"/>
+<text class="t" x="288" y="165.0" text-anchor="end">Boundary type: whitespace or symbol</text>
+<line class="c1" x1="512.8" y1="156.0" x2="589.3" y2="156.0" stroke-width="2"/>
+<circle class="c1" cx="549.8" cy="156.0" r="4.5"/>
+<line class="c2" x1="505.0" y1="166.0" x2="586.2" y2="166.0" stroke-width="2"/>
+<rect class="c2" x="541.9" y="162.0" width="8" height="8"/>
+<text class="t" x="288" y="191.0" text-anchor="end">Stratum window to the end of the pause</text>
+<line class="c1" x1="558.7" y1="182.0" x2="649.8" y2="182.0" stroke-width="2"/>
+<circle class="c1" cx="601.9" cy="182.0" r="4.5"/>
+<line class="c2" x1="526.5" y1="192.0" x2="638.5" y2="192.0" stroke-width="2"/>
+<rect class="c2" x="580.8" y="188.0" width="8" height="8"/>
+<text class="t" x="288" y="217.0" text-anchor="end">No condition A on stalls</text>
+<line class="c1" x1="541.8" y1="208.0" x2="605.6" y2="208.0" stroke-width="2"/>
+<circle class="c1" cx="573.8" cy="208.0" r="4.5"/>
+<line class="c2" x1="528.1" y1="218.0" x2="600.4" y2="218.0" stroke-width="2"/>
+<rect class="c2" x="560.4" y="214.0" width="8" height="8"/>
+<text class="t" x="288" y="243.0" text-anchor="end">Condition A on neither side</text>
+<line class="c1" x1="512.2" y1="234.0" x2="583.1" y2="234.0" stroke-width="2"/>
+<circle class="c1" cx="548.0" cy="234.0" r="4.5"/>
+<line class="c2" x1="508.2" y1="244.0" x2="587.1" y2="244.0" stroke-width="2"/>
+<rect class="c2" x="544.6" y="240.0" width="8" height="8"/>
+<text class="t" x="288" y="269.0" text-anchor="end">Controls within the assignment</text>
+<line class="c1" x1="527.3" y1="260.0" x2="605.5" y2="260.0" stroke-width="2"/>
+<circle class="c1" cx="567.6" cy="260.0" r="4.5"/>
+<line class="c2" x1="516.5" y1="270.0" x2="597.5" y2="270.0" stroke-width="2"/>
+<rect class="c2" x="552.6" y="266.0" width="8" height="8"/>
+<text class="t" x="288" y="295.0" text-anchor="end">Writer-equal weights</text>
+<line class="c1" x1="488.8" y1="286.0" x2="617.2" y2="286.0" stroke-width="2"/>
+<circle class="c1" cx="553.6" cy="286.0" r="4.5"/>
+<line class="c2" x1="484.8" y1="296.0" x2="601.9" y2="296.0" stroke-width="2"/>
+<rect class="c2" x="536.6" y="292.0" width="8" height="8"/>
+<text class="t" x="288" y="321.0" text-anchor="end">Not at floor, start point u − 30 s</text>
+<line class="c1" x1="500.8" y1="312.0" x2="651.0" y2="312.0" stroke-width="2"/>
+<circle class="c1" cx="577.6" cy="312.0" r="4.5"/>
+<line class="c2" x1="505.6" y1="322.0" x2="644.6" y2="322.0" stroke-width="2"/>
+<rect class="c2" x="572.9" y="318.0" width="8" height="8"/>
+<text class="t" x="288" y="347.0" text-anchor="end">Not at floor, end point u</text>
+<line class="c1" x1="382.2" y1="338.0" x2="533.6" y2="338.0" stroke-width="2"/>
+<circle class="c1" cx="460.1" cy="338.0" r="4.5"/>
+<line class="c2" x1="400.8" y1="348.0" x2="520.0" y2="348.0" stroke-width="2"/>
+<rect class="c2" x="458.5" y="344.0" width="8" height="8"/>
+<text class="t" x="288" y="373.0" text-anchor="end">Signal change over 15 s</text>
+<line class="c1" x1="512.8" y1="364.0" x2="591.3" y2="364.0" stroke-width="2"/>
+<circle class="c1" cx="552.0" cy="364.0" r="4.5"/>
+<line class="c2" x1="487.6" y1="374.0" x2="570.4" y2="374.0" stroke-width="2"/>
+<rect class="c2" x="526.1" y="370.0" width="8" height="8"/>
+<text class="t" x="288" y="399.0" text-anchor="end">Signal change over 60 s</text>
+<line class="c1" x1="533.5" y1="390.0" x2="608.1" y2="390.0" stroke-width="2"/>
+<circle class="c1" cx="572.0" cy="390.0" r="4.5"/>
+<line class="c2" x1="532.5" y1="400.0" x2="601.9" y2="400.0" stroke-width="2"/>
+<rect class="c2" x="562.3" y="396.0" width="8" height="8"/>
+<text class="t" x="288" y="425.0" text-anchor="end">θ accumulated across assignments</text>
+<line class="c1" x1="501.8" y1="416.0" x2="576.3" y2="416.0" stroke-width="2"/>
+<circle class="c1" cx="539.6" cy="416.0" r="4.5"/>
+<line class="c2" x1="501.1" y1="426.0" x2="575.9" y2="426.0" stroke-width="2"/>
+<rect class="c2" x="534.6" y="422.0" width="8" height="8"/>
+<text class="t" x="288" y="451.0" text-anchor="end">Stall quantile q = 0.995</text>
+<line class="c1" x1="497.7" y1="442.0" x2="596.8" y2="442.0" stroke-width="2"/>
+<circle class="c1" cx="549.6" cy="442.0" r="4.5"/>
+<line class="c2" x1="488.0" y1="452.0" x2="587.8" y2="452.0" stroke-width="2"/>
+<rect class="c2" x="535.0" y="448.0" width="8" height="8"/>
+<text class="t" x="288" y="477.0" text-anchor="end">Condition A window W = 15 s</text>
+<line class="c1" x1="525.7" y1="468.0" x2="596.1" y2="468.0" stroke-width="2"/>
+<circle class="c1" cx="560.2" cy="468.0" r="4.5"/>
+<line class="c2" x1="511.5" y1="478.0" x2="586.7" y2="478.0" stroke-width="2"/>
+<rect class="c2" x="545.9" y="474.0" width="8" height="8"/>
+<text class="t" x="288" y="503.0" text-anchor="end">Condition A window W = 60 s</text>
+<line class="c1" x1="512.4" y1="494.0" x2="611.4" y2="494.0" stroke-width="2"/>
+<circle class="c1" cx="563.1" cy="494.0" r="4.5"/>
+<line class="c2" x1="508.6" y1="504.0" x2="614.3" y2="504.0" stroke-width="2"/>
+<rect class="c2" x="556.9" y="500.0" width="8" height="8"/>
+<text class="t" x="288" y="529.0" text-anchor="end">Event stratum (described)</text>
+<line class="c1" x1="502.7" y1="520.0" x2="638.5" y2="520.0" stroke-width="2"/>
+<circle class="c1" cx="565.7" cy="520.0" r="4.5"/>
+<line class="c2" x1="503.6" y1="530.0" x2="642.8" y2="530.0" stroke-width="2"/>
+<rect class="c2" x="566.7" y="526.0" width="8" height="8"/>
+</svg>

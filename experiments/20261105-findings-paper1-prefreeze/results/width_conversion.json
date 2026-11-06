@@ -1,0 +1,346 @@
+{
+ "binormal_hit_at_fpr010": {
+  "auc_055": 0.1348313650727675,
+  "auc_050": 0.1
+ },
+ "klicke": {
+  "d_p_stuck": {
+   "auc_055": {
+    "delta": 1.78930510218887e-05,
+    "writers": 4716,
+    "writers_skipped_few_candidates": 18,
+    "stall_hit_rate": {
+     "median": 0.0,
+     "q25": 0.0,
+     "q75": 0.25,
+     "n": 4716
+    },
+    "control_exceed_rate": {
+     "median": 0.09259259259259259,
+     "q25": 0.08823529411764706,
+     "q75": 0.096,
+     "n": 4716
+    },
+    "hit_minus_exceed": {
+     "median": -0.08,
+     "q25": -0.09333333333333334,
+     "q75": 0.1590909090909091,
+     "n": 4716
+    },
+    "stall_hit_rate_pooled": 0.15625450180072029,
+    "control_exceed_rate_pooled": 0.09260673846925746,
+    "fires_per_hour": {
+     "median": 20.258863252673045,
+     "q25": 14.617169373549885,
+     "q75": 25.42672160094173,
+     "n": 4716
+    },
+    "fires_total": 43158,
+    "share_of_fires_on_stall_pauses_pooled": 0.13584966865934472
+   },
+   "auc_050": {
+    "delta": -6.419602792059886e-10,
+    "writers": 4716,
+    "writers_skipped_few_candidates": 18,
+    "stall_hit_rate": {
+     "median": 0.0,
+     "q25": 0.0,
+     "q75": 0.25,
+     "n": 4716
+    },
+    "control_exceed_rate": {
+     "median": 0.09259259259259259,
+     "q25": 0.08823529411764706,
+     "q75": 0.096,
+     "n": 4716
+    },
+    "hit_minus_exceed": {
+     "median": -0.08163265306122448,
+     "q25": -0.09345794392523364,
+     "q75": 0.15666666666666668,
+     "n": 4716
+    },
+    "stall_hit_rate_pooled": 0.1485234093637455,
+    "control_exceed_rate_pooled": 0.09260673846925746,
+    "fires_per_hour": {
+     "median": 20.137044163889804,
+     "q25": 14.532871972318338,
+     "q75": 25.35211267605634,
+     "n": 4716
+    },
+    "fires_total": 43001,
+    "share_of_fires_on_stall_pauses_pooled": 0.1326945884979419
+   },
+   "real_delta0": {
+    "delta": 0.0,
+    "writers": 4716,
+    "writers_skipped_few_candidates": 18,
+    "stall_hit_rate": {
+     "median": 0.0,
+     "q25": 0.0,
+     "q75": 0.25,
+     "n": 4716
+    },
+    "control_exceed_rate": {
+     "median": 0.09259259259259259,
+     "q25": 0.08823529411764706,
+     "q75": 0.096,
+     "n": 4716
+    },
+    "hit_minus_exceed": {
+     "median": -0.08163265306122448,
+     "q25": -0.09345794392523364,
+     "q75": 0.15666666666666668,
+     "n": 4716
+    },
+    "stall_hit_rate_pooled": 0.14861944777911165,
+    "control_exceed_rate_pooled": 0.09260673846925746,
+    "fires_per_hour": {
+     "median": 20.137044163889804,
+     "q25": 14.535666218034992,
+     "q75": 25.35211267605634,
+     "n": 4716
+    },
+    "fires_total": 43003,
+    "share_of_fires_on_stall_pauses_pooled": 0.132734925470316,
+    "pooled_auc": 0.5147449155599382
+   }
+  },
+  "d_ewma_x": {
+   "auc_055": {
+    "delta": 0.01423973627936816,
+    "writers": 4716,
+    "writers_skipped_few_candidates": 18,
+    "stall_hit_rate": {
+     "median": 0.0,
+     "q25": 0.0,
+     "q75": 0.25,
+     "n": 4716
+    },
+    "control_exceed_rate": {
+     "median": 0.09259259259259259,
+     "q25": 0.08823529411764706,
+     "q75": 0.096,
+     "n": 4716
+    },
+    "hit_minus_exceed": {
+     "median": -0.08333333333333333,
+     "q25": -0.09345794392523364,
+     "q75": 0.15425531914893617,
+     "n": 4716
+    },
+    "stall_hit_rate_pooled": 0.14016806722689076,
+    "control_exceed_rate_pooled": 0.09264338203168823,
+    "fires_per_hour": {
+     "median": 19.154598185638612,
+     "q25": 14.367160775370582,
+     "q75": 24.264705882352942,
+     "n": 4716
+    },
+    "fires_total": 40904,
+    "share_of_fires_on_stall_pauses_pooled": 0.11363191863876393
+   },
+   "auc_050": {
+    "delta": -0.007972466698258601,
+    "writers": 4716,
+    "writers_skipped_few_candidates": 18,
+    "stall_hit_rate": {
+     "median": 0.0,
+     "q25": 0.0,
+     "q75": 0.2,
+     "n": 4716
+    },
+    "control_exceed_rate": {
+     "median": 0.09259259259259259,
+     "q25": 0.08823529411764706,
+     "q75": 0.096,
+     "n": 4716
+    },
+    "hit_minus_exceed": {
+     "median": -0.08620689655172414,
+     "q25": -0.09375,
+     "q75": 0.10816326530612246,
+     "n": 4716
+    },
+    "stall_hit_rate_pooled": 0.11630252100840337,
+    "control_exceed_rate_pooled": 0.09264338203168823,
+    "fires_per_hour": {
+     "median": 18.925233644859812,
+     "q25": 14.213197969543147,
+     "q75": 23.960066555740433,
+     "n": 4716
+    },
+    "fires_total": 40418,
+    "share_of_fires_on_stall_pauses_pooled": 0.10297392250977287
+   },
+   "real_delta0": {
+    "delta": 0.0,
+    "writers": 4716,
+    "writers_skipped_few_candidates": 18,
+    "stall_hit_rate": {
+     "median": 0.0,
+     "q25": 0.0,
+     "q75": 0.2,
+     "n": 4716
+    },
+    "control_exceed_rate": {
+     "median": 0.09259259259259259,
+     "q25": 0.08823529411764706,
+     "q75": 0.096,
+     "n": 4716
+    },
+    "hit_minus_exceed": {
+     "median": -0.08571428571428572,
+     "q25": -0.09375,
+     "q75": 0.11836734693877553,
+     "n": 4716
+    },
+    "stall_hit_rate_pooled": 0.1246578631452581,
+    "control_exceed_rate_pooled": 0.09264338203168823,
+    "fires_per_hour": {
+     "median": 18.99099856793391,
+     "q25": 14.269535673839185,
+     "q75": 24.096385542168676,
+     "n": 4716
+    },
+    "fires_total": 40588,
+    "share_of_fires_on_stall_pauses_pooled": 0.1067310535133537,
+    "pooled_auc": 0.5212112238098764
+   }
+  }
+ },
+ "cs1_none": {
+  "d_p_stuck": {
+   "auc_055": {
+    "writers": 304,
+    "writers_skipped_few_candidates": 1,
+    "stall_hit_rate": {
+     "median": 0.07692307692307693,
+     "q25": 0.0,
+     "q75": 0.125,
+     "n": 304
+    },
+    "control_exceed_rate": {
+     "median": 0.09886147597649499,
+     "q25": 0.09798270893371758,
+     "q75": 0.09947643979057591,
+     "n": 304
+    },
+    "hit_minus_exceed": {
+     "median": -0.0215519833074135,
+     "q25": -0.0777754326720135,
+     "q75": 0.026287553648068673,
+     "n": 304
+    },
+    "stall_hit_rate_pooled": 0.0861022825772898,
+    "control_exceed_rate_pooled": 0.0989180447074458,
+    "fires_per_hour": {
+     "median": 9.958716695588151,
+     "q25": 7.9104580100254065,
+     "q75": 12.59489075186481,
+     "n": 304
+    },
+    "fires_total": 18650,
+    "share_of_fires_on_stall_pauses_pooled": 0.052439678284182306
+   },
+   "auc_050": {
+    "writers": 304,
+    "writers_skipped_few_candidates": 1,
+    "stall_hit_rate": {
+     "median": 0.07692307692307693,
+     "q25": 0.0,
+     "q75": 0.125,
+     "n": 304
+    },
+    "control_exceed_rate": {
+     "median": 0.09886147597649499,
+     "q25": 0.09798270893371758,
+     "q75": 0.09947643979057591,
+     "n": 304
+    },
+    "hit_minus_exceed": {
+     "median": -0.02211441041228275,
+     "q25": -0.07977661950856292,
+     "q75": 0.02551457975986278,
+     "n": 304
+    },
+    "stall_hit_rate_pooled": 0.08552441490898584,
+    "control_exceed_rate_pooled": 0.0989180447074458,
+    "fires_per_hour": {
+     "median": 9.958716695588151,
+     "q25": 7.9104580100254065,
+     "q75": 12.59489075186481,
+     "n": 304
+    },
+    "fires_total": 18646,
+    "share_of_fires_on_stall_pauses_pooled": 0.05223640459079695
+   }
+  },
+  "d_ewma_x": {
+   "auc_055": {
+    "writers": 304,
+    "writers_skipped_few_candidates": 1,
+    "stall_hit_rate": {
+     "median": 0.10840188014101057,
+     "q25": 0.05263157894736842,
+     "q75": 0.16666666666666666,
+     "n": 304
+    },
+    "control_exceed_rate": {
+     "median": 0.09886147597649499,
+     "q25": 0.09798270893371758,
+     "q75": 0.09947643979057591,
+     "n": 304
+    },
+    "hit_minus_exceed": {
+     "median": 0.00911565157910147,
+     "q25": -0.04491197253383368,
+     "q75": 0.06710914454277285,
+     "n": 304
+    },
+    "stall_hit_rate_pooled": 0.12207454492921122,
+    "control_exceed_rate_pooled": 0.0989180447074458,
+    "fires_per_hour": {
+     "median": 9.951373744085862,
+     "q25": 7.88979336255479,
+     "q75": 12.550328979672003,
+     "n": 304
+    },
+    "fires_total": 18381,
+    "share_of_fires_on_stall_pauses_pooled": 0.0618573527011588
+   },
+   "auc_050": {
+    "writers": 304,
+    "writers_skipped_few_candidates": 1,
+    "stall_hit_rate": {
+     "median": 0.07142857142857142,
+     "q25": 0.0,
+     "q75": 0.12698412698412698,
+     "n": 304
+    },
+    "control_exceed_rate": {
+     "median": 0.09886147597649499,
+     "q25": 0.09798270893371758,
+     "q75": 0.09947643979057591,
+     "n": 304
+    },
+    "hit_minus_exceed": {
+     "median": -0.025380671982054473,
+     "q25": -0.075,
+     "q75": 0.028225806451612906,
+     "n": 304
+    },
+    "stall_hit_rate_pooled": 0.09115862467494944,
+    "control_exceed_rate_pooled": 0.0989180447074458,
+    "fires_per_hour": {
+     "median": 9.86325089229835,
+     "q25": 7.822212442928654,
+     "q75": 12.31270358306189,
+     "n": 304
+    },
+    "fires_total": 18167,
+    "share_of_fires_on_stall_pauses_pooled": 0.050806407221885834
+   }
+  }
+ }
+}

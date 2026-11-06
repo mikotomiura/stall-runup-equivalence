@@ -1,0 +1,16 @@
+{
+ "2019": {
+  "writers_not_held": 341,
+  "writers_loaded": 338,
+  "units_loaded": 1078,
+  "excluded_obs_lt_10min": 19,
+  "units_eligible": 1042
+ },
+ "2021": {
+  "writers_not_held": 31,
+  "writers_loaded": 31,
+  "units_loaded": 177,
+  "excluded_obs_lt_10min": 0,
+  "units_eligible": 177
+ }
+}

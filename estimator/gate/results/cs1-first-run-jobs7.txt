@@ -1,0 +1,15 @@
+first CS1 run, JOBS=7, stopped by build_cs1.py ('a task failed') before the intermediates were compared; superseded by cs1.txt (JOBS=4)
+{
+ "calls": 3723,
+ "calls_by_mode_and_exit": {
+  "(no-flag) exit=0": 2644,
+  "--features exit=0": 1076,
+  "--features exit=1": 2,
+  "--features exit=101": 1
+ },
+ "mismatches": {
+  "--features exit": 8,
+  "--features stderr": 2,
+  "--features stdout": 9
+ }
+}

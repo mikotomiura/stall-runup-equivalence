@@ -1,0 +1,31 @@
+{
+ "year": "2021",
+ "writers_read": 31,
+ "holdout_writers_skipped": 13,
+ "units": 179,
+ "attempted": 179,
+ "holdout_sha256": "a5a32fcefeb97b038afd170e2672262fd5a71230d5e851319eaa076b606bdc47",
+ "status": {
+  "ok": 177,
+  "few_presses": 2
+ },
+ "blocks_kept": 831,
+ "blocks_few_presses": 232,
+ "span_too_long_days": [],
+ "row_kinds": {
+  "count:file-edit-other": 717882,
+  "count:replay-action": 12957,
+  "count:run-other": 20028,
+  "ev:copy": 2374,
+  "ev:ide-action": 51225,
+  "ev:multi-insert": 42765,
+  "ev:paste": 2802,
+  "ev:prompt": 855,
+  "ev:prompt-answer": 854,
+  "ev:run": 20084,
+  "ev:switch": 13235,
+  "key": 739136,
+  "posthoc:multi-insert-whitespace-only": 12539,
+  "posthoc:multi-insert-whitespace-only-with-newline": 15364
+ }
+}

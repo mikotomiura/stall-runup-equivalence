@@ -1,0 +1,13 @@
+q995 {"rebuilt": 1076, "differs_from_reference": 0}
+w15 {"rebuilt": 1076, "differs_from_reference": 0}
+w60 {"rebuilt": 1076, "differs_from_reference": 0}
+{
+ "calls": 4304,
+ "calls_by_mode_and_exit": {
+  "--features exit=0": 1076,
+  "--features --set q=0.995 --set warmup_count=200 exit=0": 1076,
+  "--features --set w_ms=15000 exit=0": 1076,
+  "--features --set w_ms=60000 exit=0": 1076
+ },
+ "mismatches": {}
+}

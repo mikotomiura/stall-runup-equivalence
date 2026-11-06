@@ -1,0 +1,111 @@
+\section{Evaluation design}
+\label{sec:design}
+
+\subsection{Matched comparison}
+
+The comparison asks whether the 30-second change of a signal at $u$ ranks the run-up to a stall above the run-up to a
+pause that did not become one. Controls are the starts $u$ of pauses of at least 2~s and less than 30~s by the same
+writer, collected across the writer's assignments. A control is excluded if it falls in $[s - 30\,\mathrm{s}, t_0]$ of
+any onset in the same assignment, if condition A is true at its $u$, or if it lies less than 60~s after the start of its
+work block; the same 60~s rule applies to stalls. Each stall and control is assigned a \emph{boundary type}, whether the
+character at $u$ is a newline (registered as the coarsest position in code, a line break; finer positions are an
+exploration in Section~\ref{sec:res-explore}), and a \emph{stratum}: the event stratum if a run, paste or switch occurred in
+$[u - 30\,\mathrm{s}, u]$, and the no-event stratum otherwise. Only information up to $u$ is used for the stratum. For
+each stall, up to five controls are drawn without replacement from the candidates of the same writer, boundary type and
+stratum. The confirmatory test uses the no-event stratum; the event stratum is described. The comparison is thus stratified
+within writer, boundary type and stratum rather than matched one to one, and the exclusion of controls near a later
+onset uses information after $u$ that a running trigger would not have.
+
+\subsection{Statistic}
+
+For each signal on its own, every pair of a stall and a control drawn within the same writer, boundary type and stratum
+scores 1 if the stall's value exceeds the control's by at least $\varepsilon$, 0 if it falls below by at least
+$\varepsilon$, and 0.5 otherwise; a control drawn for two stalls of the same cell is counted once. Every stall is
+paired with every distinct control drawn in its cell, not only with its own five, so a stall weighs by the number of
+controls in its cell (about 156 per stall in the holdout's main stratum). The pooled score over
+all pairs of all writers is the \emph{discrimination AUC} (Appendix~\ref{app:definitions} gives the formal definition).
+It is 0.5 when the stall's run-up and the control's run-up change by the same amount, even if both rise; differences
+that concern only the tails, or that appear only when the two signals are combined, are other estimation targets. Two
+tolerances were registered, $\varepsilon = 0.001$ and $\varepsilon = 0$. Writers with more pairs weigh more; we report
+the effective number of writers, $(\sum_i n_i)^2 / \sum_i n_i^2$ with $n_i$ the number of pairs of writer $i$, and a
+version that weights writers equally. The 95\% interval is the percentile interval of 2,000 resamples of writers, with
+each writer's drawn controls held fixed.
+
+Both signals are computed forward in time from the key presses up to $u$, and nothing was fitted to the holdout.
+$\theta$ decides when a stall is recognised and thus which pauses count as stalls, and it uses only intervals up to that
+time. The intended use is a trigger that fires during a pause, which the AUC alone does not
+describe \cite{pelanek2015metrics}. We therefore also report a threshold table: with the 90th percentile of each
+writer's drawn controls as the threshold, the share of stalls whose run-up exceeds it and the share of controls that do.
+
+\subsection{Equivalence band and decision}
+
+The band $[0.45, 0.55]$, 0.05 on either side of chance, was set wide after we had seen the matched comparison
+in the essay-writing and co-writing data (a wide band makes equivalence easier to declare); it was not derived from a conversion. As a reading aid, an AUC of 0.55
+corresponds to a difference in means of about 0.18 standard deviations between two normal distributions of equal
+variance. After the band was set, we converted it into the behaviour of a threshold trigger on seen writers
+(Appendix~\ref{app:threshold}). The band is wider than the region of practical equivalence of 0.01 used for the
+difference in AUC between two models in learning analytics \cite{gardner2018evaluating}; that precedent compares a
+different quantity.
+
+Some rules of the main analysis were fixed after a leak had shown that, under an older definition, the AUC on seen
+writers lay inside the band (Appendix~\ref{app:prereg}): among them, the stratum window $[u - 30\,\mathrm{s}, u]$,
+condition A on both stalls and controls, requiring $\varepsilon = 0$ as well, and the precision rule. With the older
+stratum window alone, the holdout gave 0.505 and 0.500 (Section~\ref{sec:res-main}), also inside the band.
+
+For each signal and each $\varepsilon$, the result is \emph{equivalent} if the 95\% interval lies inside the band. This
+is the form of the two one-sided tests procedure at one-sided 2.5\% \cite{lakens2017equivalence}. An interval that
+crosses 0.55 or 0.45 is undecidable on that side, and an interval entirely above 0.55 or below 0.45 is a difference
+beyond the band. An interval wider than 0.10 was registered as insufficient precision, and a signal with more than half
+of its pairs tied at $\varepsilon = 0.001$ as degenerate. The test is passed only if all four combinations of two
+signals and two tolerances are equivalent.
+
+\subsection{Calibration of the false-equivalence rate}
+
+Because the coverage of resampling by writer is not assured with few or unequal clusters (Section~\ref{sec:related}),
+we estimated, on the seen writers, how often the decision declares equivalence when the true AUC lies on the boundary:
+provisional signals were shifted until one reached 0.45 or 0.55 while the other stayed at 0.50, and the decision was
+applied to 500 draws of 138 writers, the expected size of the holdout. In the version with replacement, which we read
+because the holdout is a random sample, the maximum over the configurations examined was 5.2\% (26 of 500; Wilson 95\%
+interval 3.6--7.5\%), above the nominal one-sided 2.5\%; without replacement it was at most 1.4\%. The draws were about as
+concentrated as the holdout (a median of 43 effective writers, against 50.5 in the holdout). Configurations that place
+the $\varepsilon = 0$ AUC on the boundary were not examined, so the value is not an upper bound over the whole null, and
+the decision rule was not changed after seeing it (Appendix~\ref{app:calibration}). In the holdout every interval ended at
+least 0.025 inside the edges of the band, so the decision does not hinge on the exact level.
+
+\subsection{Secondary and descriptive analyses}
+
+A secondary comparison followed the form of earlier reports: every 5~s within a block, a 30~s window ending at $w$ is a
+positive if a stall's $u$ falls in the next 60~s, and windows inside long pauses are excluded; the AUC of positives over
+negatives within writers is then re-matched by the decile of elapsed time in the block (Appendix~\ref{app:unmatched}).
+A descriptive analysis gave 18 standard keystroke quantities, nine levels over the 30~s before $u$ and their changes from
+the preceding 30~s, to logistic regression and gradient boosting, trained and evaluated on the same stalls and controls
+with folds by writer (Appendix~\ref{app:learners}). Only the learners had a registered positive control: a gate that adds a known difference to one quantity and requires
+the learners to recover it (its history is in Appendix~\ref{app:prereg}). The positive control of the estimator was
+added afterwards as exploration (Section~\ref{sec:res-bounds}).
+
+\subsection{Status of each analysis}
+
+Each result carries one of the labels in Table~\ref{tab:status}. The confirmation was completed on the holdout in one run, in two
+stages recorded on the Open Science Framework, after one interrupted run and one deviation in a verification step
+before any value was computed (Appendix~\ref{app:prereg}).
+
+\begin{table}
+  \caption{Status of the analyses. Labels are used in the tables of results.}
+  \label{tab:status}
+  \centering\small
+  \begin{tabularx}{\linewidth}{l >{\raggedright\arraybackslash}X}
+    \toprule
+    Label & Meaning \\
+    \midrule
+    {[C]} & Confirmatory decision on the CS1 holdout (preregistered rules, deviation, start records and results
+    registration). \\
+    {[C-D]} & Quantities on the same holdout that the preregistration promised to report but that do not enter the
+    decision. \\
+    {[D]} & Descriptions on data seen before the rules were frozen. \\
+    {[E]} & Exploration outside the registration on seen data, run after the confirmation with conditions committed
+    beforehand. \\
+    {[E-H]} & Exploration outside the registration on the holdout, after it had been opened, with conditions committed
+    beforehand. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}

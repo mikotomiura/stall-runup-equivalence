@@ -1,0 +1,26 @@
+{
+ "year": "2019",
+ "writers_read": 145,
+ "holdout_writers_skipped": 341,
+ "units": 457,
+ "attempted": 457,
+ "holdout_sha256": "028f2256d4f0bb8223c17887925a54483822e6cbda8d642e970b4bf8a20afd77",
+ "status": {
+  "ok": 438,
+  "few_presses": 19
+ },
+ "blocks_kept": 1123,
+ "blocks_few_presses": 294,
+ "span_too_long_days": [],
+ "row_kinds": {
+  "count:edit-X-Checkpoint": 636,
+  "ev:auto-edit": 17833,
+  "ev:cut": 515,
+  "ev:drag": 66,
+  "ev:paste": 5580,
+  "ev:run": 21489,
+  "ev:submit": 992,
+  "ev:switch": 3504,
+  "key": 1465873
+ }
+}

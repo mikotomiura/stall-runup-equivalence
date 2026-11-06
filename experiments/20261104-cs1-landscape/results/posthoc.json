@@ -1,0 +1,87 @@
+{
+ "2019": {
+  "resume": {
+   "stalls": 24179,
+   "resume_in_other_block": 46,
+   "unresumed": 36
+  },
+  "L4_nonws": null,
+  "row_kinds_posthoc": {}
+ },
+ "2021": {
+  "resume": {
+   "stalls": 6217,
+   "resume_in_other_block": 47,
+   "unresumed": 15
+  },
+  "L4_nonws": {
+   "writers": 31,
+   "receipt_per_h_by_kind": {
+    "multi-insert-nonws": {
+     "n": 31,
+     "q1": 10.7066,
+     "median": 17.802,
+     "q3": 25.0526
+    },
+    "paste": {
+     "n": 31,
+     "q1": 2.2807,
+     "median": 3.6421,
+     "q3": 4.4571
+    }
+   },
+   "receipt_writers_with_zero_by_kind": {
+    "multi-insert-nonws": 0,
+    "paste": 0
+   },
+   "stall_receipt_before_resume_resumed_only": {
+    "num": 474,
+    "den": 6202,
+    "ratio": 0.0764
+   },
+   "stall_receipt_within_5min_tracked_only": {
+    "num": 2774,
+    "den": 6136,
+    "ratio": 0.4521
+   },
+   "away_receipt_within_5min_tracked_only": {
+    "num": 1250,
+    "den": 2515,
+    "ratio": 0.497
+   },
+   "stall_receipt_before_resume": {
+    "num": 476,
+    "den": 6217,
+    "ratio": 0.0766
+   },
+   "stall_receipt_within_5min": {
+    "num": 2801,
+    "den": 6217,
+    "ratio": 0.4505
+   },
+   "away_per_h": {
+    "n": 31,
+    "q1": 2.8624,
+    "median": 3.4192,
+    "q3": 3.7651
+   },
+   "away_count_per_writer": {
+    "n": 31,
+    "q1": 28.5,
+    "median": 67,
+    "q3": 121.0
+   },
+   "away_writers_with_zero": 0,
+   "away_receipt_within_5min": {
+    "num": 1275,
+    "den": 2611,
+    "ratio": 0.4883
+   }
+  },
+  "row_kinds_posthoc": {
+   "ev:multi-insert": 42765,
+   "posthoc:multi-insert-whitespace-only": 12539,
+   "posthoc:multi-insert-whitespace-only-with-newline": 15364
+  }
+ }
+}

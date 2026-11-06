@@ -1,0 +1,52 @@
+% Manuscript for the Journal of Educational Data Mining (JEDM), built with the journal's LaTeX template (class jedm,
+% reference style acmtrans). The template files are not part of this directory; BUILD.md says where to obtain them.
+% The sections are kept in separate files while the manuscript is written. The supplementary material is an appendix
+% after the references, as the journal's instructions ask.
+\documentclass[notitlepage,12pt]{jedm}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{seqsplit}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}
+
+% Figures: the colours are the first two slots of a categorical palette checked for separation under colour-vision
+% deficiencies; each series also has a mark of its own, so that the figure can be read in grey.
+\definecolor{figc1}{HTML}{2A78D6}
+\definecolor{figc2}{HTML}{EB6834}
+\definecolor{figband}{HTML}{E8E8E8}
+
+\begin{document}
+
+\title{A keystroke state estimator's 30-second signal changes before code-writing stalls: within 0.025 AUC of
+matched pauses in a preregistered holdout}
+\date{}
+\author{{\large Mikoto Miura}\\Independent Researcher\\ORCID 0009-0000-4196-0508}
+
+\maketitle
+
+\input{sections/abstract}
+
+\input{sections/introduction}
+\input{sections/related}
+\input{sections/data}
+\input{sections/design}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/limitations}
+\input{sections/conclusion}
+\input{sections/declarations}
+
+\bibliographystyle{acmtrans}
+\bibliography{references}
+
+\appendix
+\input{appendix/supplement}
+
+\end{document}

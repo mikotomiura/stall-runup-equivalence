@@ -1,0 +1,64 @@
+{
+  "id": "p1-episode",
+  "version": "1.2.0",
+  "status": "frozen",
+  "declared_at": "2026-09-21",
+  "document": "docs/preregistration-p1-episode.md",
+  "operational": {
+    "w_ms": 30000,
+    "q": 0.99,
+    "b_ms": 30000,
+    "hole_gap_ms": 2000,
+    "warmup_count": 100,
+    "theta_estimator": "nearest_rank",
+    "t1a_window_ms": 30000,
+    "net_diff_min": 1,
+    "idle_trim_min_gap_ms": 60000,
+    "idle_trim_max_ms": 1800000,
+    "idle_trim_input_gap_ms": 1800000
+  },
+  "search_space": {
+    "w_ms": [15000, 30000, 60000],
+    "q": [0.99, 0.995, 0.999],
+    "b_ms": [15000, 30000, 60000],
+    "hole_gap_ms": [2000, 3000, 5000],
+    "warmup_count": "derived: ceil(1 / (1 - q))",
+    "theta_estimator": ["nearest_rank"],
+    "t1a_window_ms": [15000, 30000, 60000],
+    "net_diff_min": [1],
+    "idle_trim_min_gap_ms": [60000],
+    "idle_trim_max_ms": [0, 1800000],
+    "idle_trim_input_gap_ms": [0, 1800000]
+  },
+  "search_roles": {
+    "w_ms": "sensitivity_only",
+    "q": "selection",
+    "b_ms": "sensitivity_only",
+    "hole_gap_ms": "selection",
+    "warmup_count": "derived",
+    "theta_estimator": "fixed",
+    "t1a_window_ms": "selection",
+    "net_diff_min": "fixed",
+    "idle_trim_min_gap_ms": "fixed",
+    "idle_trim_max_ms": "sensitivity_only",
+    "idle_trim_input_gap_ms": "sensitivity_only"
+  },
+  "search_protocol": {
+    "when": "WP1 (O1 natural-work discovery) の内側でのみ実行する",
+    "freeze_at": "WP2 (criterion freeze)",
+    "excluded_from_search": "G-next / O-holdout",
+    "design": "grouped nested CV",
+    "grouping_key": "participant",
+    "outer_split": "leave-one-participant-out",
+    "inner_split": "grouped k-fold (k = min(5, n_participants - 1))",
+    "seed": 20260921,
+    "selection_budget": "full grid over the 'selection' keys (3 x 3 x 3 = 27 combinations)",
+    "sensitivity_budget": "one-factor-at-a-time around the operational point for the 'sensitivity_only' keys (6 extra runs)",
+    "selection_metric": {
+      "primary": "per_participant_episode_count_floor",
+      "secondary": "outcome_base_rate_non_degenerate",
+      "tertiary": "episode_count_cv_across_participants",
+      "prohibited": "predictive performance of any downstream model"
+    }
+  }
+}

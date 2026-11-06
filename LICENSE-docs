@@ -1,0 +1,18 @@
+Copyright (c) 2026 Mikoto Miura
+
+The records, results, figures and documents of this repository are licensed under the Creative Commons Attribution
+4.0 International License (CC BY 4.0): README.md, README.ja.md, CITATION.cff, gse-commits.tsv, gse-source.tsv,
+docs/media/, paper/ (the manuscript sources), and, under experiments/, every file that is not a script (the
+conditions*.md, notes.md, data.md, env.md, deviation-1.md and other Markdown records, SEED, the manifest
+confirm-manifest.sha256, requirements-confirm.txt, and the JSON files under results/, results_holdout/ and
+results_holdout.failed.*/).
+
+The source code is licensed under either of the MIT License (LICENSE-MIT) or the Apache License, Version 2.0
+(LICENSE-APACHE), at your option: estimator/ (except its README.md, which is under CC BY 4.0), tools/, and the scripts
+under experiments/ (*.py and *.sh).
+
+The public datasets that the code reads (CS1, CoAuthor, KLiCKe) are not part of this repository and keep their own
+terms. The bibliographic records in paper/references.bib describe the works of others.
+
+To view a copy of the CC BY 4.0 license, visit https://creativecommons.org/licenses/by/4.0/
+The full legal code is at https://creativecommons.org/licenses/by/4.0/legalcode

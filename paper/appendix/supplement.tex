@@ -1,0 +1,389 @@
+% Supplementary material, placed after the references as the journal's instructions ask. Sections S1 to S9 are
+% referred to from the main text by their labels.
+\renewcommand{\thesection}{S\arabic{section}}
+\setcounter{section}{0}
+
+\section{Registration, deviation and the order of the records}
+\label{app:prereg}
+
+\paragraph{Registrations.} All registrations are Open-Ended Registrations of one project on the Open Science Framework
+and are public. The preregistration (English version governing; a Japanese version is attached) was registered at
+2026-11-05 21:56:19 UTC (\url{https://osf.io/mrkxt}); its field holds the SHA-256 of the manifest of the verified files
+(scripts, conversion, holdout procedure, environment, stall definition and the two language versions of the document).
+The deviation was registered with the new manifest (\url{https://osf.io/fqgcp}); the second start record is at
+\url{https://osf.io/ajg2x}, and the results and their provenance at \url{https://osf.io/uj6cy}, registered at
+2026-11-06 02:48:02 UTC.
+
+\paragraph{Two-stage procedure.} Stage 1 verifies the manifest, the inputs, the holdout list, the replay tool and the
+environment against the values passed to it, writes a start record and stops without computing; the start record is
+then registered. Stage 2 takes the SHA-256 of the registered start record, repeats the verification, commits a record
+of the start of computation and only then computes. The confirmation script refuses to run unless both records are
+committed and agree. A completed run cannot be repeated.
+
+\paragraph{Order of events (UTC).} The holdout list had been drawn before any analysis of the CS1 data; the conditions
+of the first analysis of these data (committed on 2026-11-03 at 23:46) skipped the listed writers and required a check
+that none of them entered its aggregates. On 2026-11-05 and 2026-11-06, the registrations (OSF) and the commits of the
+local repository (git) were, in order:
+
+\begin{center}\footnotesize
+\begin{tabular}{l l l}
+  \toprule
+  Time & Record & Event \\
+  \midrule
+  21:56:19 & OSF & preregistration registered (\url{https://osf.io/mrkxt}) \\
+  21:58:55 & git & first start record written and committed \\
+  23:16:27 & OSF & first start record registered (\url{https://osf.io/hfvy7}) \\
+  23:17:58 & git & first computation started (stopped at 23:24:44 in the conversion check) \\
+  01:23:42 & OSF & deviation registered (\url{https://osf.io/fqgcp}) \\
+  01:25:11 & git & outputs of the stopped run moved aside \\
+  01:25:12 & git & second start record written and committed \\
+  01:26:12 & OSF & second start record registered (\url{https://osf.io/ajg2x}) \\
+  01:27:32 & git & second computation started \\
+  02:22:48 & git & completed run committed \\
+  02:48:02 & OSF & results and provenance registered (\url{https://osf.io/uj6cy}) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+The first computation stopped because the registered check ``the number of writers read equals the number of writers
+in the holdout list'' gave 145 of 146. No statistic had been computed. The cause was a holdout writer whose only raw
+row was a checkpoint and who therefore had no assignment; this writer would have been excluded in any case. At the
+researcher's decision the check was replaced by one that requires every writer read to be in the list, every writer not
+read to have no rows that create an assignment under the same mapping, and the two counts to sum to 146 (negative
+controls: removing a writer read, or adding a writer outside the list, both fail). Nothing else changed. In the local
+history there were two start records, one interruption, one move-aside, two computation starts and one completed run.
+
+\paragraph{Wording.} The registration's main sentence speaks of ``the rise in the run-up in the matched comparison'';
+the paper names the same statistic ``the discrimination AUC of the 30-second change''. The registration's rule for the
+second sentence applied because the not-at-floor sensitivity analysis selected at the start point was equivalent for
+the Stuck-state probability under both tolerances. Intervals in the OSF summary have three digits; in the paper, an end
+of an interval that touches 0.45, 0.5 or 0.55 at three digits is given with four. The registration labels the
+confirmatory test H1, the unmatched comparison H2 and the learner description H3. The registration says the band was set
+``conservatively''; the paper says ``wide'', because a wide band makes equivalence easier to declare. The registration
+says the confirmation ``is not written as a test of a prediction that could fail''; the abstract and introduction say
+so in those terms.
+
+\paragraph{History of the learner analysis.} In the drafts of the registration the learner analysis was confirmatory,
+with a positive control that required the learners to exceed 0.55 on unmatched windows. On seen writers this control
+did not pass for either learner, so the gate was replaced by the recovery of a known embedded difference and the
+analysis was downgraded to a description, all before freezing. The unmatched-window result is still reported.
+
+\paragraph{What was known before the confirmation.} The matched comparison had been computed on the essay and co-writing
+data before the registration was written, and the band was set afterwards. On the 319 seen CS1 writers, an output of a
+pre-freeze computation leaked the constants used to shift provisional signals, which revealed that under that
+computation's older definition the AUC was slightly above 0.50 and below 0.55. Which rules were fixed before and after
+that leak is tabulated in the registration (its Appendix B).
+
+\section{Definitions}
+\label{app:definitions}
+
+\paragraph{Statistic.} For signal $z$, writer $i$, cell $c$ (boundary type and stratum), stalls $S_{ic}$ and the set
+$K_{ic}$ of distinct controls drawn for them,
+\[
+\mathrm{AUC} = \frac{\sum_{i,c} \sum_{a \in S_{ic}} \sum_{b \in K_{ic}} \phi_\varepsilon(z_a - z_b)}
+{\sum_{i,c} |S_{ic}|\,|K_{ic}|}, \qquad
+\phi_\varepsilon(d) = \begin{cases} 1 & d \ge \varepsilon \\ 0.5 & |d| < \varepsilon \\ 0 & d \le -\varepsilon
+\end{cases}
+\]
+with $\phi_0(d) = 1, 0.5, 0$ for $d > 0$, $d = 0$, $d < 0$. The signal at $t$ is the latest estimate row at or before $t$
+minus the latest row at or before $t - 30$~s. The decision is the conjunction over two signals and two tolerances.
+
+\paragraph{Missing values and exclusions.} A stall or control without an estimate row at or before $u$ or $u - 30$~s, or
+with a non-numeric value, is dropped; a stall without any control is dropped. In the holdout's main analysis no stall
+lacked a signal and 3 stalls had no control. Writers with less than 10 minutes of observation (5 in the holdout) and
+assignments beyond the time span of the replay tool (none) are excluded.
+
+\paragraph{Temporal boundaries.} The estimate rows are computed forward in time, so the signals at $u$ use only key
+presses up to $u$. $\theta$ uses the intervals so far in the assignment and fixes only the onset. The learners' imputation
+and scaling are fitted within the training folds, which are formed by writer.
+
+\paragraph{Estimator.} Version 0.5.0 of the estimator was used with its writing configuration and without individual
+calibration; the replay tool has SHA-256 \texttt{\seqsplit{26cae610383fb6de01651cc904895efa72a691c3dd1e27689a14a4ca51c33bb3}}. The
+transition and emission matrices and the weights of the two axes were set by hand from the literature and informal
+tuning. For direct (non-IME) input, the reference values against which the five quantities are scaled were set by hand
+from population medians of typing \cite{dhakal2018typing}, adjusted for code-like input; they were introduced for
+alphanumeric input and later kept, unchanged, in the writing configuration. None of the coefficients were estimated
+from the data analysed here. The friction axis is smoothed exponentially with coefficient 0.3.
+
+\paragraph{Mapping of edit events.} The rules of Section~\ref{sec:data} were fixed in an earlier analysis of the CS1
+data, before this study. Keystrokes are ordered by client timestamp and, within ties, by event identifier. The release is
+placed 100~ms after the press and cut 1~ms before the next press.
+
+\begin{table}[h]
+  \caption{How the edit rows of the holdout writers were mapped to the estimator's input (exploration on the holdout,
+  counted after the confirmatory run; 1,490,503 edit rows). Shares of characters are of all inserted characters.}
+  \label{tab:mapping}
+  \centering\small
+  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.9cm} r r}
+    \toprule
+    Edit row & Becomes & Rows & Characters \\
+    \midrule
+    Insertion of one character, key recorded & key press of its kind & 78.2\% & 46.3\% \\
+    Deletion of one character, key recorded & backspace & 19.5\% & -- \\
+    Deletion of two or more characters, key recorded & backspace (one press) & 0.37\% & -- \\
+    Undo or redo & non-text key press (key recorded) or event & 0.46\% & -- \\
+    Insertion of whitespace only, no key (automatic indentation) & event & 1.0\% & 4.6\% \\
+    Paste & event & 0.37\% & 49.0\% \\
+    Other (cut, drag, checkpoint, other insertions without key) & event or nothing & 0.11\% & $<$0.1\% \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\paragraph{Stall definition.} Condition A is evaluated at the key press times, at those times plus 30~s and at $s +
+\theta$. $\theta$ is the nearest-rank 0.99 quantile of intervals between adjacent key presses of any kind within the
+same observation segment, accumulated over segments in the assignment, and undefined below 100 intervals. Observation
+segments break where 1~Hz estimate rows are more than 2~s apart, after the replay tool trims rows without input before
+gaps of 60~s or more and across gaps of 30 minutes or more. In the seen 2019 writers, $\theta$ at the end of an
+assignment had a median of 27.7~s (quartiles 20.8--36.8~s; 316 writers in the earlier analysis of these data) [D].
+Edges of observation [E-H]: of 9,133 distinct $u$ of onsets in the holdout, 22 had no later character input in the
+assignment and 51 had the next one in a later work block. The distance from $u$ to the onset had a mean of 247~s against
+a median of 48.5~s, because a few onsets come long after the last character input. The 338 seen writers with an assignment had 1,078
+assignments, and the 319 kept writers 1,042.
+
+\section{Coefficients of the estimator}
+\label{app:coefficients}
+
+All values below were set by hand (version 0.5.0); none were estimated from the data analysed here. They are taken
+from the source of the estimator, which is not released (Section~\ref{sec:discussion}).
+
+\paragraph{Window quantities.} Every second, over the key events of the preceding 30~s: $f_1$, the median flight time
+from a release to the next press, with flights of 2,000~ms or more dropped; $f_3$, the share of presses that are
+backspaces; $f_4$, the mean burst length, a burst continuing while the flight is under 200~ms; $f_5$, the number of
+intervals of 2,000~ms or more between adjacent presses; $f_6$, the share of backspaces followed by such an interval.
+With the synthesised release (Section~\ref{sec:data}), a burst continues while inter-keystroke intervals are under
+300~ms.
+
+\paragraph{Scaling and axes.} Each quantity is scaled as $\varphi(f, \beta) = \min(1, \max(0, (f - \beta) / 2\beta))$
+against a reference value $\beta$. For direct input, $\beta = 150$~ms ($f_1$), 0.06 ($f_3$), 5.0 ($f_4$), 2.0 ($f_5$)
+and 0.08 ($f_6$). The friction axis is $x = 0.30\,\varphi_3 + 0.25\,\varphi_6 + 0.25\,\varphi_1 + 0.20\,\varphi_5$ and
+the engagement axis $y = 0.40\,\varphi_4 + 0.35\,(1 - \varphi_1) + 0.25\,(1 - \varphi_5)$, both clipped to $[0, 1]$.
+
+\paragraph{Smoothing and observations.} Both axes are smoothed exponentially, $s_t = \alpha\,r_t + (1 - \alpha)\,s_{t-1}$,
+with $\alpha = 0.3$ while the window has input, and, during silence, $\alpha = 0.15$ below 15~s, 0.18 from 15 to 25~s and
+0.25 from 25~s; the initial values are $(x, y) = (0.1, 0.8)$. The smoothed axes are binned as
+$\lfloor 5 s \rfloor$ (capped at 4) into $5 \times 5$ observations, indexed $5\,b_x + b_y$; a 26th observation replaces
+the binned one after 14 or more consecutive backspaces. During silence of 2~s or more with an empty window, the
+quantities are replaced by a synthetic observation: $f_1 = 2{,}000$~ms, $f_4 = 0$, $f_5$ = silence in seconds / 2, and
+$f_3, f_6$ carried over from the last typing window $v$ as $v + \min(1, (\mathrm{silence} - 2)/30)\,(1 - v)\,v$ (without
+such a window, ramps of 10--50~s with floors of 0.15 and 0.20 from 10~s). When the window still holds input after 8~s
+of silence, $f_3$ and $f_6$ are floored at $v \min(1, (\mathrm{silence} - 8)/30)$.
+
+\paragraph{Hidden Markov model.} States are ordered Flow, Incubation, Stuck. Initial probabilities $(0.80, 0.15, 0.05)$.
+Transition matrix (rows: from):
+\[
+\begin{pmatrix} 0.75 & 0.17 & 0.08 \\ 0.12 & 0.80 & 0.08 \\ 0.06 & 0.18 & 0.76 \end{pmatrix}.
+\]
+With $\pi_t$ the forward probabilities, $A$ the transition matrix and $e_j(o)$ the emission weight of state $j$ for
+observation $o$, each update is $\pi_{t,j} \propto e_j(o_t) \sum_i \pi_{t-1,i} A_{ij}$, normalised over $j$; because
+the emission weights are not normalised per state, this is a weighted filter rather than the forward algorithm of a
+proper hidden Markov model. The reported probability is a further exponential smoothing of
+them with coefficient 0.40 (0.60 at the backspace observation); the Stuck-state probability in this paper is that
+reported value, and the friction axis is the smoothed $x$. Emission weights (rows $b_x = 0, \ldots, 4$ from low to high
+friction, columns $b_y = 0, \ldots, 4$ from low to high engagement; the rows of the full matrix are not normalised):
+
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{c ccccc c ccccc c ccccc}
+  \toprule
+  & \multicolumn{5}{c}{Flow} && \multicolumn{5}{c}{Incubation} && \multicolumn{5}{c}{Stuck} \\
+  $b_x$ & 0 & 1 & 2 & 3 & 4 && 0 & 1 & 2 & 3 & 4 && 0 & 1 & 2 & 3 & 4 \\
+  \midrule
+  0 & .01 & .02 & .08 & .12 & .14 && .15 & .10 & .04 & .03 & .02 && .01 & .01 & .01 & .01 & .01 \\
+  1 & .01 & .02 & .08 & .12 & .13 && .14 & .08 & .04 & .03 & .02 && .01 & .01 & .01 & .01 & .01 \\
+  2 & .01 & .01 & .02 & .01 & .08 && .10 & .08 & .03 & .02 & .01 && .02 & .04 & .04 & .05 & .01 \\
+  3 & .01 & .01 & .01 & .01 & .01 && .05 & .04 & .01 & .01 & .01 && .10 & .16 & .05 & .07 & .01 \\
+  4 & .01 & .01 & .01 & .01 & .01 && .04 & .03 & .01 & .01 & .01 && .16 & .22 & .12 & .05 & .02 \\
+  \midrule
+  backspace & \multicolumn{5}{c}{.01} && \multicolumn{5}{c}{.01} && \multicolumn{5}{c}{.99} \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\section{Sensitivity analyses and descriptions of the instrument}
+\label{app:sensitivity}
+
+Table~\ref{tab:sens} lists every preregistered sensitivity analysis of the matched comparison [C-D]. All results with
+$\varepsilon = 0$ fell in the same category as those with $\varepsilon = 0.001$.
+
+\begin{table}
+  \caption{Sensitivity analyses of the matched comparison, CS1 holdout ($\varepsilon = 0.001$). Stalls are those of
+  the no-event stratum; equiv. = equivalent, undec. = undecidable.}
+  \label{tab:sens}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X r c c l}
+    \toprule
+    Analysis & Stalls & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ & Result \\
+    \midrule
+    Main & 4,554 & 0.489 (0.479--0.4995) & 0.487 (0.476--0.497) & equiv. \\
+    Control pauses up to 10 s & 4,554 & 0.490 (0.480--0.5007) & 0.489 (0.478--0.499) & equiv. \\
+    Control pauses up to 60 s & 4,554 & 0.490 (0.479--0.502) & 0.490 (0.478--0.502) & equiv. \\
+    Boundary type: whitespace or symbol & 4,554 & 0.490 (0.480--0.501) & 0.489 (0.478--0.5003) & equiv. \\
+    Stratum window to the end of the pause & 2,427 & 0.505 (0.493--0.518) & 0.500 (0.484--0.515) & equiv. \\
+    No condition A on stalls & 4,915 & 0.497 (0.488--0.506) & 0.494 (0.484--0.504) & equiv. \\
+    Condition A on neither side & 4,915 & 0.490 (0.480--0.4995) & 0.490 (0.478--0.5006) & equiv. \\
+    Controls within the assignment & 4,553 & 0.495 (0.484--0.506) & 0.492 (0.481--0.503) & equiv. \\
+    Writer-equal weights & 139 writers & 0.491 (0.473--0.509) & 0.488 (0.472--0.505) & equiv. \\
+    Not at floor, start point $u - 30$ s & 2,090 & 0.498 (0.476--0.519) & 0.498 (0.478--0.517) & equiv. \\
+    Not at floor, end point $u$ & 1,573 & 0.465 (0.443--0.486) & 0.466 (0.448--0.482) & undec. (lower) \\
+    Signal change over 15 s & 4,554 & 0.491 (0.480--0.502) & 0.485 (0.473--0.496) & equiv. \\
+    Signal change over 60 s & 4,553 & 0.496 (0.486--0.506) & 0.495 (0.485--0.505) & equiv. \\
+    $\theta$ accumulated across assignments & 4,445 & 0.487 (0.477--0.498) & 0.487 (0.476--0.497) & equiv. \\
+    Stall quantile $q = 0.995$ & 2,935 & 0.490 (0.476--0.503) & 0.487 (0.473--0.501) & equiv. \\
+    Condition A window $W = 15$ s & 5,937 & 0.493 (0.483--0.503) & 0.490 (0.479--0.5005) & equiv. \\
+    Condition A window $W = 60$ s & 2,976 & 0.494 (0.480--0.507) & 0.493 (0.479--0.508) & equiv. \\
+    Event stratum (described) & 1,590 & 0.495 (0.477--0.515) & 0.496 (0.477--0.516) & equiv. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\paragraph{Ties and values.} The share of pairs tied at $\varepsilon = 0.001$ was 6.5\% (Stuck-state probability) and
+0.34\% (friction axis), and 0.08\% and 0.01\% at $\varepsilon = 0$. The 10th, 50th and 90th percentiles of the absolute
+change were 0.000, 0.016 and 0.63 for the Stuck-state probability and 0.019, 0.150 and 0.418 for the friction axis.
+
+\paragraph{Direction below 0.5.} All four point estimates lay slightly below 0.5. In the terms of equivalence testing
+\cite{lakens2018equivalence}, three combinations were statistically different from 0.5 in the downward direction and
+equivalent, and the Stuck-state probability with $\varepsilon = 0$ was equivalent and not different. The registration
+did not ask about the direction. Candidate causes, none of them tested, are the exclusion that only controls receive
+(controls close to a later onset are removed), the different shares at the floor (61\% and 65\%), and stalls with events
+inside the pause (removing them gave 0.505 and 0.500); each moves the estimate within the band. In the essays the
+direction was the reverse. All four intervals also lie inside $0.5 \pm 0.025$ (largest distance of an end from 0.5:
+0.0242); this narrower band was found after the data were seen and is not a decision.
+
+\paragraph{Writers.} The 10th to 90th percentiles of per-writer AUCs were 0.41 to 0.59 for the Stuck-state probability and
+0.40 to 0.59 for the friction axis; they widen with the small number of stalls per writer and cannot be read as evidence
+that the signals work for some writers. The top 10\% of writers held 42\% of the pairs. Over 20 seeds of the control
+draw, the point estimate ranged from 0.488 to 0.494 (standard deviation 0.0016) for the Stuck-state probability and from
+0.486 to 0.492 (0.0016) for the friction axis.
+
+\paragraph{Instrument over the whole holdout [E-H].} Over the 2,602,660 estimate rows of the 140 writers, the
+Stuck-state probability had a mean of 0.243 (standard deviation 0.340; median 0.083; 10th and 90th percentiles 0.011 and
+0.921) and the smoothed friction axis a mean of 0.430 (0.235). The 30-second change was exactly zero in 26.9\% and
+21.3\% of rows. Within the 4,554 stalls, the mean Stuck-state probability was 0.194 at $u - 30$~s, 0.135 at $u$, 0.150
+at $u + 10$~s, 0.193 at $u + 20$~s and 0.193 at $u + 29$~s (share at the floor 51\%, 61\%, 62\%, 44\%, 42\%), and the
+mean friction axis 0.369, 0.291, 0.340, 0.412 and 0.432. These values describe stalls only; the comparison with controls
+is the matched comparison.
+
+\section{Unmatched comparison and re-matching}
+\label{app:unmatched}
+
+Windows end at $w$ every 5~s from 60~s after the start of a block to 60~s before its end; the window is $[w - 30\,
+\mathrm{s}, w]$. A window is a positive if a stall's $u$ falls in $(w, w + 60\,\mathrm{s}]$, of any stratum. Windows
+whose $w$ lies inside a pause of 30~s or more, from its $u$ to the resumption, are excluded (323,987 windows); windows
+before long pauses that were not counted as stalls stay among the negatives (40,471). The AUC pools positive and
+negative pairs within writers. Re-matching draws up to five negatives per positive from the same writer and the same
+decile of elapsed time in the block; attenuation $R$ is (unmatched AUC $-$ re-matched AUC) / (unmatched AUC $-$ 0.5).
+In the holdout, the re-matched AUC was 0.499 and 0.498, and the unmatched AUC was below 0.5 for both signals, so $R$ was
+not interpreted (its intervals were $-5.4$ to $9.8$ and $0.09$ to $4.7$). All preregistered sensitivity analyses of this
+comparison (lookahead of 30 or 120~s, positives defined by $t_0$, two alternative exclusions, negatives without the
+windows before uncounted long pauses, signal changes over 15 or 60~s, the replayed stall variants) gave unmatched AUCs
+between 0.486 and 0.500 and did not meet the condition for a rise.
+
+\section{Learners}
+\label{app:learners}
+
+\paragraph{Quantities.} From the presses (characters, space, newline, backspace) in the 30~s before $t$: the number of
+presses; the 10th, 50th and 90th percentiles of intervals above 50~ms; the numbers of intervals of 2~s or more and of
+10~s or more; the backspace ratio; the mean burst length (cut at intervals of 2~s or more); and character presses per
+minute. The 18 quantities are these nine levels and their differences from $(t - 60\,\mathrm{s}, t - 30\,\mathrm{s}]$.
+Missing quantities are left missing (6,743 of 27,317 rows had at least one).
+
+\paragraph{Learners and evaluation.} Logistic regression (median imputation and missingness indicators fitted within
+training folds, standardisation, L2 penalty with $C = 1$) and gradient boosting (histogram-based, default settings,
+missing values left in place). Five folds by writer; the statistic is the matched AUC of the predicted probabilities;
+the interval resamples writers and refits (200 resamples; no failures). As registered, ``Copies are grouped by the
+original writer into the same split, and pairs are built within copies.''
+
+\paragraph{Gate.} A constant was added to the stall rows of one quantity (the change in character presses per minute,
+after uniform jitter) until its own AUC reached 0.58; both learners then gave a lower bound above 0.55 (reached AUC
+0.5800).
+
+\paragraph{Results.} Main: logistic regression 0.567 (0.5497--0.578), gradient boosting 0.540 (0.525--0.558). Unmatched
+windows (up to 50 positives per writer and five negatives each, weights balanced within writers): 0.529 (0.512--0.546)
+and 0.526 (0.511--0.541). Burst threshold at $1 \times \theta$: 0.568 (0.5519--0.581) and 0.551 (0.530--0.563).
+Excluding stalls and controls with windows of fewer than three presses or no intervals (3,008 stalls kept): 0.548
+(0.522--0.555) and 0.511 (0.489--0.532). The lower bound above 0.55 at $1 \times \theta$ is not reported as the
+discovery of a difference. Gradient boosting with a nested grid search (50 resamples): 0.567
+(0.544--0.576). The gate was not applied to the sensitivity analyses.
+
+\section{Calibration of the false-equivalence rate}
+\label{app:calibration}
+
+On the 319 seen writers, a provisional signal was built from the real signal by shifting the stall values until the
+pooled AUC reached the target (difference 0.000001 or less), and the decision rule was applied to 500 draws of 138
+writers, sharing the resampling seed across the two tolerances and the two signals as in the actual run. With a signal
+at the boundary and the other at 0.50, the proportion judged equivalent under both tolerances was:
+
+\begin{center}\small
+\begin{tabular}{l c c c c}
+  \toprule
+  & \multicolumn{2}{c}{Without replacement} & \multicolumn{2}{c}{With replacement} \\
+  Boundary & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ \\
+  \midrule
+  0.55 & 1.2\% & 1.4\% & 5.2\% & 3.0\% \\
+  0.45 & 0\% & 0.6\% & 2.4\% & 3.2\% \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+The signal at 0.50 was judged equivalent in every draw, so the proportion for the full decision equals the per-signal
+proportion; with both signals at the boundary it was 0.6\% or less with replacement. With $\varepsilon = 0.001$ alone,
+the Stuck-state probability at 0.45 reached 3.6\% with replacement. At AUC 0.50 every draw was judged equivalent, and
+insufficient precision never occurred. In the seen writers as a whole the top 10\% held 46\% of pairs and the effective number of
+writers was 97 of 312; in the holdout these were 42\% and 50.5 of 139. The draws of 138 writers (146 holdout writers scaled by the share of seen writers with 10 minutes of observation,
+319 of 338), rebuilt afterwards from
+the same random stream [E], were about as concentrated as the holdout: with replacement, a median of 43.4 effective
+writers (2.5th to 97.5th percentiles 32.3--58.2) and a median top-10\% share of 46\%; without replacement, 43.5
+(35.2--55.3).
+
+\section{Exploration outside the registration}
+\label{app:explore}
+
+Conditions were committed before each computation; the base seed was 20261126. \textbf{CS1 2021 edition} (31 seen
+writers; intermediates rebuilt with the frozen conversion, skipping the 13 writers set aside): matched 0.493
+(0.485--0.501) and 0.486 (0.475--0.499); unmatched 0.495 and 0.492, no rise. \textbf{KLiCKe} (4,992 writers): matched
+0.508 (0.503--0.513) and 0.514 (0.509--0.519), inside the band; unmatched 0.494 and 0.494, no rise. These values differ
+from the description in Section~\ref{sec:res-main} only in the seed of the control draw and do not replace it.
+\textbf{CoAuthor} (43 seen writers, 1,157 sessions; stalls with events around AI suggestions in the preceding 60~s and
+controls with such events within 60~s on either side removed): sessions were joined per writer to rebuild the onsets,
+after checking that the rebuilt onsets matched the replay tool in all cases. The matched comparison had 541 stalls and
+121,475 pairs among 33 writers, but the top 10\% of writers held 94\% of pairs (effective writers 1.5); the intervals were
+wider than 0.10 (0.625 and 0.378 as point estimates), so the result is insufficient precision. The unmatched AUC was
+0.525 and 0.471, no rise. These values are not counted as evidence of equivalence. \textbf{Three-way position} [E-H]:
+in the main stratum, stalls and controls fell after a newline in 13.8\% and 13.5\%, after a token boundary in 53.9\% and
+50.9\%, and within a token in 32.3\% and 35.6\%; matching on these three classes gave 0.490 (0.479--0.5006) and 0.488
+(0.476--0.4999), with 394,394 pairs, effective writers 52.3 and interval widths 0.022 and 0.024.
+
+\section{Threshold table and conversion of the band}
+\label{app:threshold}
+
+With the 80th, 90th and 95th percentiles of each writer's drawn controls as thresholds, the pooled share of stall
+run-ups above the threshold was 19.6\%, 10.3\% and 5.4\% for the Stuck-state probability and 19.3\%, 9.3\% and 5.2\% for
+the friction axis; the controls exceeded them in 19.5\%, 9.6\% and 4.6\%. The per-writer medians were 20.0\%, 9.1\% and
+4.3\% and 18.5\%, 8.7\% and 4.0\% against 19.5\%, 9.6\% and 4.5\%.
+
+The conversion of the band [D] was made on the seen writers after the band was set. For each writer, the 90th percentile
+of the signal over the control candidates was the threshold, and a trigger fired when the signal exceeded it as the pause
+reached 2~s. Provisional signals were shifted so that the AUC reached a target. Firings were about 11.5 to 12.6 per hour
+at AUC 0.50 (counting only pauses in the no-event stratum over all observed time, so lower than a real trigger), and the
+share of firings that fell on pauses that became stalls was 8.2--8.9\% at 0.50, 8.9--10.0\% at 0.55, 9.3--12.4\% at
+0.60, 10.8--15.2\% at 0.65 and 12.9--18.4\% at 0.70. In the essays, the rise at 0.55 was 0.3--1.1 points. The time an
+onset is raised after the last character input is fixed by the definition ($s + \theta$), so the stall clock itself
+carries no information about typing.
+
+\section{Scope of the search for prior work}
+\label{app:novelty}
+
+Two rounds of search were made, on 2026-11-05 and 2026-11-06. The first split the question into four sub-questions
+(anticipating events from behaviour logs; the limits of proxy labels such as tool use; pauses in writing-process
+research; comparisons across tasks) and the second into three (detection of struggle in CS1; the measurement of pauses;
+the evaluation of detectors: metrics, equivalence, matched and case-control designs, grouped validation). Each
+sub-question was searched in parallel by a language-model agent with web search over scholarly indexes and freely
+available full texts, and each included a search for counter-evidence (reports of successful anticipation, or the same
+analysis already published). Claims drawn from the results were judged by three independent votes, again by language
+models, on internal validity, generalisation and robustness. The author checked the primary text of the works on which
+the claims of this paper rest; the search terms and the record of each work are in the literature record attached to the
+registration. We found no study that, with keystrokes alone, compared the seconds-scale run-up to events with pauses that
+did not become events under matching, and none that judged such an AUC against a band set in advance with a frequentist
+interval. The affect detection works in Section~\ref{sec:related} were added afterwards from their abstracts. The search
+may have missed work, in particular work not indexed in English.

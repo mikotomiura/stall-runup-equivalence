@@ -1,0 +1,78 @@
+\section{Data, stalls and the estimator}
+\label{sec:data}
+
+\subsection{The CS1 data and the holdout}
+
+The confirmatory data are the 2019 edition of a public keystroke dataset from an introductory programming course at a
+US university, in which students wrote Python in a browser-based editor and every edit was logged in the ProgSnap2
+format \cite{edwards2023cs1}. A writer is a student and an assignment is one unit; within an assignment, events more than
+30 minutes apart start a new work block. Before any analysis, 146 of the 487 writers were drawn at random as the holdout
+(Appendix~\ref{app:prereg}). Of these, 145 had at least one assignment (one writer had a single checkpoint row and no key
+press), giving 438 assignments; 140 had at least 10 minutes of observation, and 139 had at least one stall paired with
+a control. Of the 341 seen writers, 338 had an assignment, 319 had at least 10 minutes of observation and 312 had a stall
+paired with a control; these are the seen writers of the descriptions [D] and of the calibration.
+
+The data record edit events rather than key presses, so the input to the estimator was built by a mapping fixed before
+the study (Appendix~\ref{app:definitions}). An insertion of one character with a recorded key became a key press of that
+character's kind, a deletion with a recorded key became a backspace, and an undo or redo with a key became a non-text
+key press. Edits without a recorded key, pastes, cuts and drags did not become key presses but were kept as events, and so were
+runs of the program and switches between tasks; only runs, pastes and switches define the event stratum. Because the data have no key release, the release was placed 100~ms
+after each press but no later than 1~ms before the next press, so the estimator's flight time is the inter-keystroke
+interval minus 100~ms when the interval exceeds 100~ms, 1~ms for shorter intervals and 0 for simultaneous presses, a
+definition that differs from that of recorded releases in writing data. Table~\ref{tab:mapping} (Appendix~\ref{app:definitions}) shows how the edits of the holdout
+writers were distributed. Every insertion with a recorded key was a single character. Insertions of several characters were rare
+(1.4\% of edit rows) but carried 53.7\% of the inserted characters, mostly through pastes; none of them reached the
+estimator as key presses.
+
+
+\subsection{Pauses and stalls}
+
+A \emph{pause} is the interval from one character input (a letter, digit, symbol, space, newline or tab) to the next
+character input in the same assignment, so it can contain key presses that are not characters, such as deletions. A
+stall is defined by a rule carried over from an earlier preregistered definition (Appendix~\ref{app:definitions}). Let
+condition A hold at time $t$ when, in the window $(t - 30\,\mathrm{s}, t]$, the number of insertion presses minus the
+number of deletion presses is less than one. When condition A rises from false to true at time $s$ and stays true until
+$t_0 = s + \theta$, an onset is raised at $t_0$. Here $\theta$ is the 0.99 quantile of the writer's inter-keystroke
+intervals so far in the assignment, defined once at least 100 intervals exist; it personalises the moment at which the
+stall starts. We write $u$ for the last character input at or before $t_0$. An onset becomes a \emph{stall} when the
+pause that starts at $u$ lasts at least 30~s, $u$ is earlier than $s$, and condition A is false at $u$ (the writer had
+net production in the preceding 30~s). A stall is therefore not simply 30~s without character input: condition A must
+first become true and then stay true for $\theta$, so the onset lies well after $u$. In the holdout's main stratum
+[E-H], the onset came a median of 48.5~s after $u$ (10th and 90th percentiles 35.2 and 77.6~s), and the next character
+input a median of 97.2~s after $u$ (78.6\% of stalls lasted 60~s or more; a few very long stops raise the mean to 247~s and
+428~s; Appendix~\ref{app:definitions} gives the edges of observation). The 0.99 quantile was inherited from the earlier definition and was not chosen
+in this study; the 30~s length of a stall and the 2~s lower limit of the controls below are fixed.
+
+What happens inside a pause is not used to match stalls and controls. In the holdout's main stratum
+(Section~\ref{sec:design}), 47\% of stalls contained a run of the program, a paste or a switch inside the pause,
+against 6\% of controls; 52\% of stalls and 69\% of controls contained no key press of any kind, and the 90th percentile
+of key presses inside the pause was 13 for stalls and 5 for controls.
+
+\subsection{The estimator and its two signals}
+
+The estimator reads the key presses and releases and, every second, computes the five quantities named in
+Section~\ref{sec:intro} over the preceding 30~s. Each quantity is mapped to $[0, 1]$ against a reference value and combined into two latent axes, a friction
+axis ($0.30$ correction ratio $+ 0.25$ pauses after deletion $+ 0.25$ flight time $+ 0.20$ number of pauses) and an
+engagement axis, whose exponentially smoothed values are quantised into the observations of a three-state hidden Markov
+model updated by the forward algorithm. The designer named the states Flow, Incubation and Stuck; we use only the
+probability of the third and do not interpret the names. All coefficients were set by hand (Section~\ref{sec:intro}) and are listed in
+Appendix~\ref{app:coefficients}; the version used is fixed (Appendix~\ref{app:definitions}). A replay tool re-reads a recorded stream and writes one
+estimate row per second together with the stall onsets.
+
+We use two signals, each taken as the change over 30~s: the \emph{change in the Stuck-state probability}, the
+probability at time $t$ minus the probability 30~s earlier, and the \emph{change in the smoothed friction axis}, defined
+in the same way. We write $\Delta p_{\mathrm{stuck}}$ and $\Delta x$ for them in tables. The levels at $t$ are reported
+as descriptions. The Stuck-state probability has a floor: in the holdout as a whole, 40.5\% of the 2,602,660 estimate
+rows were below 0.02, and the share per writer ranged from 26\% to 62\% between the 10th and 90th percentiles. Both
+signals nevertheless moved on this input. The standard deviation of the 30-second change over all estimate rows was
+0.270 for the Stuck-state probability and 0.187 for the friction axis, and within stalls both rose after $u$: the mean
+Stuck-state probability went from 0.135 at $u$ to 0.193 at $u + 20$~s, and the mean friction axis from 0.291 to 0.412
+(exploration on the holdout; Appendix~\ref{app:sensitivity}).
+
+\subsection{The essay-writing and co-writing data}
+
+KLiCKe is a corpus of argumentative essays written by 4,992 students in one session each, with recorded press and
+release times \cite{tian2025klicke}. Sessions with fewer than 200 key presses are excluded, the boundary type is whether
+the key press at $u$ is a space, newline or sentence punctuation, and no event stratum is used. We had analysed it
+before this study, so its results are descriptions on already seen data. CoAuthor, a dataset of writing with suggestions
+from a language model \cite{lee2022coauthor}, appears only in the exploration (Appendix~\ref{app:explore}).

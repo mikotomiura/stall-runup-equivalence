@@ -1,0 +1,102 @@
+{
+ "rows": 27317,
+ "stalls": 4554,
+ "gate": {
+  "d_p_stuck": true,
+  "d_ewma_x": true,
+  "p_stuck": true,
+  "ewma_x": true
+ },
+ "features": {
+  "level_presses": {
+   "paired_auc_eps0": 0.44575824132447645,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "level_interval_q10": {
+   "paired_auc_eps0": 0.5190715917531924,
+   "stall_rows_dropped": 183,
+   "control_rows_dropped": 536
+  },
+  "level_interval_q50": {
+   "paired_auc_eps0": 0.5212579320366413,
+   "stall_rows_dropped": 183,
+   "control_rows_dropped": 536
+  },
+  "level_interval_q90": {
+   "paired_auc_eps0": 0.5033204904608815,
+   "stall_rows_dropped": 183,
+   "control_rows_dropped": 536
+  },
+  "level_intervals_ge_2s": {
+   "paired_auc_eps0": 0.45311918483348185,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "level_intervals_ge_10s": {
+   "paired_auc_eps0": 0.4952794945245802,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "level_backspace_share": {
+   "paired_auc_eps0": 0.48850852609141865,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "level_burst_mean": {
+   "paired_auc_eps0": 0.4669719687827764,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "level_char_presses_per_min": {
+   "paired_auc_eps0": 0.4433271492855451,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "change_presses": {
+   "paired_auc_eps0": 0.4972714533828057,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "change_interval_q10": {
+   "paired_auc_eps0": 0.4921092243906304,
+   "stall_rows_dropped": 1410,
+   "control_rows_dropped": 5333
+  },
+  "change_interval_q50": {
+   "paired_auc_eps0": 0.5064132357989807,
+   "stall_rows_dropped": 1410,
+   "control_rows_dropped": 5333
+  },
+  "change_interval_q90": {
+   "paired_auc_eps0": 0.5079435920458447,
+   "stall_rows_dropped": 1410,
+   "control_rows_dropped": 5333
+  },
+  "change_intervals_ge_2s": {
+   "paired_auc_eps0": 0.4998280120447958,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "change_intervals_ge_10s": {
+   "paired_auc_eps0": 0.5031366655764697,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  },
+  "change_backspace_share": {
+   "paired_auc_eps0": 0.49670779703000234,
+   "stall_rows_dropped": 1237,
+   "control_rows_dropped": 4586
+  },
+  "change_burst_mean": {
+   "paired_auc_eps0": 0.5054753133156427,
+   "stall_rows_dropped": 1237,
+   "control_rows_dropped": 4586
+  },
+  "change_char_presses_per_min": {
+   "paired_auc_eps0": 0.49309510651975325,
+   "stall_rows_dropped": 0,
+   "control_rows_dropped": 0
+  }
+ }
+}

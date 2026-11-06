@@ -1,0 +1,222 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{In the matched comparison, the discrimination AUC fell within the equivalence band}
+\label{sec:res-main}
+
+The holdout gave 4,554 stalls in the no-event stratum, each with up to five controls, for 709,352 pairs among 139
+writers (effective number of writers 50.5). For both signals and both tolerances, the 95\% interval lay inside the band
+(Table~\ref{tab:main}, Figure~\ref{fig:forest}), so the preregistered test was passed [C]. The share of tied pairs was
+6.5\% for the Stuck-state probability and 0.34\% for the friction axis at $\varepsilon = 0.001$, far from the
+degeneracy rule. The writer-equal version gave 0.491 and 0.488 [C-D].
+
+\begin{table}
+  \caption{Discrimination AUC of the 30-second change at $u$ in the matched comparison, CS1 holdout, no-event stratum
+  (4,554 stalls, 709,352 pairs, 139 writers). [C] except the last column [C-D].}
+  \label{tab:main}
+  \centering\small
+  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X c c c l c}
+    \toprule
+    Signal & $\varepsilon$ & AUC & 95\% interval & Result & Writer-equal \\
+    \midrule
+    Change in the Stuck-state probability, $\Delta p_{\mathrm{stuck}}$ & 0.001 & 0.489 & 0.479--0.4995 & equivalent & 0.491 \\
+     & 0 & 0.489 & 0.479--0.5001 & equivalent & 0.492 \\
+    Change in the smoothed friction axis, $\Delta x$ & 0.001 & 0.487 & 0.476--0.497 & equivalent & 0.488 \\
+     & 0 & 0.487 & 0.476--0.497 & equivalent & 0.488 \\
+    \bottomrule
+  \end{tabularx}
+
+  \smallskip
+  \parbox{\linewidth}{\footnotesize Note. All four point estimates lie slightly below 0.5; three of the four intervals
+  exclude 0.5, so these three are both statistically different from 0.5 and equivalent \cite{lakens2018equivalence}.}
+\end{table}
+
+\begin{figure}
+  \centering
+  \Description{A dot plot with horizontal intervals. Each row is an analysis; for each row two points with 95\% intervals
+  are shown, one for the change in the Stuck-state probability and one for the change in the friction axis. A grey
+  vertical band marks the equivalence band from 0.45 to 0.55. The main analysis lies at about 0.49 for both signals,
+  inside the band. The writer-equal version, the not-at-floor pairs selected at the start point, comparisons within
+  assignments, matching on whitespace or symbol, the version that drops stalls with events inside the pause, the event
+  stratum, three-way matching on position, the 2021 CS1 writers and the essay data all lie inside the band, between
+  about 0.47 and 0.52. Only the not-at-floor pairs selected at the end point lie lower, at about 0.465, with intervals
+  crossing 0.45.}
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.66\linewidth, height=11cm,
+      xmin=0.42, xmax=0.58, xtick={0.42,0.45,0.50,0.55,0.58},
+      x tick label style={/pgf/number format/fixed, /pgf/number format/precision=2, font=\footnotesize},
+      xlabel={Discrimination AUC ($\varepsilon = 0.001$) with 95\% interval}, label style={font=\footnotesize},
+      ytick={1,...,11}, y dir=reverse, ymin=0.4, ymax=11.6,
+      yticklabels={{Main [C]}, {Writer-equal [C-D]}, {Not at floor, start [C-D]}, {Within assignment [C-D]},
+        {Whitespace or symbol [C-D]}, {No events in pause [C-D]}, {Event stratum [C-D]}, {Not at floor, end [C-D]},
+        {Three-way position [E-H]}, {CS1 2021, 31 writers [E]}, {KLiCKe essays [D]}},
+      y tick label style={font=\footnotesize, align=right},
+      legend style={font=\footnotesize, draw=none, at={(0.5,1.01)}, anchor=south, legend columns=1}, legend cell align=left,
+      xmajorgrids, major grid style={black!12},
+    ]
+      \fill[figband] (axis cs:0.45,0.4) rectangle (axis cs:0.55,11.6);
+      \draw[black!60, dashed] (axis cs:0.5,0.4) -- (axis cs:0.5,11.6);
+      \addplot+[only marks, mark=*, color=figc1, error bars/.cd, x dir=both, x explicit]
+        coordinates {
+          (0.4892,0.85) -= (0.0105,0) += (0.0103,0)
+          (0.4912,1.85) -= (0.0182,0) += (0.0178,0)
+          (0.4979,2.85) -= (0.0215,0) += (0.0206,0)
+          (0.4951,3.85) -= (0.0113,0) += (0.0107,0)
+          (0.4901,4.85) -= (0.0104,0) += (0.0111,0)
+          (0.5047,5.85) -= (0.0121,0) += (0.0135,0)
+          (0.4946,6.85) -= (0.0177,0) += (0.0204,0)
+          (0.4649,7.85) -= (0.0218,0) += (0.0207,0)
+          (0.4898,8.85) -= (0.0108,0) += (0.0108,0)
+          (0.4925,9.85) -= (0.0079,0) += (0.0083,0)
+          (0.506,10.85) -= (0.005,0) += (0.005,0)
+        };
+      \addlegendentry{Change in the Stuck-state probability}
+      \addplot+[only marks, mark=square*, color=figc2, error bars/.cd, x dir=both, x explicit]
+        coordinates {
+          (0.4867,1.15) -= (0.0109,0) += (0.0108,0)
+          (0.4875,2.15) -= (0.0156,0) += (0.0173,0)
+          (0.4977,3.15) -= (0.0200,0) += (0.0190,0)
+          (0.4920,4.15) -= (0.0112,0) += (0.0115,0)
+          (0.4890,5.15) -= (0.0115,0) += (0.0113,0)
+          (0.4999,6.15) -= (0.0163,0) += (0.0151,0)
+          (0.4960,7.15) -= (0.0189,0) += (0.0202,0)
+          (0.4656,8.15) -= (0.0173,0) += (0.0162,0)
+          (0.4877,9.15) -= (0.0120,0) += (0.0122,0)
+          (0.4861,10.15) -= (0.0107,0) += (0.0129,0)
+          (0.513,11.15) -= (0.005,0) += (0.005,0)
+        };
+      \addlegendentry{Change in the smoothed friction axis}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Discrimination AUC of the main analysis, the sensitivity analyses and the exploration, with the equivalence
+  band shaded. Labels give the status of each analysis (Table~\ref{tab:status}). Values with $\varepsilon = 0$ are
+  in Table~\ref{tab:main} and Appendix~\ref{app:sensitivity}.}
+  \label{fig:forest}
+\end{figure}
+
+The levels of the signals at $u$ discriminated slightly more than their changes, and also stayed inside the band:
+0.524 (0.510--0.537) for the Stuck-state probability and 0.521 (0.508--0.535) for the friction axis [C-D]. In the essay
+data seen before the study, the same statistic gave 0.506 (0.501--0.511) and 0.513 (0.508--0.518) for the changes and
+0.569 and 0.580 for the levels [D]. With the 90th percentile of each writer's controls as the threshold, 10.3\% of stall
+run-ups exceeded it on the Stuck-state probability and 9.3\% on the friction axis, against 9.6\% of controls [C-D]; these
+are rates in the selected set of stalls and controls, not the performance of a trigger with a threshold set
+independently and run continuously.
+
+\subsection{The main sensitivity analyses were also equivalent}
+
+Of the preregistered sensitivity analyses, four bear on how the main result should be read [C-D]
+(Figure~\ref{fig:forest}). The Stuck-state probability is mostly at the floor of the estimate: 61\% of stalls and 65\%
+of controls had a probability below 0.02 at $u$. Keeping only the pairs whose stall and control were both off the floor
+at the start of the window, $u - 30$~s, left 2,090 stalls and gave 0.498 for both signals, equivalent under both
+tolerances. Drawing controls only within the same assignment gave 0.495 and 0.492; matching on whether the character at
+$u$ is whitespace or a symbol, instead of a newline, gave 0.490 and 0.489. Extending the stratum window to the end of
+the pause, which removes stalls with a run, paste or switch inside the pause, left 2,427 stalls and gave 0.505
+(0.493--0.518) and 0.500 (0.484--0.515). All four were equivalent for both signals and both tolerances. Selecting
+off-floor pairs at the end point $u$ instead gave about 0.465 with intervals crossing 0.45 (undecidable on the lower
+side); that version selects on the level reached at $u$ and thus on the change itself, which is why the start-point
+version was registered as the main one. The event stratum gave 0.495 and 0.496 (effective writers 35.7). The remaining
+sensitivity analyses, all equivalent, and the spread over the seed of the control draw (0.488 to 0.494 for the
+Stuck-state probability over 20 seeds) are in Appendix~\ref{app:sensitivity}.
+
+\subsection{The unmatched comparison did not show a rise beyond the band}
+
+In the secondary comparison of windows within writers (173,511 windows; 45,405 positives; 89\% of stalls had at least one
+positive window), the unmatched AUC was 0.497 (0.491--0.503) for the Stuck-state probability and 0.494 (0.489--0.4997)
+for the friction axis [C-D]. The registered condition for this comparison, a lower bound above 0.55, was not met for
+either signal, so a rise of the kind that unmatched window-by-window evaluations would show was not replicated. Because the unmatched AUC was not above 0.5,
+the attenuation after re-matching by phase is not interpreted (Appendix~\ref{app:unmatched}). We therefore report only
+the equivalence in the matched comparison and do not contrast it with the unmatched one.
+
+\subsection{Standard quantities and learners neither established nor excluded the upper side of the band}
+\label{sec:res-learners}
+
+The gate passed for both learners on the holdout: with a known difference added to one quantity so that its own AUC was
+0.580, both learners recovered an interval with a lower bound above 0.55 [C-D]. On the 18 quantities, logistic
+regression reached 0.567 (0.5497--0.578) and gradient boosting 0.540 (0.525--0.558). Both intervals cross 0.55, so the
+learners neither established nor excluded an AUC above 0.55. Applied to unmatched windows, the same learners gave 0.529
+(0.512--0.546) and 0.526 (0.511--0.541), lower than in the matched comparison and without a lower bound above 0.55, as the
+registration asks to report beside the gate. Their sensitivity analyses moved in both directions
+(Appendix~\ref{app:learners}).
+
+\subsection{What bounds the reading of the equivalence}
+\label{sec:res-bounds}
+
+Three explorations outside the registration, each with conditions committed before it was computed, bound how the
+equivalence can be read. They do not enter the decision.
+
+\paragraph{Positive control of the estimator [E].} On the 319 seen writers, we rebuilt the estimate rows after changing
+the key presses in the 30~s before every stall's $u$, keeping the stalls, controls and draws fixed. The intervals
+between key presses were multiplied by $k$ (keeping the press at $u$), or a backspace and a retyped key were inserted
+into a share $r$ of the intervals (Table~\ref{tab:poscontrol}). Unchanged, the rebuilt rows matched the stored ones in all
+1,042 assignments. Because the estimator carries its state forward, the change also altered 34--47\% of the drawn
+controls at the larger sizes, so we also report a version that keeps the controls at their unchanged values. At the
+size of the observed difference (in the 30~s before $u$, the median of the mean interval between presses was 598~ms for
+stalls and 605~ms for controls, and the median share of backspaces 0.091 and 0.100), the AUC hardly moved: 0.493--0.499
+for intervals multiplied by 1.02 to 1.1. With controls fixed, the friction axis left the band only when the intervals
+were doubled or half of them received a correction, and the Stuck-state probability stayed inside the band even when
+the intervals were tripled and fell when corrections were added.
+
+\begin{table}
+  \caption{Positive control on the seen CS1 writers [E]: discrimination AUC ($\varepsilon = 0.001$) after changing the key
+  presses in the 30~s before each stall's $u$, with the controls re-estimated or kept at their unchanged values. Values
+  whose 95\% interval lies outside the band are in bold; the half-width of the intervals was 0.007--0.008.}
+  \label{tab:poscontrol}
+  \centering\small
+  \begin{tabular}{l cc cc}
+    \toprule
+    & \multicolumn{2}{c}{Controls re-estimated} & \multicolumn{2}{c}{Controls fixed} \\
+    Change & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ \\
+    \midrule
+    None & 0.492 & 0.490 & 0.492 & 0.490 \\
+    Intervals $\times 1.02$ & 0.493 & 0.493 & 0.493 & 0.492 \\
+    Intervals $\times 1.1$ & 0.499 & 0.498 & 0.498 & 0.496 \\
+    Intervals $\times 1.5$ & 0.518 & 0.524 & 0.515 & 0.523 \\
+    Intervals $\times 2$ & 0.537 & \textbf{0.564} & 0.532 & \textbf{0.564} \\
+    Intervals $\times 3$ & \textbf{0.562} & \textbf{0.627} & 0.553 & \textbf{0.626} \\
+    Corrections, $r = 0.05$ & 0.496 & 0.512 & 0.490 & 0.509 \\
+    Corrections, $r = 0.25$ & 0.500 & \textbf{0.562} & 0.480 & 0.557 \\
+    Corrections, $r = 0.5$ & 0.495 & \textbf{0.563} & 0.469 & \textbf{0.558} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Later-pause controls [E-H].} A trigger that fires after a pause has lasted $x$ seconds compares stalls with
+pauses that outlasted $x$. Restricting the controls in the holdout to pauses of at least 5~s or 10~s gave 0.491 and 0.491,
+and 0.494 and 0.497, all inside the band (effective writers 49.8 and 48.6).
+
+\paragraph{Signals and learners on the same pairs [E-H].} On the holdout's main stratum, with the learners' statistic
+($\varepsilon = 0$) and over the learners' 200 resamples of writers (their values and intervals reproduced the
+confirmatory ones exactly), logistic regression exceeded the two 30-second changes by 0.078 (95\% interval 0.057--0.093)
+and 0.081 (0.057--0.097), and the levels at $u$ by 0.042 (0.019--0.059) and 0.046 (0.021--0.064); gradient boosting
+exceeded the changes by 0.051 and 0.054 but not clearly the levels. Taken alone, the quantities closest to the learners
+were levels over the 30~s before $u$: stalls were preceded by fewer key presses (AUC 0.446) and fewer characters per
+minute (0.443), whereas every 30-second change among the 18 quantities lay between 0.492 and 0.508. The learners thus
+drew mainly on how much the writer had typed, a factor the matching did not control, rather than on a change in the
+run-up.
+
+\subsection{In the exploration outside the registration, the discrimination AUC also stayed inside the band}
+\label{sec:res-explore}
+
+After the confirmation we applied the same procedure, with conditions committed before each computation, to other data
+(Table~\ref{tab:explore}). In the 31 seen writers of the 2021 CS1 edition, all four combinations were inside the band
+[E]. Matching stalls and controls on three positions at once (after a newline, after a token boundary, within a token)
+in the holdout gave 0.490 and 0.488 [E-H]; stalls were slightly more frequent after a token boundary than controls (53.9\%
+against 50.9\%). The procedure also ran on the full essay corpus and, with sessions joined per writer and events around AI suggestions
+removed, on the seen co-writing data (Appendix~\ref{app:explore}); in the co-writing data the intervals were too wide to decide, because one or two writers
+held most pairs.
+
+\begin{table}
+  \caption{Exploration outside the registration: discrimination AUC of the 30-second change ($\varepsilon = 0.001$; the
+  value with $\varepsilon = 0$ differs by at most 0.001).}
+  \label{tab:explore}
+  \centering\small
+  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X l c c}
+    \toprule
+    Data & Status & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ \\
+    \midrule
+    CS1 2021 edition, 31 seen writers & [E] & 0.493 (0.485--0.501) & 0.486 (0.475--0.499) \\
+    CS1 2019 holdout, three-way position & [E-H] & 0.490 (0.479--0.5006) & 0.488 (0.476--0.4999) \\
+    \bottomrule
+  \end{tabularx}
+\end{table}

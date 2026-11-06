@@ -1,0 +1,19 @@
+{
+ "sets": [
+  "w_ms=15000"
+ ],
+ "units": 438,
+ "ok": 438,
+ "failed": 0,
+ "same_as_input": 42,
+ "onsets_out": 12251,
+ "onsets_in": 9532,
+ "stderr_nonempty": 0,
+ "overrides": [
+  {
+   "key": "w_ms",
+   "frozen": 30000,
+   "value": 15000
+  }
+ ]
+}

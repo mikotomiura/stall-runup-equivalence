@@ -1,0 +1,20 @@
+{
+ "cs1": {
+  "units": 1078,
+  "onset_mismatch_units": 0,
+  "theta_mismatch": 0,
+  "stderr_nonempty_units": 0,
+  "writers_eligible": 319,
+  "writers_excluded_obs_lt_10min": 19
+ },
+ "klicke_k6_reproduction": {
+  "d_p_stuck": {
+   "pooled_auc_reproduced": 0.5147449155599382,
+   "k6": 0.5147449155599382
+  },
+  "d_ewma_x": {
+   "pooled_auc_reproduced": 0.5212112238098764,
+   "k6": 0.5212112238098764
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "git_head": "5f3469e7882367c26acb2ce63ebb6c7438cc19f1",
+ "git_dirty_paths": [],
+ "gse_replay_sha256": "26cae610383fb6de01651cc904895efa72a691c3dd1e27689a14a4ca51c33bb3",
+ "python": "3.14.4",
+ "numpy": "2.5.2",
+ "scripts_sha256": {
+  "experiments/20261105-findings-paper1-prefreeze/scripts/prefreeze.py": "c1ab0c1825e7b6ce4268d646b25ae209c9253c52c64a82818c6feed4789fc632",
+  "experiments/20261104-cs1-landscape/scripts/build_cs1.py": "b64bdf74326f3975661f7700ebae8ec132d264ccb98276fdefef8904bd8bb30e",
+  "experiments/20261104-cs1-landscape/scripts/analyze_cs1.py": "0645fd93e58428bc7482e971309b1393e049ed81d453165aee9cdb0ce1c03ecc",
+  "experiments/20261102-public-data-landscape/scripts/analyze_landscape.py": "f1a107ddcdb43325745dbef1bdb957e6a56cdfbdbc72d330df2db6c09708d958",
+  "experiments/20261101-klicke-early-stall-trigger/scripts/analyze_item2.py": "9c8ca6a498c034c49021a18221c29321e86d9dc6eade148ce8f48e5b46abcc22",
+  "experiments/20261031-coauthor-pre-request-signal/scripts/convert.py": "23e12a71f00d9b5917a06f4b44cdcda13dde701c71a6f7680fa0f5dfc5206a78",
+  "experiments/20261031-coauthor-pre-request-signal/scripts/add_feat.py": "f8d402dd1ecd5400e9c7700cd6385d59198023ae025b4390d6494d66e01ec2a7"
+ }
+}

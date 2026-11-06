@@ -1,0 +1,34 @@
+{
+ "cs1": {
+  "onsets_total": 24179,
+  "onsets_no_text_before": 0,
+  "onsets_gap_lt_30s": 3265,
+  "onsets_duplicate_anchor": 973,
+  "stall_anchors": 19941,
+  "anchor_inside_stall": 1679,
+  "stall_warm_or_block": 542,
+  "stall_no_row": 0,
+  "stall_nonfinite": 0,
+  "stall_no_control": 0,
+  "controls_dropped_inside_stall": 15995,
+  "cand_newline_none": 21086,
+  "stall_rows_newline_none": 1225,
+  "cand_newline_event": 7352,
+  "stall_rows_newline_event": 1260,
+  "cand_other_none": 138991,
+  "stall_rows_other_none": 5698,
+  "cand_other_event": 38342,
+  "stall_rows_other_event": 9537
+ },
+ "klicke": {
+  "onsets_total": 33049,
+  "onsets_no_text_before": 3,
+  "onsets_gap_lt_30s": 10239,
+  "onsets_duplicate_anchor": 1355,
+  "stall_anchors": 21452,
+  "anchor_inside_stall": 335,
+  "stall_ineligible": 187,
+  "stall_no_control": 29,
+  "controls_dropped_inside_stall": 27075
+ }
+}

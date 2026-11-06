@@ -1,0 +1,25 @@
+{
+ "sets": [
+  "q=0.995",
+  "warmup_count=200"
+ ],
+ "units": 1078,
+ "ok": 1078,
+ "failed": 0,
+ "same_as_input": 127,
+ "onsets_out": 14624,
+ "onsets_in": 24187,
+ "stderr_nonempty": 0,
+ "overrides": [
+  {
+   "key": "q",
+   "frozen": 0.99,
+   "value": 0.995
+  },
+  {
+   "key": "warmup_count",
+   "frozen": 100,
+   "value": 200
+  }
+ ]
+}
