@@ -27,16 +27,10 @@ keywords:
   - equivalence testing
   - preregistration
   - matched controls
-references:
-  - type: generic
-    title: "Preregistration (Open Science Framework)"
-    url: "https://osf.io/mrkxt"
-    authors:
-      - family-names: Miura
-        given-names: Mikoto
-  - type: generic
-    title: "Results and provenance (Open Science Framework)"
-    url: "https://osf.io/uj6cy"
-    authors:
-      - family-names: Miura
-        given-names: Mikoto
+identifiers:
+  - type: url
+    value: "https://osf.io/mrkxt"
+    description: Preregistration (Open Science Framework).
+  - type: url
+    value: "https://osf.io/uj6cy"
+    description: Results and provenance (Open Science Framework).
