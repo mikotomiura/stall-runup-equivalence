@@ -11,6 +11,7 @@
   <img alt="Rust 1.88" src="https://img.shields.io/badge/rust-1.88-5c5c5c">
   <img alt="Python 3.14" src="https://img.shields.io/badge/python-3.14-4b8bbe">
   <a href="https://osf.io/mrkxt"><img alt="事前登録: OSF mrkxt" src="https://img.shields.io/badge/preregistration-osf.io%2Fmrkxt-3f8f4f"></a>
+  <a href="https://doi.org/10.5281/zenodo.24014042"><img alt="DOI 10.5281/zenodo.24014042" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.24014042-1682d4"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> | <b>日本語</b></p>
@@ -18,7 +19,9 @@
 この repository は、原稿 *A keystroke state estimator's 30-second signal changes before code-writing stalls: within
 0.025 AUC of matched pauses in a preregistered holdout*（Mikoto Miura）に付随する。事前登録・逸脱・2 つの開始の記録・結果は
 Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（事前登録）・[fqgcp](https://osf.io/fqgcp)（逸脱）・
-[ajg2x](https://osf.io/ajg2x)（2 回目の開始の記録）・[uj6cy](https://osf.io/uj6cy)（結果と来歴）。
+[ajg2x](https://osf.io/ajg2x)（2 回目の開始の記録）・[uj6cy](https://osf.io/uj6cy)（結果と来歴）。この公開物は Zenodo に
+ある: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042)（全版。0.1.0 は
+[10.5281/zenodo.24014043](https://doi.org/10.5281/zenodo.24014043)）。
 
 <p align="center">
   <img alt="合成の打鍵による動く説明図: 停滞になった休止と揃えた短い休止。それぞれの休止の始まり u の手前 30 秒を順に示す"

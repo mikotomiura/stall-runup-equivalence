@@ -11,6 +11,7 @@
   <img alt="Rust 1.88" src="https://img.shields.io/badge/rust-1.88-5c5c5c">
   <img alt="Python 3.14" src="https://img.shields.io/badge/python-3.14-4b8bbe">
   <a href="https://osf.io/mrkxt"><img alt="Preregistration: OSF mrkxt" src="https://img.shields.io/badge/preregistration-osf.io%2Fmrkxt-3f8f4f"></a>
+  <a href="https://doi.org/10.5281/zenodo.24014042"><img alt="DOI 10.5281/zenodo.24014042" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.24014042-1682d4"></a>
 </p>
 
 <p align="center"><b>English</b> | <a href="README.ja.md">日本語</a></p>
@@ -19,7 +20,9 @@ This repository accompanies the manuscript *A keystroke state estimator's 30-sec
 stalls: within 0.025 AUC of matched pauses in a preregistered holdout* (Mikoto Miura). The preregistration, the
 deviation, the two start records and the results are public on the Open Science Framework:
 [mrkxt](https://osf.io/mrkxt) (preregistration), [fqgcp](https://osf.io/fqgcp) (deviation),
-[ajg2x](https://osf.io/ajg2x) (second start record), [uj6cy](https://osf.io/uj6cy) (results and provenance).
+[ajg2x](https://osf.io/ajg2x) (second start record), [uj6cy](https://osf.io/uj6cy) (results and provenance). This
+archive is on Zenodo: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042) (all versions; version 0.1.0
+is [10.5281/zenodo.24014043](https://doi.org/10.5281/zenodo.24014043)).
 
 <p align="center">
   <img alt="Animated illustration with synthetic keystrokes: a pause that became a stall and a matched short pause; the

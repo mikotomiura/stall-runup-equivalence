@@ -17,6 +17,11 @@ authors:
 license:
   - MIT
   - CC-BY-4.0
+doi: 10.5281/zenodo.24014042
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24014043
+    description: Version 0.1.0.
 repository-code: "https://github.com/mikotomiura/stall-runup-equivalence"
 version: 0.1.0
 date-released: 2026-11-06
