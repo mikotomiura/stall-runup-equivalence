@@ -20,7 +20,8 @@
 code-writing stalls stayed inside a preregistered equivalence band against short pauses*（Mikoto Miura）に付随する。事前登録・逸脱・2 つの開始の記録・結果は
 Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（事前登録）・[fqgcp](https://osf.io/fqgcp)（逸脱）・
 [ajg2x](https://osf.io/ajg2x)（2 回目の開始の記録）・[uj6cy](https://osf.io/uj6cy)（結果と来歴）。この公開物は Zenodo に
-ある: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042)（全版。0.2.1 は
+ある: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042)（全版。0.2.2 は
+[10.5281/zenodo.24026278](https://doi.org/10.5281/zenodo.24026278)、0.2.1 は
 [10.5281/zenodo.24025995](https://doi.org/10.5281/zenodo.24025995)、0.2.0 は
 [10.5281/zenodo.24025183](https://doi.org/10.5281/zenodo.24025183)、0.1.0 は
 [10.5281/zenodo.24014043](https://doi.org/10.5281/zenodo.24014043)）。
