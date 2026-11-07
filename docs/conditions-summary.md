@@ -181,7 +181,7 @@ Status. Exploration outside the registration (holdout already opened); not used 
 
 ## experiments/20261107-findings-paper1-round3-checks/conditions.md
 
-First commit: 2026-11-07, before the computation (commit d617b426 in the authors' repository).
+First commit: 2026-11-06T16:23:35Z.
 
 Purpose. Two explorations outside the registration (X16 and X17), run after the holdout was opened; not used for decisions. Aggregates only, to `results/explore_round3.json`.
 
@@ -222,3 +222,17 @@ A descriptive overview of KLiCKe and CoAuthor (items L1-L6). CoAuthor's intermed
 First commit: 2026-11-03T12:56:05Z.
 
 A per-person learning-curve experiment, not part of the paper's tests. The paper uses only its input construction: `scripts/build_obs.py` rebuilds the CoAuthor intermediate (`coauthor_work_obs`) for the session numbers already in the earlier intermediate, without opening `holdout.json`; a check requires keys, onsets, observed intervals and events to equal the earlier intermediate exactly and the estimate-row columns to match; one mismatch stops the run.
+
+---
+
+## experiments/20261107-findings-paper1-round4-checks/conditions.md
+
+First commit: 2026-11-07T01:22:40Z.
+
+Purpose. An audit after the holdout was opened (exploration [E-H]; the decision is not changed) of how the 30-second change is formed. The signal at t is the latest estimate row at or before t minus the latest row at or before t - 30 s, with no maximum gap set; across a break in the estimate rows the nominal 30-second change could span a different time.
+
+Rows. The same rows as X16 and X17: the holdout intermediates read with `confirm_p1.py` (`load_cs1`, mode holdout), the main setting with seed 20261106, and the gate that the rows equal those of `h1_writer` and the counts equal those of `confirm_holdout.json`.
+
+What is counted. For each stall of the main stratum and each drawn control (once per cell), with a the time of the row at or before u and b the time of the row at or before u - 30 s: the lags u - a and (u - 30 s) - b (median, 99th percentile, maximum) and the share above 2 s; the share of a - b outside 28-32 s; the share with a and b in different observation intervals; and the number of rows meeting any of these ("off rows"), separately for stalls and controls.
+
+Pre-set reading. If there are no off rows, state in the paper that both rows lie in one observation interval and 28-32 s apart. Otherwise, report the counts and shares, and recompute the point estimate of the main statistic (epsilon 0.001, both signals) without the off stalls and controls (a stall left without controls is dropped); no interval; the decision is not changed.

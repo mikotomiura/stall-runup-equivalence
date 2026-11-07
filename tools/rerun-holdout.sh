@@ -47,5 +47,13 @@ REF="$EXP/results_holdout/confirm_holdout.json"
 if cmp -s "$OUT/confirm_holdout.json" "$REF"; then
   echo "confirm_holdout.json is byte-identical to the released one ($(sha "$REF"))"
 else
-  echo "confirm_holdout.json differs from the released one" >&2; exit 1
+  echo "confirm_holdout.json differs from the released one; differing entries (aggregate values only):" >&2
+  "$PY" -I -c "import json,sys
+def walk(a,b,p=''):
+    if isinstance(a,dict) and isinstance(b,dict):
+        for k in sorted(set(a)|set(b)): walk(a.get(k),b.get(k),p+'/'+str(k))
+    elif a!=b: print(p or '/', 'rerun:', json.dumps(a)[:80], 'released:', json.dumps(b)[:80])
+walk(json.load(open(sys.argv[1])),json.load(open(sys.argv[2])))" "$OUT/confirm_holdout.json" "$REF" | head -40 >&2
+  echo "gse-replay SHA-256 above; compare it, the Python version and the packages with the released environment" >&2
+  exit 1
 fi

@@ -77,7 +77,7 @@ The one CS1 call that exits with code 1 is the task the paper also excluded (its
 `--features`); both binaries exit the same way with the same message. A first CS1 run with 7 parallel jobs
 logged 9 differing `--features` calls, one of them a crash of the reference binary itself on a task it had
 completed in the paper's run; free disk space was near zero then (it fell to 1.3 GiB even with 4 jobs). The
-rerun with 4 jobs, reported above, had none. The counts are in `gate/results/`.
+cause of those differences was not established. The rerun with 4 jobs, reported above, had none. The counts are in `gate/results/`.
 
 A positive control confirms the gate can fail: a copy of this crate with one change (the initial state probabilities
 `[0.80, 0.15, 0.05]` to `[0.79, 0.16, 0.05]`, or the rank of the stall threshold quantile rounded instead of taken as

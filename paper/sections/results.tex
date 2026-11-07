@@ -8,7 +8,10 @@ The holdout gave 4,554 stalls in the no-event stratum, each with up to five cont
 writers (effective number of writers 50.5). For both signals and both tolerances, the 95\% interval lay inside the band
 (Table~\ref{tab:main}, Figure~\ref{fig:forest}), so the preregistered test was passed [C]. The share of tied pairs was
 6.5\% for the Stuck-state probability and 0.34\% for the friction axis at $\varepsilon = 0.001$, far from the
-degeneracy rule. The writer-equal version gave 0.491 and 0.488 [C-D]. Described after the data were seen, the four
+degeneracy rule. The writer-equal version gave 0.491 and 0.488 [C-D]. In an audit after the confirmation, the two
+estimate rows of the change lay in different observation segments or more than 2~s from their nominal times for 1.5\%
+of stalls and 1.0\% of controls; without them the point estimates were 0.491 and 0.487 [E-H]
+(Appendix~\ref{app:definitions}). Described after the data were seen, the four
 intervals also excluded differences larger than about 0.025 from 0.5; this narrower width is not a decision
 (Appendix~\ref{app:sensitivity}).
 
@@ -105,6 +108,32 @@ run-ups exceeded it on the Stuck-state probability and 9.3\% on the friction axi
 are rates in the selected set of stalls and controls, not the performance of a trigger with a threshold set
 independently and run continuously.
 
+\subsection{On the same pairs, learners on simple quantities of preceding typing exceeded the two changes}
+\label{sec:res-learners}
+
+This comparison sets the estimator's signals beside standard quantities judged against the same partner. In the
+registered description [C-D], learners on 18 quantities of the preceding typing (Section~\ref{sec:design}) passed their
+gate on the holdout: with a known difference added to one quantity so that its own AUC was 0.580, both recovered an
+interval with a lower bound above 0.55. Logistic regression reached 0.567 (0.5497--0.578) and gradient boosting 0.540
+(0.525--0.558), with intervals from 200 resamples of writers; both intervals cross 0.55, so the learners neither
+established nor excluded an AUC above 0.55, for logistic regression only at the resolution of 200 resamples. Applied to
+unmatched windows, the same learners gave 0.529 (0.512--0.546) and 0.526 (0.511--0.541), as the registration asks to
+report beside the gate (Appendix~\ref{app:learners}).
+
+Outside the registration [E-H], with the learners' statistic ($\varepsilon = 0$) and over their 200 resamples (which
+reproduced the registered values exactly), logistic regression exceeded the two 30-second changes by 0.078 (95\% interval
+0.057--0.093) and 0.081 (0.057--0.097), and the levels of the signals at $u$ by 0.042 (0.019--0.059) and 0.046
+(0.021--0.064); gradient boosting exceeded the changes by 0.051 and 0.054 but not clearly the levels. The learners can
+use either direction of a quantity, whereas each signal was ranked in a fixed direction; read without direction (one
+minus the AUC for the signals), the gap between logistic regression and the changes is about 0.055. Taken alone, the
+quantities closest to the learners were levels over the 30~s before $u$: stalls were preceded by fewer key presses (AUC
+0.446) and fewer characters per minute (0.443), whereas every 30-second change among the 18 quantities lay between
+0.492 and 0.508; we did not decompose the learners. Because condition A becomes true earlier after less net production
+(Appendix~\ref{app:definitions}), we split the stalls by $s - u$: the AUC of the number of key presses was 0.467 among
+the 3,426 stalls with $s - u = 30$~s and 0.393 among the 1,057 with $s - u < 30$~s; the other 71 stalls ($s - u >
+30$~s) are in neither group. The condition committed before the split reads a value between 0.46 and 0.48 as a value
+only.
+
 \subsection{The main sensitivity analyses were also equivalent}
 
 Of the preregistered sensitivity analyses, four bear on how the main result should be read [C-D]
@@ -128,22 +157,10 @@ probability and 0.494 (0.489--0.4997) for the friction axis [C-D]. The registere
 was not met, so we report only the equivalence in the matched comparison and do not contrast the two
 (Appendix~\ref{app:unmatched}).
 
-\subsection{Standard quantities and learners neither established nor excluded the upper side of the band}
-\label{sec:res-learners}
-
-The gate passed for both learners on the holdout: with a known difference added to one quantity so that its own AUC was
-0.580, both learners recovered an interval with a lower bound above 0.55 [C-D]. On the 18 quantities, logistic
-regression reached 0.567 (0.5497--0.578) and gradient boosting 0.540 (0.525--0.558), with intervals from 200
-resamples of writers. Both intervals cross 0.55, so the learners neither established nor excluded an AUC above 0.55;
-for logistic regression this holds only at the resolution of 200 resamples. Applied to unmatched windows, the same learners gave 0.529
-(0.512--0.546) and 0.526 (0.511--0.541), lower than in the matched comparison and without a lower bound above 0.55, as the
-registration asks to report beside the gate. Their sensitivity analyses moved in both directions
-(Appendix~\ref{app:learners}).
-
 \subsection{Outside the registration, the estimator barely registered changes of the observed size}
 \label{sec:res-bounds}
 
-Four explorations outside the registration, each with conditions committed before it was computed, bound how the
+Three explorations outside the registration, each with conditions committed before it was computed, bound how the
 equivalence can be read. They do not enter the decision.
 
 \paragraph{Positive control of the estimator [E].} On the 319 seen writers, we rebuilt the estimate rows after changing
@@ -154,15 +171,18 @@ into a share $r$ of the intervals (Table~\ref{tab:poscontrol}). Unchanged, the r
 controls at the larger sizes, so we also report a version that keeps the controls at their unchanged values. The
 observed difference was small and ran the other way: in the 30~s before $u$, the median of the mean interval between
 presses was 598~ms for stalls and 605~ms for controls (a ratio of about 1.01), and the median share of backspaces 0.091
-and 0.100. Slowing the run-up by 2--10\%, more than this difference, hardly moved the AUC: 0.493--0.499. With controls
+and 0.100. The injected changes ran opposite to this difference, and changes in its direction were not made. Slowing the run-up
+by 2--10\%, more than the difference, hardly moved the AUC: 0.492--0.499. With controls
 fixed, the friction axis left the band only when the intervals were doubled or half of them received a correction; the
 Stuck-state probability did not leave the band even when the intervals were tripled (0.553, an interval crossing 0.55)
-and fell when corrections were added.
+and fell when corrections were added. The levels of the signals at $u$, 0.526 and 0.527 unchanged, left the band at
+smaller changes than their 30-second changes (Table~\ref{tab:poscontrol-all}).
 
 \begin{table}
   \caption{Positive control on the seen CS1 writers [E]: discrimination AUC ($\varepsilon = 0.001$) after changing the key
   presses in the 30~s before each stall's $u$, with the controls re-estimated or kept at their unchanged values. Values
-  whose 95\% interval lies outside the band are in bold; the half-width of the intervals was 0.007--0.008.}
+  whose 95\% interval lies outside the band are in bold; the half-width of the intervals was 0.007--0.008. Selected
+  sizes; all sizes and the levels are in Table~\ref{tab:poscontrol-all}.}
   \label{tab:poscontrol}
   \centering\small
   \begin{tabular}{l cc cc}
@@ -183,29 +203,18 @@ and fell when corrections were added.
   \end{tabular}
 \end{table}
 
-\paragraph{Scaled inputs at their floor [E-H].} On the holdout's main stratum we replayed every assignment again to
-read the estimator's window quantities (the rebuilt rows matched the stored ones in all 427 assignments). At $u$, the
-scaled flight time was at its floor in 72\% of stalls and the scaled share of pauses after deletions in 83\%, and their
-30-second change was exactly zero in 64\% and 73\% of stalls; the correction ratio and the number of pauses were often
-at their ceiling (35\% and 17\% of stalls at $u$, 44\% and 51\% at $u - 30$~s). Controls were alike. Part of the
-equivalence may therefore come from the floor and ceiling of the scaling on this input.
+\paragraph{Scaled inputs at their floor or ceiling [E-H].} On the holdout's main stratum we replayed every assignment
+again to read the estimator's window quantities (the rebuilt rows matched the stored ones in all 427 assignments). At
+$u$, each of the four scaled inputs was pinned at 0 or 1 in a large share of stalls: the flight time at its floor in
+72\% (at its ceiling in 10\%), the share of pauses after deletions in 83\% (9\%), the correction ratio in 32\% (35\%) and
+the number of pauses in 54\% (17\%); the number of pauses moved from its ceiling at $u - 30$~s (51\%) to its floor at
+$u$. The 30-second change was exactly zero in 64\% of stalls for the flight time and 73\% for the share of pauses after
+deletions. Controls were alike (Table~\ref{tab:phi}). Part of the equivalence may therefore come from the floor and
+ceiling of the scaling on this input.
 
 \paragraph{Later-pause controls [E-H].} A trigger that fires after a pause has lasted $x$ seconds compares stalls with
 pauses that outlasted $x$. Restricting the controls in the holdout to pauses of at least 5~s or 10~s gave 0.491 and 0.491,
 and 0.494 and 0.497, all inside the band (effective writers 49.8 and 48.6).
-
-\paragraph{Signals and learners on the same pairs [E-H].} On the holdout's main stratum, with the learners' statistic
-($\varepsilon = 0$) and over the learners' 200 resamples of writers (their values and intervals reproduced the
-confirmatory ones exactly), logistic regression exceeded the two 30-second changes by 0.078 (95\% interval 0.057--0.093)
-and 0.081 (0.057--0.097), and the levels at $u$ by 0.042 (0.019--0.059) and 0.046 (0.021--0.064); gradient boosting
-exceeded the changes by 0.051 and 0.054 but not clearly the levels. Taken alone, the quantities closest to the learners
-were levels over the 30~s before $u$: stalls were preceded by fewer key presses (AUC 0.446) and fewer characters per
-minute (0.443), whereas every 30-second change among the 18 quantities lay between 0.492 and 0.508. These univariate
-values point to how much the writer had typed, a factor the matching did not control, rather than to a change in the
-run-up; we did not decompose the learners. Part of this difference comes from the definition of a stall, because
-condition A becomes true earlier after less net production (Appendix~\ref{app:definitions}). Among the 3,426 stalls
-whose condition A became true only when the press at $u$ left the window ($s - u = 30$~s), the AUC of the number of key
-presses was 0.467, and among the 1,057 stalls with $s - u < 30$~s it was 0.393.
 
 \subsection{In the exploration outside the registration, the discrimination AUC also stayed inside the band}
 \label{sec:res-explore}

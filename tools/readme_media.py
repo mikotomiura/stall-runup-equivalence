@@ -35,7 +35,7 @@ ROWS = [
     ("Signal change over 15 s", ("sensitivity", "signal_diff_window_15s", "H1"), "pooled_auc"),
     ("Signal change over 60 s", ("sensitivity", "signal_diff_window_60s", "H1"), "pooled_auc"),
     ("$\\theta$ accumulated across assignments", ("sensitivity", "theta_cross_task", "H1"), "pooled_auc"),
-    ("Stall quantile $q = 0.995$", ("sensitivity", "replay_q995", "H1"), "pooled_auc"),
+    ("Stall quantile $q = 0.995$ (warm-up 200)", ("sensitivity", "replay_q995", "H1"), "pooled_auc"),
     ("Condition A window $W = 15$ s", ("sensitivity", "replay_w15", "H1"), "pooled_auc"),
     ("Condition A window $W = 60$ s", ("sensitivity", "replay_w60", "H1"), "pooled_auc"),
     ("Event stratum (described)", ("H1_event_layer_described",), "pooled_auc"),
@@ -113,7 +113,7 @@ def check(rows):
     for label, vals in rows:
         line = next((l for l in tex.splitlines() if l.strip().startswith(label + " &")), None)
         if line is None:
-            print("FAIL no row in Table S: %s" % label)
+            print("FAIL no row in Table 6: %s" % label)
             bad += 1
             continue
         printed = num.findall(line)
@@ -123,13 +123,13 @@ def check(rows):
                     print("FAIL %s: %s printed, %.6f in the result" % (label, shown, got))
                     bad += 1
         if len(printed) != 2:
-            print("FAIL %s: expected two values in Table S" % label)
+            print("FAIL %s: expected two values in Table 6" % label)
             bad += 1
     with open(OUT) as fh:
         if fh.read() != svg(rows):
             print("FAIL docs/media/holdout-auc.svg is not what this script draws")
             bad += 1
-    print("checked %d rows against Table S; %d mismatches" % (len(rows), bad))
+    print("checked %d rows against Table 6 (tab:sens); %d mismatches" % (len(rows), bad))
     return 1 if bad else 0
 
 

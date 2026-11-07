@@ -61,7 +61,10 @@ of an interval that touches 0.45, 0.5 or 0.55 at three digits is given with four
 confirmatory test H1, the unmatched comparison H2 and the learner description H3. The registration says the band was set
 ``conservatively''; the paper says ``wide'', because a wide band makes equivalence easier to declare. The registration
 says the confirmation ``is not written as a test of a prediction that could fail''; the abstract and introduction say
-so in those terms.
+so in those terms. The registration says the estimator ``was applied with the writing coefficients as they are (not
+adapted to individuals or to programming)''; the reference values for direct input had been adjusted for code-like
+input when they were introduced for alphanumeric input, before this study, and were kept unchanged
+(Appendix~\ref{app:coefficients}).
 
 \paragraph{History of the learner analysis.} In the drafts of the registration the learner analysis was confirmatory,
 with a positive control that required the learners to exceed 0.55 on unmatched windows. On seen writers this control
@@ -86,7 +89,12 @@ $K_{ic}$ of distinct controls drawn for them,
 \end{cases}
 \]
 with $\phi_0(d) = 1, 0.5, 0$ for $d > 0$, $d = 0$, $d < 0$. The signal at $t$ is the latest estimate row at or before $t$
-minus the latest row at or before $t - 30$~s. The decision is the conjunction over two signals and two tolerances.
+minus the latest row at or before $t - 30$~s; no maximum gap between $t$ and the row was set. In an audit after the
+confirmation [E-H], the two rows lay in different observation segments, more than 2~s before their nominal times, or
+outside 28--32~s apart for 70 of the 4,554 stalls (1.5\%) and 195 of the 18,689 controls (1.0\%) of the main stratum
+(median lag 0.5~s, largest 6.8~s; span 30~s at the median and 99th percentile); without them the point estimates were
+0.491 and 0.487 ($\varepsilon = 0.001$), against 0.489 and 0.487 with them. The decision is the conjunction over two
+signals and two tolerances.
 
 \paragraph{Missing values and exclusions.} A stall or control without an estimate row at or before $u$ or $u - 30$~s, or
 with a non-numeric value, is dropped; a stall without any control is dropped. In the holdout's main analysis no stall
@@ -240,12 +248,60 @@ $\varepsilon = 0$ fell in the same category as those with $\varepsilon = 0.001$.
     Signal change over 15 s & 4,554 & 0.491 (0.480--0.502) & 0.485 (0.473--0.496) & equiv. \\
     Signal change over 60 s & 4,553 & 0.496 (0.486--0.506) & 0.495 (0.485--0.505) & equiv. \\
     $\theta$ accumulated across assignments & 4,445 & 0.487 (0.477--0.498) & 0.487 (0.476--0.497) & equiv. \\
-    Stall quantile $q = 0.995$ & 2,935 & 0.490 (0.476--0.503) & 0.487 (0.473--0.501) & equiv. \\
+    Stall quantile $q = 0.995$ (warm-up 200) & 2,935 & 0.490 (0.476--0.503) & 0.487 (0.473--0.501) & equiv. \\
     Condition A window $W = 15$ s & 5,937 & 0.493 (0.483--0.503) & 0.490 (0.479--0.5005) & equiv. \\
     Condition A window $W = 60$ s & 2,976 & 0.494 (0.480--0.507) & 0.493 (0.479--0.508) & equiv. \\
     Event stratum (described) & 1,590 & 0.495 (0.477--0.515) & 0.496 (0.477--0.516) & equiv. \\
     \bottomrule
   \end{tabularx}
+\end{table}
+
+\begin{table}
+  \caption{Positive control on the seen CS1 writers [E], all sizes run: discrimination AUC ($\varepsilon = 0.001$) of the
+  30-second changes and of the levels at $u$, with the controls re-estimated or kept fixed. Bold: 95\% interval outside
+  the band.}
+  \label{tab:poscontrol-all}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{l cccc cccc}
+    \toprule
+    & \multicolumn{4}{c}{Controls re-estimated} & \multicolumn{4}{c}{Controls fixed} \\
+    Change & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ & $p_{\mathrm{stuck}}$ & $x$ & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ & $p_{\mathrm{stuck}}$ & $x$ \\
+    \midrule
+    None & 0.492 & 0.490 & 0.526 & 0.527 & 0.492 & 0.490 & 0.526 & 0.527 \\
+    Intervals $\times 1.02$ & 0.493 & 0.493 & 0.528 & 0.530 & 0.493 & 0.492 & 0.528 & 0.529 \\
+    Intervals $\times 1.05$ & 0.495 & 0.495 & 0.529 & 0.531 & 0.494 & 0.493 & 0.528 & 0.530 \\
+    Intervals $\times 1.1$ & 0.499 & 0.498 & 0.534 & 0.536 & 0.498 & 0.496 & 0.534 & 0.535 \\
+    Intervals $\times 1.2$ & 0.503 & 0.503 & 0.540 & 0.543 & 0.502 & 0.502 & 0.540 & 0.543 \\
+    Intervals $\times 1.5$ & 0.518 & 0.524 & 0.558 & \textbf{0.569} & 0.515 & 0.523 & \textbf{0.560} & \textbf{0.574} \\
+    Intervals $\times 2$ & 0.537 & \textbf{0.564} & \textbf{0.582} & \textbf{0.624} & 0.532 & \textbf{0.564} & \textbf{0.589} & \textbf{0.636} \\
+    Intervals $\times 3$ & \textbf{0.562} & \textbf{0.627} & \textbf{0.604} & \textbf{0.708} & 0.553 & \textbf{0.626} & \textbf{0.616} & \textbf{0.730} \\
+    Corrections, $r = 0.02$ & 0.493 & 0.498 & 0.528 & 0.541 & 0.491 & 0.497 & 0.529 & 0.543 \\
+    Corrections, $r = 0.05$ & 0.496 & 0.512 & 0.534 & \textbf{0.565} & 0.490 & 0.509 & 0.537 & \textbf{0.569} \\
+    Corrections, $r = 0.1$ & 0.496 & 0.530 & 0.536 & \textbf{0.598} & 0.486 & 0.526 & 0.541 & \textbf{0.607} \\
+    Corrections, $r = 0.25$ & 0.500 & \textbf{0.562} & 0.538 & \textbf{0.660} & 0.480 & 0.557 & 0.546 & \textbf{0.676} \\
+    Corrections, $r = 0.5$ & 0.495 & \textbf{0.563} & 0.524 & \textbf{0.671} & 0.469 & \textbf{0.558} & 0.533 & \textbf{0.691} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}
+  \caption{Scaled inputs of the estimator at their floor (0) or ceiling (1), holdout main stratum [E-H]: shares of stalls
+  (4,554) and controls (18,689) at $u - 30$~s and at $u$, and the share whose 30-second change was exactly zero.}
+  \label{tab:phi}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{l l cccc cccc c}
+    \toprule
+    & & \multicolumn{2}{c}{Floor, $u - 30$~s} & \multicolumn{2}{c}{Floor, $u$} & \multicolumn{2}{c}{Ceiling, $u - 30$~s} & \multicolumn{2}{c}{Ceiling, $u$} & Change 0 \\
+    Input & & stall & ctrl & stall & ctrl & stall & ctrl & stall & ctrl & stall \\
+    \midrule
+    Flight time & $\varphi_1$ & 71\% & 74\% & 72\% & 75\% & 12\% & 9\% & 10\% & 7\% & 63\% \\
+    Correction ratio & $\varphi_3$ & 27\% & 28\% & 32\% & 32\% & 44\% & 42\% & 35\% & 33\% & 34\% \\
+    Number of pauses & $\varphi_5$ & 25\% & 28\% & 54\% & 52\% & 51\% & 44\% & 17\% & 13\% & 25\% \\
+    Pauses after deletions & $\varphi_6$ & 80\% & 80\% & 83\% & 82\% & 10\% & 10\% & 9\% & 9\% & 73\% \\
+    \bottomrule
+  \end{tabular}
 \end{table}
 
 \paragraph{Ties and values.} The share of pairs tied at $\varepsilon = 0.001$ was 6.5\% (Stuck-state probability) and
@@ -270,7 +326,7 @@ draw, the point estimate ranged from 0.488 to 0.494 (standard deviation 0.0016) 
 
 \paragraph{Instrument over the whole holdout [E-H].} Over the 2,602,660 estimate rows of the 140 writers, the
 Stuck-state probability had a mean of 0.243 (standard deviation 0.340; median 0.083; 10th and 90th percentiles 0.011 and
-0.921) and the smoothed friction axis a mean of 0.430 (0.235). The 30-second change was exactly zero in 26.9\% and
+0.921) with 40.5\% of rows below 0.02, and the smoothed friction axis a mean of 0.430 (0.235). The 30-second change was exactly zero in 26.9\% and
 21.3\% of rows. Within the 4,554 stalls, the mean Stuck-state probability was 0.194 at $u - 30$~s, 0.135 at $u$, 0.150
 at $u + 10$~s, 0.193 at $u + 20$~s and 0.193 at $u + 29$~s (share at the floor 51\%, 61\%, 62\%, 44\%, 42\%), and the
 mean friction axis 0.369, 0.291, 0.340, 0.412 and 0.432. These values describe stalls only; the comparison with controls

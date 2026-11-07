@@ -26,7 +26,7 @@ tutor that relies mostly on the structure of the problem domain \cite{maniktala2
 ending an exercise with zero points, from keystroke-level editing features in its earliest stage
 \cite{kofune2026struggling}, and early detection of wheel spinning across tutors \cite{zhang2019wheel}. Whether a signal
 computed from keystrokes alone distinguishes the seconds before a stall from comparable moments has not been
-established. The comparison partner matters here. Of the reports above, those that anticipate an event split every
+established. Of the reports above, those that anticipate an event split every
 window by whether the event follows in the next $N$ seconds \cite{barron2026tutortrace}, and the others predict the
 outcome of a whole exercise or problem; in neither are the negatives matched to the moment of the event, and windows in
 the middle of fluent typing count as negatives. A stall, however, begins with a
@@ -40,13 +40,10 @@ itself rather than in the typing before it \cite{roeser2025typing,olive2002concu
 
 The signals we test come from a keystroke state estimator: a filter over three hidden states, built like a hidden Markov
 model but with emission weights that are not normalised per state (Appendix~\ref{app:coefficients}), that every second
-combines five quantities computed over a 30~s window of keystrokes (the median flight time, the correction ratio, the
-burst length, the number of pauses and the ratio of pauses after deletions) into state probabilities. Its
-coefficients, the transition and emission weights and the weights of the combinations, were set by hand from the
-literature and from informal tuning, and the reference values for direct (non-IME) input were set by hand from
-population medians of typing \cite{dhakal2018typing}, adjusted for code-like input; none were estimated from the data
-analysed here. It was run with
-the configuration intended for writing tasks. Earlier work in this journal and its neighbours modelled keystrokes as
+combines five quantities computed over a 30~s window of keystrokes into state probabilities (Section~\ref{sec:data}).
+Its coefficients were set by hand from the literature, informal tuning and population medians of typing
+\cite{dhakal2018typing}; none were estimated from the data analysed here, and it was run unchanged with the
+configuration intended for writing tasks. Earlier work in this journal and its neighbours modelled keystrokes as
 writing states fitted to data, for example a semi-Markov model of four writing states
 \cite{guo2020scenario,guo2018basic}. The estimator differs in combining fixed window quantities into a probability every
 second with hand-set coefficients that are held fixed. Our claims concern this estimator on this input; for estimators
@@ -63,15 +60,14 @@ computed on the 30-second change of each signal, fell within the band $[0.45, 0.
 false-equivalence rate is at most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the configurations examined in the
 calibration on seen writers, and is not an upper bound over the whole null).
 
-The contribution is a comparative result for one estimator, obtained with a comparison that others can reuse. Run-up
-signals are usually judged against windows that include fluent typing; we judged one against the run-up to short pauses
-by the same writer, with a band set in advance and confirmed on a holdout. Against this partner, the 30-second change of
-the estimator's two signals did not discriminate beyond the band, whereas, on the same pairs and in explorations outside
-the registration, learners on simple quantities of preceding typing gave AUCs 0.04--0.08 higher. The estimator responded
-to large injected changes but barely to changes of the observed size, and many of its scaled inputs sat at their floor
-(Section~\ref{sec:res-bounds}). For researchers who build stall or help-need detectors from keystrokes, the result shows
-which comparison partner exposes a weak run-up signal and what an estimator of this type does not register at this
-scale. The procedure is released with its code as the parts of this one example; we claim no effect for it.
+The contribution is a comparative analysis of one estimator. Judged against the run-up to short pauses by the same
+writer, with a band set in advance and confirmed on a holdout, the 30-second change of the estimator's two signals did
+not discriminate beyond the band; on the same pairs, in explorations outside the registration, learners on simple
+quantities of preceding typing exceeded the two changes by 0.05--0.08 (Section~\ref{sec:res-learners}). The estimator
+responded to large injected changes but barely to changes of the observed size (Section~\ref{sec:res-bounds}). For
+researchers who build stall or help-need detectors from keystrokes, this is one example of a run-up signal judged
+against a stated comparison partner and band, beside simple quantities on the same pairs; whether the choice of partner
+changes the conclusion is not shown here. The procedure is released with its code; we claim no effect for it.
 
 Section~\ref{sec:related} places the study in work on detecting struggle in CS1, on measuring keystroke pauses and on
 evaluating detectors. Section~\ref{sec:data} describes the data, the stall and the estimator, and

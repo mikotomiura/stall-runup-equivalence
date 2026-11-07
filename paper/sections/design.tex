@@ -67,8 +67,7 @@ provisional signals were shifted until one reached 0.45 or 0.55 while the other 
 applied to 500 draws of 138 writers, the expected size of the holdout. In the version with replacement, which we read
 because the holdout is a random sample, the maximum over the configurations examined was 5.2\% (26 of 500; Wilson 95\%
 interval 3.6--7.5\%), above the nominal one-sided 2.5\%; without replacement it was at most 1.4\% (Appendix~\ref{app:calibration};
-Section~\ref{sec:limitations} gives what the value does not cover). In the holdout every interval ended at
-least 0.025 inside the edges of the band, so the decision does not hinge on the exact level.
+Section~\ref{sec:limitations} gives what the value does not cover).
 
 \subsection{Secondary and descriptive analyses}
 
@@ -77,7 +76,7 @@ positive if a stall's $u$ falls in the next 60~s, and windows inside long pauses
 negatives within writers is then re-matched by the decile of elapsed time in the block (Appendix~\ref{app:unmatched}).
 A descriptive analysis gave 18 standard keystroke quantities, nine levels over the 30~s before $u$ and their changes from
 the preceding 30~s, to logistic regression and gradient boosting, trained and evaluated on the same stalls and controls
-with folds by writer (Appendix~\ref{app:learners}). Only the learners had a registered positive control: a gate that adds a known difference to one quantity and requires
+with five folds by holdout writer (Appendix~\ref{app:learners}). Only the learners had a registered positive control: a gate that adds a known difference to one quantity and requires
 the learners to recover it (its history is in Appendix~\ref{app:prereg}). The positive control of the estimator was
 added afterwards as exploration (Section~\ref{sec:res-bounds}).
 

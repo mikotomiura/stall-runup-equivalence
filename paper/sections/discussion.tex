@@ -2,7 +2,8 @@
 \label{sec:discussion}
 
 In the CS1 holdout (139 students), the discrimination AUC of the 30-second change at $u$, in the matched comparison, fell
-within the band $[0.45, 0.55]$ set in advance. Equivalence here
+within the band $[0.45, 0.55]$ set in advance (with a false-equivalence rate of at most 5.2\% in the calibration, not an
+upper bound over the whole null; Section~\ref{sec:limitations}). Equivalence here
 means that each signal, used alone as a ranking score, separated stall run-ups from matched control run-ups no better
 than the band allows, on average over the pairs weighted within writers. It does not mean that typing does not change
 before a stall, that stalls and controls did not both change, that a combination of signals could not separate them, or
@@ -10,14 +11,11 @@ that the signals are uninformative for every writer.
 
 For research and practice that builds triggers for help from keystrokes, the result concerns one quantity: the change of
 this estimator's two signals over the 30~s up to the last character input before a stall. It does not address what
-happens later in the pause, where both signals rose (Section~\ref{sec:data}), nor a firing rule that uses the length of
-the pause itself. The registered reading for a trigger is the threshold table: at each writer's 90th percentile of
-controls, 10.3\% and 9.3\% of stall run-ups exceeded the threshold, against 9.6\% of controls (Section~\ref{sec:res-main}).
-A conversion made after the band was set, on seen writers, under a model that shifts the stall values by a constant
-and fires when a pause in the no-event stratum reaches 2~s (Appendix~\ref{app:threshold}), puts the share of firings
-on pauses that become stalls at 8.2--8.9\% at an AUC of 0.50 and 8.9--10.0\% at 0.55, a rise of 0.1--1.8 points. The
-low base rate sets most of this: even at 0.70 the share was 12.9--18.4\%, and a trigger that waits longer in the pause
-meets a higher base rate. In that sense the 30-second change gave no basis for a trigger on this input; a trigger whose
+happens later in the pause, where both signals rose (Section~\ref{sec:data}); the controls restricted to later pauses
+(Section~\ref{sec:res-bounds}) only begin to address a firing rule that uses the length of the pause itself. The registered reading for a trigger, the threshold table (Section~\ref{sec:res-main}), showed no separation, so the
+30-second change gave no basis for a trigger on this input. A conversion made after the band was set, under a model that
+shifts the stall values by a constant, puts the gain in the share of firings on pauses that become stalls between an AUC
+of 0.50 and 0.55 at 0.1--1.8 points, and the low base rate sets most of it (Appendix~\ref{app:threshold}); a trigger whose
 threshold is fixed independently and whose hit rate and false alarms per hour are measured could behave differently. Those who plan to use an estimator of the same type as a trigger can
 check its run-up signal against a band set in advance \cite{lakens2017equivalence} on held-out writers
 \cite{gardner2018evaluating}; our data do not show the harm of omitting the check.
@@ -26,20 +24,20 @@ check its run-up signal against a band set in advance \cite{lakens2017equivalenc
 
 The equivalence could reflect the instrument rather than the typing: the input was rebuilt from edit events with a
 synthesised release, the coefficients were not estimated on these data, and the levels discriminated less in CS1 (0.524
-and 0.521) than in the essays (0.569 and 0.580). The positive control shows that the estimator is not inert on this
-input, but also that changes of the size observed between stalls and controls barely move its 30-second changes, and
-that its Stuck-state probability does not register corrections as friction; many of its scaled inputs sat at their
-floor or ceiling, so a small change often leaves them unchanged. The main intervals exclude differences larger than
-about 0.025 from 0.5 (a description made after the data were seen), and at this resolution the instrument cannot show
-whether the run-up differs by the observed amount. The learners point to a difference of another kind: stalls were
-preceded by less typing, a level rather than a change, partly because of how a stall is defined, and the estimator's
-30-second changes are not built to carry it. The result is therefore a
+and 0.521) than in the essays (0.569 and 0.580). The explorations of Section~\ref{sec:res-bounds} show that the estimator is not inert on this input but barely moves
+with changes of the observed size, that its scaled inputs are often pinned so that a small change leaves them
+unchanged, and that its levels respond to smaller changes than its 30-second changes, so part of the insensitivity lies
+in taking the difference over 30~s. At this resolution the instrument cannot show whether the run-up differs by the
+observed amount. The learners point to a difference of another kind: stalls were
+preceded by less typing, a level rather than a change, which the estimator's 30-second changes are not built to carry.
+Reading beyond the value-only condition of the split, part of this may follow from how a stall is defined, since the
+difference was larger among stalls whose onset condition A brought forward. The result is therefore a
 statement about this instrument on this input, not about the absence of differences in the typing before stalls.
 
 \subsection{What was established and what remains possible}
 
-What the registration establishes is limited to the statistic above being inside the band in the matched comparison,
-including after removing stalls that contain events inside the pause. The weak response to small changes, the floor of
+What the registration establishes is limited to the statistic above being inside the band in the matched comparison;
+a registered sensitivity analysis that removed stalls with events inside the pause fell in the same category [C-D]. The weak response to small changes, the floor of
 the scaled inputs and the level difference are explorations; they bound the reading but were not tested. Whether unmatched evaluation makes run-up rises look large
 cannot be judged here: the unmatched comparison showed no rise, and in the learner description the matched comparison
 was higher than the unmatched windows (Section~\ref{sec:res-learners}). Nor can the opposite reading, that matching
@@ -60,19 +58,18 @@ a run-up signal, although our data do not show an effect of the way of matching.
 
 \subsection{Materials}
 
-No new data were collected; the analyses used de-identified public datasets under the terms set by their authors. We
-release the preregistration, the deviation, the start records and the results registration (all public on the Open
-Science Framework), and an archive (version 0.1.0, \url{https://doi.org/10.5281/zenodo.24014043}) with the estimator and
-the replay tool cut out at the version used, the code of the evaluation, the explorations and the conversion of the
-public data, the seed and the computational environment, the manifest of the verified files, the conditions committed
-before each computation (in Japanese, with an English summary) and the aggregate results. On every call that the
-paper's pipelines made on the seen CS1 2019, essay and co-writing data, the released estimator returned output
-byte-identical to the build used for the analysis; the calls of the 2021 data and of the positive control were not
-compared, and rerunning the comparison needs that build, which is not distributed. The archive gives the steps to obtain
-the public data and to rerun the confirmation on the holdout; run with the released estimator, they reproduced the
-released result byte for byte. The order of the records can be checked from outside only
-through the timestamps of the registrations; the commit times of the conditions come from the authors' private history,
-and six files of the manifest are documents of that history, three of which (the preregistration text and its English
-check) are attached to the registration. The CS1 files are released by their authors on request, and we agreed to publish
-only aggregate values, so neither the data nor the per-pause estimate rows are redistributed. The list of holdout writers
-will be added if the authors of the data agree; otherwise its SHA-256 and the procedure that drew it are given.
+No new data were collected; the analyses used de-identified public datasets under the terms set by their authors. The
+preregistration, the deviation, the start records and the results are registered on the Open Science Framework. The
+archive (version 0.2.0, \url{https://doi.org/10.5281/zenodo.24025183}) holds the estimator and the replay tool cut out at
+the version used, the code of the conversion, the evaluation and the explorations, the seed and the environment, the
+manifest of the verified files, the conditions committed before each computation (in Japanese, with an English summary)
+and the aggregate results. The released estimator's output matched the analysis build byte for byte on every call made
+on the seen CS1 2019, essay and co-writing data; the calls of the 2021 data and of the positive control were not
+compared, and the analysis build is not distributed. Run with the released estimator on the authors' machine (macOS
+arm64), the archive's steps for the holdout reproduced the released result byte for byte. The order of the records can
+be checked from outside only through the timestamps of the registrations; the commit times of the conditions come from
+the authors' private history, and six files of the manifest are documents of that history, three of which (the
+preregistration in Japanese and in English, and the check of the English version) are attached to the registration. The
+CS1 files are released by their authors on request, and we agreed to publish only aggregate values, so neither the data
+nor the per-pause estimate rows are redistributed; the list of holdout writers will be added if the authors of the data
+agree.
