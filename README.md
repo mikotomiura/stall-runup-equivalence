@@ -21,8 +21,9 @@ state estimator before code-writing stalls stayed inside a preregistered equival
 deviation, the two start records and the results are public on the Open Science Framework:
 [mrkxt](https://osf.io/mrkxt) (preregistration), [fqgcp](https://osf.io/fqgcp) (deviation),
 [ajg2x](https://osf.io/ajg2x) (second start record), [uj6cy](https://osf.io/uj6cy) (results and provenance). This
-archive is on Zenodo: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042) (all versions; version 0.1.0
-is [10.5281/zenodo.24014043](https://doi.org/10.5281/zenodo.24014043)).
+archive is on Zenodo: [10.5281/zenodo.24014042](https://doi.org/10.5281/zenodo.24014042) (all versions; version 0.2.0
+is [10.5281/zenodo.24025183](https://doi.org/10.5281/zenodo.24025183), version 0.1.0 is
+[10.5281/zenodo.24014043](https://doi.org/10.5281/zenodo.24014043)).
 
 <p align="center">
   <img alt="Animated illustration with synthetic keystrokes: a pause that became a stall and a matched short pause; the
