@@ -28,7 +28,7 @@ identifiers:
     value: 10.5281/zenodo.24014043
     description: Version 0.1.0.
 repository-code: "https://github.com/mikotomiura/stall-runup-equivalence"
-version: 0.2.0
+version: 0.2.1
 date-released: 2026-11-07
 keywords:
   - keystroke logging

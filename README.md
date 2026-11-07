@@ -54,6 +54,8 @@ supplement (Section S4). No number of the manuscript comes from this figure.</su
 | `experiments/20261105-findings-paper1-prefreeze/` | the computations before the freeze, the confirmation script `scripts/confirm_p1.py`, the manifest of verified files, the deviation, and the results on seen writers (`results/`) and on the holdout (`results_holdout/`) |
 | `experiments/20261106-findings-paper1-exploration/` | the explorations outside the registration (positive controls, the comparison with learners, CoAuthor and KLiCKe, CS1 2021) |
 | `experiments/20261107-findings-paper1-round3-checks/` | two further explorations: how often the estimator's scaled inputs sit at their floor, and the AUC of the preceding amount of typing restricted to stalls whose onset was not brought forward by the stall definition (s − u = 30 s) |
+| `experiments/20261107-findings-paper1-round4-checks/` | an audit of how the two estimate rows of each 30-second change were picked (time gaps and observation segments) |
+| `experiments/20261107-findings-paper1-round5-checks/` | the comparison of signals and learners restricted to stalls with s − u = 30 s, controls before the writer's threshold was defined, and intervals for the threshold table |
 | `docs/conditions-summary.md` | an English summary of every conditions document |
 | `experiments/20261031-*`, `20261101-*`, `20261102-*`, `20261103-*` | conversion and analysis scripts of earlier experiments that the paper's scripts import, with their run scripts and conditions |
 | `paper/` | the LaTeX sources of the manuscript (`paper/BUILD.md`) |
@@ -140,6 +142,9 @@ and of the OSF records, which only the authors' run could pass; `tools/rerun_con
 to `experiments/20261105-findings-paper1-prefreeze/results_holdout/confirm_holdout.json`. We ran it with the estimator
 built from `estimator/` (SHA-256 of `gse-replay` `1839c83e…3e80b`, macOS arm64, 4 jobs): the result was byte-identical
 (SHA-256 `3a73346f…72018`).
+
+The explorations outside the registration (`experiments/20261106-*` and `20261107-*`) are released as scripts with
+their conditions and aggregate results, without such a rerun check; each script's docstring gives its inputs and output.
 
 ### What the equivalence gate of the estimator covers
 

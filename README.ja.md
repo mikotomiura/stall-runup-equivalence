@@ -51,6 +51,8 @@ Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（�
 | `experiments/20261105-findings-paper1-prefreeze/` | 凍結の前の計算・確認のスクリプト `scripts/confirm_p1.py`・検証済みのファイルの manifest・逸脱・見た書き手の結果（`results/`）と取り置きの結果（`results_holdout/`） |
 | `experiments/20261106-findings-paper1-exploration/` | 登録の外の探索（陽性対照・学習器との比べ・CoAuthor と KLiCKe・CS1 2021 年版） |
 | `experiments/20261107-findings-paper1-round3-checks/` | さらに 2 つの探索: 推定器の尺度づけした入力が床に張り付く割合と、停滞の定義で始まりが早まっていない停滞（s − u = 30 秒）に限った直前の打鍵の量の AUC |
+| `experiments/20261107-findings-paper1-round4-checks/` | 30 秒の変化の両端の推定の行の選び方の監査（時間の差と観測区間） |
+| `experiments/20261107-findings-paper1-round5-checks/` | 信号と学習器の比べを s − u = 30 秒の停滞に限った版・書き手の閾値が定まる前の対照・閾値の表の区間 |
 | `docs/conditions-summary.md` | 条件の文書すべての英語の要約 |
 | `experiments/20261031-*`・`20261101-*`・`20261102-*`・`20261103-*` | 論文のスクリプトが読み込む前の実験の変換と解析のスクリプト・実行の手順・条件 |
 | `paper/` | 原稿の LaTeX（組み方は `paper/BUILD.md`） |
@@ -132,6 +134,9 @@ seed `20261106` で `scripts/confirm_p1.py` を回す）を、著者の実行だ
 `experiments/20261105-findings-paper1-prefreeze/results_holdout/confirm_holdout.json` とバイト単位で同じときだけ 0 で
 終わる。`estimator/` から組んだ推定器（`gse-replay` の SHA-256 `1839c83e…3e80b`・macOS arm64・並列 4）で回したところ、
 結果はバイト単位で同じだった（SHA-256 `3a73346f…72018`）。
+
+登録の外の探索（`experiments/20261106-*` と `20261107-*`）は、条件と集計の結果とともにスクリプトとして置いた。このような
+回し直しの照合は付けていない。入力と出力は各スクリプトの冒頭の説明にある。
 
 ### 推定器の一致の門が覆う範囲
 

@@ -1,6 +1,6 @@
 # Summary of the pre-computation conditions documents
 
-This file is an English guide to the conditions documents that the authors committed before each computation in this project. The Japanese originals are authoritative; this summary is only a reader's aid and adds nothing to them. Numbers and thresholds are copied from the originals; where a term is unclear, the original term is kept in parentheses. Commit times (UTC) are taken from `gse-commits.tsv`, a table built from the authors' private commit history (column `first_commit_utc`). Sections are in the order: the CS1 overview, the pre-freeze computations (with one deviation record), the exploration after the holdout was opened, the round-3 checks, and the four upstream experiments on which the computations depend.
+This file is an English guide to the conditions documents that the authors committed before each computation in this project. The Japanese originals are authoritative; this summary is only a reader's aid and adds nothing to them. Numbers and thresholds are copied from the originals; where a term is unclear, the original term is kept in parentheses. Commit times (UTC) are taken from `gse-commits.tsv`, a table built from the authors' private commit history (column `first_commit_utc`). Sections are in the order: the CS1 overview, the pre-freeze computations (with one deviation record), the exploration after the holdout was opened, the round-3 checks, the four upstream experiments on which the computations depend, and the round-4 and round-5 checks (added last).
 
 Common vocabulary. "Stall" (停滞) is a long net-output stop for the writer, not a judgement that the writer is stuck. `theta` is a writer's own 0.99-quantile of inter-key intervals, undefined below 100 intervals. An "onset" is a stall start produced by the replay tool (`gse-replay --features`) using `theta` and "condition A" (net output of the 30 s window below 1). `p_stuck` and `ewma_x` are the two output signals of the keystroke estimator; `d_p_stuck` and `d_ewma_x` are their 30 s changes. A "control" is a pause of 2 s to under 30 s that did not become a stall. AUC is the probability that a stall-side value exceeds a control-side value (ties 0.5). The data directory lives outside the repository; only aggregate values are committed.
 
@@ -236,3 +236,17 @@ Rows. The same rows as X16 and X17: the holdout intermediates read with `confirm
 What is counted. For each stall of the main stratum and each drawn control (once per cell), with a the time of the row at or before u and b the time of the row at or before u - 30 s: the lags u - a and (u - 30 s) - b (median, 99th percentile, maximum) and the share above 2 s; the share of a - b outside 28-32 s; the share with a and b in different observation intervals; and the number of rows meeting any of these ("off rows"), separately for stalls and controls.
 
 Pre-set reading. If there are no off rows, state in the paper that both rows lie in one observation interval and 28-32 s apart. Otherwise, report the counts and shares, and recompute the point estimate of the main statistic (epsilon 0.001, both signals) without the off stalls and controls (a stall left without controls is dropped); no interval; the decision is not changed.
+
+---
+
+## experiments/20261107-findings-paper1-round5-checks/conditions.md
+
+First commit: 2026-11-07T01:53:05Z.
+
+Purpose. Three explorations after the holdout was opened (status [E-H]; the decision is not changed), with the rows of X16-X18 and the same gate.
+
+X19a. The comparison of the signals and the learners (X11) restricted to the stalls with s - u = 30 s (onsets not brought forward by condition A) and their controls: the learners are refitted on these rows, with the same 200 writer resamples; differences with 95% percentile intervals, and differences ignoring direction (learner minus the larger of the signal's AUC and one minus it). Gate: on all rows, the learners equal the confirmation and the signals equal X11. Pre-set reading (on the direction-free differences): if both intervals of logistic regression minus the two changes lie above 0 in the subset, "the difference is not explained by the definition of a stall alone"; if both include 0 or lie below, "the difference cannot be shown among stalls less affected by the definition"; otherwise values only.
+
+X19b. Stalls arise only once theta is defined, but controls do not require it. Count the stalls and controls of the main stratum with theta undefined at u, and the point estimate of the main statistic (epsilon 0.001) with both restricted to theta defined at u. Reading: below 1% of controls, counts only; otherwise report the point.
+
+X19c. The registered threshold table (q = 0.9): stall exceedance minus control exceedance for both signals, with a 95% interval from 2,000 writer resamples. Gate: the pooled rates equal the confirmation. Reading: if the interval includes 0, "not distinguishable from 0"; otherwise values and interval; note that the control rate is about 10% by construction.

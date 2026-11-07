@@ -43,14 +43,12 @@ The band $[0.45, 0.55]$, 0.05 on either side of chance, was set wide after we ha
 in the essay-writing and co-writing data (a wide band makes equivalence easier to declare); it was not derived from a conversion. As a reading aid, an AUC of 0.55
 corresponds to a difference in means of about 0.18 standard deviations between two normal distributions of equal
 variance. After the band was set, we converted it into the behaviour of a threshold trigger on seen writers
-(Appendix~\ref{app:threshold}). The band is wider than the region of practical equivalence of 0.01 used for the
-difference in AUC between two models in learning analytics \cite{gardner2018evaluating}; that precedent compares a
-different quantity.
+(Appendix~\ref{app:threshold}). How it compares with the field's precedent is in Section~\ref{sec:limitations}.
 
 Some rules of the main analysis were fixed after a leak had shown that, under an older definition, the AUC on seen
 writers lay inside the band (Appendix~\ref{app:prereg}): among them, the stratum window $[u - 30\,\mathrm{s}, u]$,
 condition A on both stalls and controls, requiring $\varepsilon = 0$ as well, and the precision rule. With the older
-stratum window alone, the holdout gave 0.505 and 0.500 (Section~\ref{sec:res-main}), also inside the band.
+stratum window alone, the holdout gave 0.505 and 0.500 (Section~\ref{sec:res-sens}), also inside the band.
 
 For each signal and each $\varepsilon$, the result is \emph{equivalent} if the 95\% interval lies inside the band. This
 is the form of the two one-sided tests procedure at one-sided 2.5\% \cite{lakens2017equivalence}. An interval that

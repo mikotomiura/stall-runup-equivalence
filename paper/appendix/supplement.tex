@@ -53,6 +53,17 @@ read to have no rows that create an assignment under the same mapping, and the t
 controls: removing a writer read, or adding a writer outside the list, both fail). Nothing else changed. In the local
 history there were two start records, one interruption, one move-aside, two computation starts and one completed run.
 
+\paragraph{Archive and provenance.} The archive holds the seed and the computational environment and the manifest of the
+verified files besides the items named in the main text. The released estimator's output matched the analysis build
+byte for byte on every call made on the seen CS1 2019, essay and co-writing data; the calls of the 2021 data and of the
+positive control were not compared, and the analysis build is not distributed. Run with the released estimator on the
+authors' machine (macOS arm64), the archive's steps for the holdout reproduced the released result byte for byte; the
+explorations are released as scripts without such a rerun check. The order of the records can be checked from outside
+only through the timestamps of the registrations; the commit times of the conditions come from the authors' private
+history, and six files of the manifest are documents of that history, three of which (the preregistration in Japanese
+and in English, and the check of the English version) are attached to the registration. The list of holdout writers will
+be added if the authors of the data agree.
+
 \paragraph{Wording.} The registration's main sentence speaks of ``the rise in the run-up in the matched comparison'';
 the paper names the same statistic ``the discrimination AUC of the 30-second change''. The registration's rule for the
 second sentence applied because the not-at-floor sensitivity analysis selected at the start point was equivalent for
@@ -93,7 +104,9 @@ minus the latest row at or before $t - 30$~s; no maximum gap between $t$ and the
 confirmation [E-H], the two rows lay in different observation segments, more than 2~s before their nominal times, or
 outside 28--32~s apart for 70 of the 4,554 stalls (1.5\%) and 195 of the 18,689 controls (1.0\%) of the main stratum
 (median lag 0.5~s, largest 6.8~s; span 30~s at the median and 99th percentile); without them the point estimates were
-0.491 and 0.487 ($\varepsilon = 0.001$), against 0.489 and 0.487 with them. The decision is the conjunction over two
+0.491 and 0.487 ($\varepsilon = 0.001$), against 0.489 and 0.487 with them. Stalls can arise only once $\theta$ is
+defined, but controls were not required to have $\theta$ defined at $u$; it was undefined for 172 of the 18,689 controls
+(0.9\%) and 1 stall, and restricting both to $\theta$ defined at $u$ gave 0.489 and 0.487 [E-H]. The decision is the conjunction over two
 signals and two tolerances.
 
 \paragraph{Missing values and exclusions.} A stall or control without an estimate row at or before $u$ or $u - 30$~s, or
@@ -259,7 +272,7 @@ $\varepsilon = 0$ fell in the same category as those with $\varepsilon = 0.001$.
 \begin{table}
   \caption{Positive control on the seen CS1 writers [E], all sizes run: discrimination AUC ($\varepsilon = 0.001$) of the
   30-second changes and of the levels at $u$, with the controls re-estimated or kept fixed. Bold: 95\% interval outside
-  the band.}
+  the band. Unchanged, the rebuilt rows matched the stored ones in all 1,042 assignments.}
   \label{tab:poscontrol-all}
   \centering\footnotesize
   \setlength{\tabcolsep}{3pt}
@@ -287,7 +300,8 @@ $\varepsilon = 0$ fell in the same category as those with $\varepsilon = 0.001$.
 
 \begin{table}
   \caption{Scaled inputs of the estimator at their floor (0) or ceiling (1), holdout main stratum [E-H]: shares of stalls
-  (4,554) and controls (18,689) at $u - 30$~s and at $u$, and the share whose 30-second change was exactly zero.}
+  (4,554) and controls (18,689) at $u - 30$~s and at $u$, and the share whose 30-second change was exactly zero. The rows rebuilt to read these inputs matched the stored ones in all
+  427 assignments.}
   \label{tab:phi}
   \centering\footnotesize
   \setlength{\tabcolsep}{3pt}
@@ -355,7 +369,16 @@ between 0.486 and 0.500 and did not meet the condition for a rise.
 presses; the 10th, 50th and 90th percentiles of intervals above 50~ms; the numbers of intervals of 2~s or more and of
 10~s or more; the backspace ratio; the mean burst length (cut at intervals of 2~s or more); and character presses per
 minute. The 18 quantities are these nine levels and their differences from $(t - 60\,\mathrm{s}, t - 30\,\mathrm{s}]$.
-Missing quantities are left missing (6,743 of 27,317 rows had at least one).
+Missing quantities are left missing (6,743 of 27,317 rows had at least one). The 27,317 rows are the 4,554 stall rows
+and 22,763 control rows, one per draw (a control drawn for several stalls has several rows, each weighted by one over
+the number of that stall's controls); the evaluation counts each control once per writer and cell, as in the main
+statistic. Restricted to the 3,426 stalls with $s - u = 30$~s and their controls (20,553 rows), with the learners refitted
+and the same 200 resamples of writers [E-H], logistic regression reached 0.550 (0.527--0.562) and gradient boosting 0.529
+(0.508--0.547), against 0.488 and 0.481 for the two changes and 0.510 and 0.502 for the levels; logistic regression
+exceeded the changes by 0.062 (0.038--0.077) and 0.068 (0.037--0.088), or 0.037 (0.012--0.056) and 0.031 (0.009--0.044)
+without direction, and gradient boosting by 0.041 and 0.048, or 0.016 and 0.010 (intervals including 0) without
+direction. On all stalls, gradient boosting exceeded the changes without direction by 0.030 (0.009--0.051) and 0.027
+(0.008--0.046).
 
 \paragraph{Learners and evaluation.} Logistic regression (median imputation and missingness indicators fitted within
 training folds, standardisation, L2 penalty with $C = 1$) and gradient boosting (histogram-based, default settings,
@@ -380,7 +403,7 @@ discovery of a difference. Gradient boosting with a nested grid search (50 resam
 
 On the 319 seen writers, a provisional signal was built from the real signal by shifting the stall values until the
 pooled AUC reached the target (difference 0.000001 or less), and the decision rule was applied to 500 draws of 138
-writers, sharing the resampling seed across the two tolerances and the two signals as in the actual run. The draws were about as concentrated as the holdout (a median of 43 effective writers, against 50.5 in the holdout). With a signal
+writers, sharing the resampling seed across the two tolerances and the two signals as in the actual run. With a signal
 at the boundary and the other at 0.50, the proportion judged equivalent under both tolerances was:
 
 \begin{center}\small
@@ -435,11 +458,12 @@ The conversion of the band [D] was made on the seen writers after the band was s
 of the signal over the control candidates was the threshold, and a trigger fired when the signal exceeded it as the pause
 reached 2~s. Provisional signals were shifted so that the AUC reached a target. Firings were about 11.5 to 12.6 per hour
 at AUC 0.50 (counting only pauses in the no-event stratum over all observed time, so lower than a real trigger), and the
-share of firings that fell on pauses that became stalls was 8.2--8.9\% at 0.50, 8.9--10.0\% at 0.55, 9.3--12.4\% at
+share of firings that fell on pauses that became stalls was 8.2--8.9\% at 0.50, 8.9--10.0\% at 0.55 (a rise of 0.1--1.8
+points with the same shifting method, as in the preregistration's Appendix D), 9.3--12.4\% at
 0.60, 10.8--15.2\% at 0.65 and 12.9--18.4\% at 0.70. In the essays, the rise at 0.55 was 0.3--1.1 points. The onset is raised at $s + \theta$, and $s$ depends on the
 net production in the 30~s before it: with less preceding production, condition A becomes true earlier. The time from
-the last character input to the onset therefore carries information about the preceding typing, which matters for the
-learners' quantities of preceding typing (Section~\ref{sec:res-bounds}).
+the last character input to the onset therefore carries information about the preceding typing, which can matter for the
+learners' quantities of preceding typing (Section~\ref{sec:res-learners}).
 
 \section{Scope of the search for prior work}
 \label{app:novelty}
