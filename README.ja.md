@@ -40,7 +40,7 @@ Open Science Framework で公開している: [mrkxt](https://osf.io/mrkxt)（�
        src="docs/media/holdout-auc.svg" width="900">
 </p>
 <p align="center"><sub>CS1 2019 年版の取り置き（139 人）。<code>tools/readme_media.py</code> が
-<code>results_holdout/confirm_holdout.json</code> から描く。<code>--check</code> で、すべての値が原稿の補足の表 6（S4 節）と
+<code>results_holdout/confirm_holdout.json</code> から描く。<code>--check</code> で、すべての値が原稿の補足の表 5（S4 節）と
 一致することを確かめる。原稿の数はこの図から取っていない。</sub></p>
 
 ## 中身
@@ -93,7 +93,7 @@ bash tools/verify.sh
    バイトが同じ `estimator/prereg/p1-episode.json` で照合する。最初の manifest（19 行・`9a1a7f14…28da9b`）は事前登録に
    添えてある。
 2. `estimator/` で `cargo test --locked` と `provenance/check_provenance.py --self`。
-3. `tools/readme_media.py --check`: 上の図が原稿の補足の表 6 と同じ。
+3. `tools/readme_media.py --check`: 上の図が原稿の補足の表 5 と同じ。
 4. `tools/check_release.py` とその陽性対照。
 
 ## 解析を回し直す

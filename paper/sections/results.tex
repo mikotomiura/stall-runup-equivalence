@@ -124,17 +124,15 @@ reproduced the registered values exactly), logistic regression exceeded the two 
 use either direction of a quantity, whereas each signal was ranked in a fixed direction; read without direction (the
 larger of the AUC and one minus it for the signals), logistic regression exceeded the changes by 0.057 (0.032--0.070)
 and 0.054 (0.033--0.066), and gradient boosting by 0.030 and 0.027 (lower ends 0.009 and 0.008). Taken alone, the
-quantities closest to the learners were levels over the 30~s before $u$: stalls were preceded by fewer key presses (AUC
-0.446) and fewer characters per minute (0.443), whereas every 30-second change among the 18 quantities lay between
-0.492 and 0.508; we did not decompose the learners. Because condition A becomes true earlier after less net production
-(Appendix~\ref{app:definitions}), the stall definition could itself tie stalls to less preceding typing. Among the 3,426
-stalls whose onset it did not bring forward ($s - u = 30$~s), the AUC of the number of key presses was 0.467 (0.393
-among the 1,057 with $s - u < 30$~s; the other 71 stalls, with $s - u > 30$~s, are in neither group), and the
-comparison, rerun on these stalls with the learners refitted, gave logistic regression 0.550 (0.527--0.562); read
-without direction, it exceeded the two changes by 0.037 (0.012--0.056) and 0.031 (0.009--0.044), while gradient
-boosting did not clearly exceed them (0.016 and 0.010, intervals including 0). By the reading committed before this
-computation, the difference is therefore not explained by the definition of a stall alone, although it is smaller
-there (Appendix~\ref{app:learners}).
+quantities closest to the learners were levels of typing over the 30~s before $u$ (Appendix~\ref{app:learners}); we did
+not decompose the learners.
+
+Because condition A becomes true earlier after less net production (Appendix~\ref{app:definitions}), the stall
+definition could itself tie stalls to less preceding typing. We therefore reran the comparison, with the learners
+refitted, on the 3,426 stalls whose onset it did not bring forward ($s - u = 30$~s). Logistic regression reached 0.550
+(0.527--0.562) and, read without direction, exceeded the two changes by 0.037 (0.012--0.056) and 0.031 (0.009--0.044);
+gradient boosting did not clearly exceed them (0.016 and 0.010, intervals including 0). The difference thus remained,
+smaller, among these stalls, although they are still selected through condition A and the personalised threshold.
 
 \subsection{The main sensitivity analyses were also equivalent}
 \label{sec:res-sens}
@@ -222,22 +220,8 @@ and 0.494 and 0.497, all inside the band (effective writers 49.8 and 48.6).
 \label{sec:res-explore}
 
 After the confirmation we applied the same procedure, with conditions committed before each computation, to other data
-(Table~\ref{tab:explore}). In the 31 seen writers of the 2021 CS1 edition, all four combinations were inside the band
+(Figure~\ref{fig:forest}; Table~\ref{tab:explore} in Appendix~\ref{app:explore}). In the 31 seen writers of the 2021 CS1 edition, all four combinations were inside the band
 [E]. Matching stalls and controls on three positions at once (after a newline, after a token boundary, within a token)
 in the holdout gave 0.490 and 0.488 [E-H]; stalls were slightly more frequent after a token boundary than controls (53.9\%
 against 50.9\%). The procedure also ran on the full essay corpus and on the seen co-writing data (Appendix~\ref{app:explore}).
 
-\begin{table}
-  \caption{Exploration outside the registration: discrimination AUC of the 30-second change ($\varepsilon = 0.001$; the
-  value with $\varepsilon = 0$ differs by at most 0.001).}
-  \label{tab:explore}
-  \centering\small
-  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X l c c}
-    \toprule
-    Data & Status & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ \\
-    \midrule
-    CS1 2021 edition, 31 seen writers & [E] & 0.493 (0.485--0.501) & 0.486 (0.475--0.499) \\
-    CS1 2019 holdout, three-way position & [E-H] & 0.490 (0.479--0.5006) & 0.488 (0.476--0.4999) \\
-    \bottomrule
-  \end{tabularx}
-\end{table}

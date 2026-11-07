@@ -42,7 +42,7 @@ inside the band [0.45, 0.55] set in advance.
        src="docs/media/holdout-auc.svg" width="900">
 </p>
 <p align="center"><sub>Holdout of the CS1 2019 data (139 students). Drawn by <code>tools/readme_media.py</code> from
-<code>results_holdout/confirm_holdout.json</code>; <code>--check</code> confirms every value equals Table 6 of the manuscript's
+<code>results_holdout/confirm_holdout.json</code>; <code>--check</code> confirms every value equals Table 5 of the manuscript's
 supplement (Section S4). No number of the manuscript comes from this figure.</sub></p>
 
 ## What is here
@@ -98,7 +98,7 @@ runs the following and exits with 0 only if all pass:
    `src-tauri/prereg/p1-episode.json`, is the byte-identical `estimator/prereg/p1-episode.json`. The first manifest
    (19 entries, `9a1a7f14…28da9b`) is attached to the preregistration.
 2. `cargo test --locked` and `provenance/check_provenance.py --self` in `estimator/`.
-3. `tools/readme_media.py --check`: the figure above equals Table 6 of the manuscript's supplement.
+3. `tools/readme_media.py --check`: the figure above equals Table 5 of the manuscript's supplement.
 4. `tools/check_release.py` and its positive controls.
 
 ## Rerunning the analyses

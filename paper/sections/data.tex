@@ -47,7 +47,7 @@ The estimator reads the key presses and releases and, every second, computes the
 Section~\ref{sec:intro} over the preceding 30~s. Each quantity is mapped to $[0, 1]$ against a reference value and combined into two latent axes, a friction
 axis ($0.30$ correction ratio $+ 0.25$ pauses after deletion $+ 0.25$ flight time $+ 0.20$ number of pauses) and an
 engagement axis, whose exponentially smoothed values are quantised into the observations of a three-state filter (an update shaped
-like that of a hidden Markov model, with emission weights that are not normalised per state). The designer named the states Flow, Incubation and Stuck; we use only the
+like that of a hidden Markov model, with emission weights that are not normalised per state). The author designed the estimator before this study and named its states Flow, Incubation and Stuck; we use only the
 probability of the third and do not interpret the names. All coefficients were set by hand (Section~\ref{sec:intro}) and are listed in
 Appendix~\ref{app:coefficients}; the version used is fixed (Appendix~\ref{app:definitions}). A replay tool re-reads a recorded stream and writes one
 estimate row per second together with the stall onsets.

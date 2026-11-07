@@ -4,7 +4,7 @@
 Usage:
   python3 -I tools/readme_media.py            writes docs/media/holdout-auc.svg
   python3 -I tools/readme_media.py --check    checks that every value of the figure, rounded as printed, equals the
-                                              row of the same name in Table 6, label tab:sens (paper/appendix/supplement.tex), and
+                                              row of the same name in Table 5, label tab:sens (paper/appendix/supplement.tex), and
                                               that the SVG on disk is the one this script draws
 Reads only experiments/20261105-findings-paper1-prefreeze/results_holdout/confirm_holdout.json (aggregate values).
 No number of the paper comes from this script. Exit code: 0 = written or checked / 1 = a mismatch.
@@ -113,7 +113,7 @@ def check(rows):
     for label, vals in rows:
         line = next((l for l in tex.splitlines() if l.strip().startswith(label + " &")), None)
         if line is None:
-            print("FAIL no row in Table 6: %s" % label)
+            print("FAIL no row in Table 5: %s" % label)
             bad += 1
             continue
         printed = num.findall(line)
@@ -123,13 +123,13 @@ def check(rows):
                     print("FAIL %s: %s printed, %.6f in the result" % (label, shown, got))
                     bad += 1
         if len(printed) != 2:
-            print("FAIL %s: expected two values in Table 6" % label)
+            print("FAIL %s: expected two values in Table 5" % label)
             bad += 1
     with open(OUT) as fh:
         if fh.read() != svg(rows):
             print("FAIL docs/media/holdout-auc.svg is not what this script draws")
             bad += 1
-    print("checked %d rows against Table 6 (tab:sens); %d mismatches" % (len(rows), bad))
+    print("checked %d rows against Table 5 (tab:sens); %d mismatches" % (len(rows), bad))
     return 1 if bad else 0
 
 

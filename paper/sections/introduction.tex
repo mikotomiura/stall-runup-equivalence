@@ -26,7 +26,9 @@ tutor that relies mostly on the structure of the problem domain \cite{maniktala2
 ending an exercise with zero points, from keystroke-level editing features in its earliest stage
 \cite{kofune2026struggling}, and early detection of wheel spinning across tutors \cite{zhang2019wheel}. Whether a signal
 computed from keystrokes alone distinguishes the seconds before a stall from comparable moments has not been
-established. Of the reports above, those that anticipate an event split every
+established.
+
+Of the reports above, those that anticipate an event split every
 window by whether the event follows in the next $N$ seconds \cite{barron2026tutortrace}, and the others predict the
 outcome of a whole exercise or problem; in neither are the negatives matched to the moment of the event, and windows in
 the middle of fluent typing count as negatives. A stall, however, begins with a
@@ -46,8 +48,8 @@ Its coefficients were set by hand from the literature, informal tuning and popul
 configuration intended for writing tasks. Earlier work in this journal and its neighbours modelled keystrokes as
 writing states fitted to data, for example a semi-Markov model of four writing states
 \cite{guo2020scenario,guo2018basic}. The estimator differs in combining fixed window quantities into a probability every
-second with hand-set coefficients that are held fixed. Our claims concern this estimator on this input; for estimators
-of the same type, the result is one instance.
+second with hand-set coefficients that are held fixed. We chose an estimator of this type because fixed, hand-set
+coefficients are what a tool can run before any labelled data from its users exist.
 
 We preregistered the test on a random holdout of an introductory programming (CS1) dataset \cite{edwards2023cs1}. The
 holdout was drawn before any analysis of these data, and the confirmation was computed in a single completed run after
@@ -56,21 +58,19 @@ dataset for which a holdout had been preregistered; the essay-writing data had a
 computation before the freeze had revealed that, under an older definition, the AUC on seen writers lay inside the band
 (slightly above 0.50), the result is a confirmation and not a test of a prediction that could fail; in the holdout the
 estimates fell slightly below 0.50 instead. In the CS1 holdout (139 students), the AUC of the matched comparison,
-computed on the 30-second change of each signal, fell within the band $[0.45, 0.55]$ set in advance (the
-false-equivalence rate is at most 5.2\% [Wilson 95\% interval 3.6--7.5\%] among the configurations examined in the
-calibration on seen writers, and is not an upper bound over the whole null).
+computed on the 30-second change of each signal, fell within the band $[0.45, 0.55]$ set in advance (with the false-equivalence rate of the calibration;
+Section~\ref{sec:limitations} gives what it does not cover).
 
-The contribution is a comparative analysis of one estimator. Judged against the run-up to short pauses by the same
-writer, with a band set in advance and confirmed on a holdout, the 30-second change of the estimator's two signals did
-not discriminate beyond the band; on the same pairs, in explorations outside the registration, learners on simple
-quantities of preceding typing exceeded the two changes by 0.05--0.08 (0.03--0.06 ignoring the signals' direction), and
-logistic regression still did so among stalls whose onset the stall definition did not bring forward
-(Section~\ref{sec:res-learners}). The estimator
-responded to large injected changes but barely to changes of the observed size, injected in the opposite direction
-(Section~\ref{sec:res-bounds}). For
-researchers who build stall or help-need detectors from keystrokes, this is one example of a run-up signal judged
-against a stated comparison partner and band, beside simple quantities on the same pairs; whether the choice of partner
-changes the conclusion is not shown here. The procedure is released with its code; we claim no effect for it.
+The contribution is a comparative analysis that others can take to their own run-up signals. First, a run-up signal of
+one estimator was judged against the run-up to short pauses by the same writer, with a band set in advance and confirmed
+on a holdout; its 30-second change did not discriminate beyond the band. Second, on the same pairs and outside the
+registration, learners on simple quantities of preceding typing reached AUCs of about 0.54--0.57 and exceeded the two
+changes, also among stalls whose onset the stall definition did not bring forward (Section~\ref{sec:res-learners});
+these values are a reference for other signals judged against the same partner. Third, the decision rule declared
+equivalence more often than its nominal level with few effective writers, which designs of this size can check by a
+similar calibration (Section~\ref{sec:design}). The estimator itself responded to large injected changes but barely to
+changes of the observed size (Section~\ref{sec:res-bounds}). The results concern this estimator on this input, and
+whether the choice of partner changes conclusions is not shown; the procedure is released with its code.
 
 Section~\ref{sec:related} places the study in work on detecting struggle in CS1, on measuring keystroke pauses and on
 evaluating detectors. Section~\ref{sec:data} describes the data, the stall and the estimator, and

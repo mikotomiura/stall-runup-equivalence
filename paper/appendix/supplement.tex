@@ -56,7 +56,10 @@ history there were two start records, one interruption, one move-aside, two comp
 \paragraph{Archive and provenance.} The archive holds the seed and the computational environment and the manifest of the
 verified files besides the items named in the main text. The released estimator's output matched the analysis build
 byte for byte on every call made on the seen CS1 2019, essay and co-writing data; the calls of the 2021 data and of the
-positive control were not compared, and the analysis build is not distributed. Run with the released estimator on the
+positive control were not compared, and the analysis build is not distributed. A first run of that comparison on CS1 with seven parallel jobs, when the free disk space was near zero, logged
+differing output in 9 of the 1,079 \texttt{--features} calls and differing exit codes in 8 (one a crash of the
+analysis build); their cause was not
+established, and the rerun with four jobs, on which the statement rests, had none. Run with the released estimator on the
 authors' machine (macOS arm64), the archive's steps for the holdout reproduced the released result byte for byte; the
 explorations are released as scripts without such a rerun check. The order of the records can be checked from outside
 only through the timestamps of the registrations; the commit times of the conditions come from the authors' private
@@ -64,7 +67,9 @@ history, and six files of the manifest are documents of that history, three of w
 and in English, and the check of the English version) are attached to the registration. The list of holdout writers will
 be added if the authors of the data agree.
 
-\paragraph{Wording.} The registration's main sentence speaks of ``the rise in the run-up in the matched comparison'';
+\paragraph{Wording.} The registration attaches the false-equivalence qualification to the main sentence and keeps it in
+the abstract; the paper gives it in full in the abstract, the conclusion, the calibration and the limitations, and
+refers to the limitations elsewhere. The registration's main sentence speaks of ``the rise in the run-up in the matched comparison'';
 the paper names the same statistic ``the discrimination AUC of the 30-second change''. The registration's rule for the
 second sentence applied because the not-at-floor sensitivity analysis selected at the start point was equivalent for
 the Stuck-state probability under both tolerances. Intervals in the OSF summary have three digits; in the paper, an end
@@ -372,7 +377,14 @@ minute. The 18 quantities are these nine levels and their differences from $(t -
 Missing quantities are left missing (6,743 of 27,317 rows had at least one). The 27,317 rows are the 4,554 stall rows
 and 22,763 control rows, one per draw (a control drawn for several stalls has several rows, each weighted by one over
 the number of that stall's controls); the evaluation counts each control once per writer and cell, as in the main
-statistic. Restricted to the 3,426 stalls with $s - u = 30$~s and their controls (20,553 rows), with the learners refitted
+statistic. Resampling writers with replacement repeats some writers (copies are kept in the same fold), so each
+resample trains on fewer distinct writers; the learners' intervals include this variation as well as that of the
+evaluation pairs. Taken alone, stalls were preceded by fewer key presses (AUC 0.446) and fewer characters per minute
+(0.443) over the 30~s before $u$, whereas every 30-second change among the 18 quantities lay between 0.492 and 0.508;
+the AUC of the number of key presses was 0.467 among the 3,426 stalls with $s - u = 30$~s and 0.393 among the 1,057 with
+$s - u < 30$~s (the other 71 stalls, with $s - u > 30$~s, are in neither group). The condition committed before the
+computation read the restricted comparison by the direction-free differences of logistic regression: both intervals
+above 0 were to be read as the difference not being explained by the definition alone. Restricted to the 3,426 stalls with $s - u = 30$~s and their controls (20,553 rows), with the learners refitted
 and the same 200 resamples of writers [E-H], logistic regression reached 0.550 (0.527--0.562) and gradient boosting 0.529
 (0.508--0.547), against 0.488 and 0.481 for the two changes and 0.510 and 0.502 for the levels; logistic regression
 exceeded the changes by 0.062 (0.038--0.077) and 0.068 (0.037--0.088), or 0.037 (0.012--0.056) and 0.031 (0.009--0.044)
@@ -430,6 +442,21 @@ writers (2.5th to 97.5th percentiles 32.3--58.2) and a median top-10\% share of 
 
 \section{Exploration outside the registration}
 \label{app:explore}
+
+\begin{table}
+  \caption{Exploration outside the registration: discrimination AUC of the 30-second change ($\varepsilon = 0.001$; the
+  value with $\varepsilon = 0$ differs by at most 0.001).}
+  \label{tab:explore}
+  \centering\small
+  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X l c c}
+    \toprule
+    Data & Status & $\Delta p_{\mathrm{stuck}}$ & $\Delta x$ \\
+    \midrule
+    CS1 2021 edition, 31 seen writers & [E] & 0.493 (0.485--0.501) & 0.486 (0.475--0.499) \\
+    CS1 2019 holdout, three-way position & [E-H] & 0.490 (0.479--0.5006) & 0.488 (0.476--0.4999) \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
 
 Conditions were committed before each computation; the base seed was 20261126. \textbf{CS1 2021 edition} (31 seen
 writers; intermediates rebuilt with the frozen conversion, skipping the 13 writers set aside): matched 0.493
